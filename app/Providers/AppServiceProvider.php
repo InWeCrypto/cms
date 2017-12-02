@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton('aliyun_oss', function () {
+            return new \App\Services\OssService();
+        });
     }
 
     /**

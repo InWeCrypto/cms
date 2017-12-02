@@ -7,6 +7,7 @@
 # InWeCrypTO 后台管理API文档
 
 > 所有请求默认RESTful
+> Api 版本 v1
 
 ## 1. 用户认证
 ### 1.1 获取用户token
@@ -239,7 +240,7 @@
 ]
 ```
 
-### 3.2 ICO测评 - 发行情况
+### 3.3 ICO测评 - 发行情况
 > 获取ICO测评的发行情况列表 /ico_assess/issue_info?ico_assess_id=1
 
 - **请求地址:** /ico_assess/issue_info
@@ -263,7 +264,7 @@
 ]
 ```
 
-### 3.2 ICO测评 - 项目分数分析
+### 3.4 ICO测评 - 项目分数分析
 > 获取ICO测评的项目分数分析列表 /ico_assess/project_analyse?ico_assess_id=1
 
 - **请求地址:** /ico_assess/project_analyse
@@ -280,3 +281,153 @@
     ...
 ]
 ```
+
+### 3.5 ICO测评标签
+#### 3.5.1 获取ICO测评标签列表
+> 获取项目标签列表 /ico_assess/tag?ico_assess_id=1
+> 获取可用标签列表 /tag/main?get_key
+> 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
+
+- **请求地址:** /ico_assess/tag
+- **请求参数:** [get]
+- **返回数据:**
+```
+[
+    {
+        "ico_assess_id": 1, // ICO测评id
+        "tag_id": 1, // 标签ID
+        "tag_info": {
+        	"name": "业内大佬" // 标签名称
+        }
+    },
+    ...
+]
+```
+
+#### 2.5.2 修改ICO测评标签列表
+- **请求地址:** /ico_assess/tag
+- **请求参数:** [post] ico_assess_id,tag_ids
+- **请求数据:**
+```
+{
+	"ico_assess_id": "100", // ICO测评ID
+    "tag_ids": [], // 标签列表id
+}
+
+* * *
+
+## 4 资讯
+### 4.1 资讯管理
+- **请求地址:** /article/main
+- **请求参数:** [get, post, put, delete]
+- **返回数据:**
+```
+[
+    {
+    	"title": "图文内容", // 资讯标题
+        "img": null, // 资讯封面
+        "desc": null, // 资讯简介
+        "content": "", // 资讯内容(富文本)
+        "category_id": 101, // 所属项目ID
+        "sort": 0, // 排序
+        "is_top": 0, // 置顶排序
+        "is_hot": 0,
+        "is_scroll": 1, // 标记为首页滚动
+        "status": 1, // 文章状态-1,审核不通过,0待审核,1审核通过;默认1
+        "enable": 1, // 是否启用, 默认您启用
+        "type": 2, // 资讯类型 1.快讯,2,图文,3视频,4下载
+        "click_rate": 1, // 点击量
+        "video": null, // 视频连接
+        "url": null // 跳转连接
+    },
+    ...
+]
+```
+
+### 4.2 ICO测评标签
+#### 4.2.1 获取ICO测评标签列表
+> 获取项目标签列表 /article/tag?article_id=1
+> 获取可用标签列表 /tag/main?get_key
+> 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
+
+- **请求地址:** /article/tag
+- **请求参数:** [get]
+- **返回数据:**
+```
+[
+    {
+        "article_id": 1, // 资讯id
+        "tag_id": 1, // 标签ID
+        "tag_info": {
+        	"name": "业内大佬" // 标签名称
+        }
+    },
+    ...
+]
+```
+
+#### 4.2.2 修改ICO测评标签列表
+- **请求地址:** /article/tag
+- **请求参数:** [post] article_id,tag_ids
+- **请求数据:**
+```
+{
+	"article_id": "100", // ICO测评ID
+    "tag_ids": [], // 标签列表id
+}
+```
+
+* * *
+
+## 5. 其他
+### 5.1 标签集合管理
+- **请求地址:** /tag/main[?get_key]
+- **请求参数:** [get, post, put, delete] get_key // 获取列比哦啊
+- **返回数据:**
+```
+[
+    {
+    	"name": "图文内容", // 标签名
+        "desc": null, // 备注
+    },
+    ...
+]
+```
+
+### 5.2 ico管理
+- **请求地址:** /ico/main[?get_key]
+- **请求参数:** [get, post, put, delete] get_key // 获取列比哦啊
+- **返回数据:**
+```
+[
+    {
+    	"name": "量子链", // ico名称
+        "long_name": "量子链", // ico长名称
+        "en_name": "qtum", // ico 英文名称
+        "en_long_name": "qtum", // ico 英文长名称
+        "unit": "QTUM", // ico单位
+        "img": "", // ico 图片
+        "web_site": "https://qtum.org", // ico官网
+        "desc": null, // ico描述
+        "sort": 0, // 排序
+        "key": "qtum" // ico api key
+    },
+    ...
+]
+```
+
+### 5.2 文件上传
+#### 5.2.1 图片上传
+- **请求地址:** /upload/img
+- **请求参数:** [post]
+- **返回数据:**
+```
+{
+	"img": "", // 图片上传访问地址
+}
+```
+
+### 5.3 百度编辑器 serverUrl
+> <font color=red>暂不支持单图上传, iframe跨域问题</font>
+
+- **请求地址:** /laravel-u-editor-server/server

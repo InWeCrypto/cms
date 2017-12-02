@@ -21,7 +21,7 @@ Route::get('/doc', function () {
 
 $router->post('login','AdminController@login');
 
-Route::group([], function($router){
+Route::group(['prefix' => 'v1'], function($router){
 // Route::group(['middleware'=>'jwt.auth'], function($router){
     // 管理员
     $router->group(['prefix'=>'admin'], function($router){

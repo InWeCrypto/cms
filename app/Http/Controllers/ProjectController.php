@@ -10,13 +10,26 @@ class ProjectController extends BaseController
 {
     public function index(Request $request)
     {
-        $is_key = $request->has('get_key');
+        $keyword = trim($request->get('keyword',''));
+        $is_key  = $request->has('get_key');
         
         $type = $request->get('type', 0);
         if($is_key){
-            $list = Category::select(['id','name','type'])->isEnable()->get();
+            $list = Category::select(['id','name','type'])
+                    ->isEnable()
+                    ->where(function($query) use ($keyword) {
+                        $query->orWhere('name', 'like', '%'.$keyword.'%')
+                              ->orWhere('long_name', 'like', '%'.$keyword.'%');
+                    })
+                    ->get();
         } else {
-            $list = Category::isProject()->ofType($type)->paginate(5);
+            $list = Category::isProject()
+                    ->ofType($type)
+                    ->where(function($query) use ($keyword) {
+                        $query->orWhere('name', 'like', '%'.$keyword.'%')
+                              ->orWhere('long_name', 'like', '%'.$keyword.'%');
+                    })
+                    ->paginate(5);
         }
         $type = Category::$project_category;
         return success(compact('list', 'type'));

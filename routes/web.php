@@ -19,10 +19,10 @@ Route::get('/doc', function () {
     return file_get_contents('doc.html');;
 });
 
-$router->post('login','AdminController@login');
 
 Route::group(['prefix' => 'v1'], function($router){
 // Route::group(['middleware'=>'jwt.auth'], function($router){
+    $router->post('login','AdminController@login');
     // 管理员
     $router->group(['prefix'=>'admin'], function($router){
         $router::resource('main', 'AdminController');
@@ -67,6 +67,9 @@ Route::group(['prefix' => 'v1'], function($router){
         $router->resource('main', 'ArticleController');
         // 资讯标签
         $router->resource('tag', 'ArticleTagController');
+        // 资讯抄送栏目
+        $router->resource('cc_category', 'ArticleCcController');
+        
     });
     // tag标签集合
     $router->group(['prefix'=>'tag'], function($router){

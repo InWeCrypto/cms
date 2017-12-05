@@ -1,11 +1,10 @@
+# InWeCrypTO 后台管理API文档
 
 [TOC]
 
-
 * * *
 
-# InWeCrypTO 后台管理API文档
-
+# 简介
 > 所有请求默认RESTful
 > Api 版本 v1
 
@@ -40,6 +39,7 @@
 
 ## 2. 项目管理
 ### 2.1 项目管理
+> /project/main?keyword=关键字 // 搜索项目
 - **请求地址:** /project/main
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
@@ -61,6 +61,7 @@
     "color": "#2EC1C1", // 项目方块颜色
     "website": "", // 项目官网
     "ico_id": "",--暂无 // 关联ico
+    "updated_at":"", // 项目修改时间
 }
 ```
 
@@ -304,7 +305,7 @@
 ]
 ```
 
-#### 2.5.2 修改ICO测评标签列表
+#### 3.5.2 修改ICO测评标签列表
 - **请求地址:** /ico_assess/tag
 - **请求参数:** [post] ico_assess_id,tag_ids
 - **请求数据:**
@@ -316,7 +317,7 @@
 
 * * *
 
-## 4 资讯
+## 4. 资讯
 ### 4.1 资讯管理
 - **请求地址:** /article/main
 - **请求参数:** [get, post, put, delete]
@@ -344,8 +345,8 @@
 ]
 ```
 
-### 4.2 ICO测评标签
-#### 4.2.1 获取ICO测评标签列表
+### 4.2 资讯标签
+#### 4.2.1 获取资讯标签列表
 > 获取项目标签列表 /article/tag?article_id=1
 > 获取可用标签列表 /tag/main?get_key
 > 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
@@ -366,14 +367,57 @@
 ]
 ```
 
-#### 4.2.2 修改ICO测评标签列表
+#### 4.2.2 修改资讯标签列表
 - **请求地址:** /article/tag
 - **请求参数:** [post] article_id,tag_ids
 - **请求数据:**
 ```
 {
-	"article_id": "100", // ICO测评ID
+	"article_id": "100", // 资讯ID
     "tag_ids": [], // 标签列表id
+}
+```
+
+### 4.3 资讯栏目关联
+> 将一篇资讯关联到多个栏目
+
+#### 4.3.1 获取资讯关联的栏目列表
+- **请求地址:** /article/cc_category?article_id=134
+- **请求参数:** [get] article_id
+- **返回数据:**
+```
+[
+    {
+    "id": 134,
+    "title": "监管部门为比特币期货“亮绿灯”", // 资讯标题
+    "cc_category": [
+        {
+            "id": 2,
+            "article_id": 134, // 资讯id
+            "category_id": 101, // 项目id
+            "category": {
+                "id": 101,
+                "name": "bodhi",  // 项目名称
+                "long_name": "bodhi" // 项目长名称
+            }
+        }
+        ...
+       ]
+    }
+    ...
+]
+```
+
+#### 4.3.2 修改资讯关联的栏目列表
+> 获取可用项目列表 /project/main?get_key
+
+- **请求地址:** /article/cc_category
+- **请求参数:** [post] article_id, category_ids
+- **请求数据:**
+```
+{
+	"article_id": "100", // ICO测评ID
+    "category_ids": [], // 项目列表id
 }
 ```
 
@@ -424,6 +468,16 @@
 ```
 {
 	"img": "", // 图片上传访问地址
+}
+```
+
+#### 5.2.2 视频上传
+- **请求地址:** /upload/video
+- **请求参数:** [post]
+- **返回数据:**
+```
+{
+	"video": "", // 视频上传访问地址
 }
 ```
 

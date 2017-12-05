@@ -15,6 +15,7 @@ class ArticleController extends BaseController
             'title',
             'desc',
             'category_id',
+            'img',
             'sort',
             'is_top',
             'is_hot',
@@ -25,7 +26,7 @@ class ArticleController extends BaseController
             'click_rate',
             'type'
             ];
-        $list = Article::select($select)->ofType(Article::ALL)->paginate(2);
+        $list = Article::select($select)->ofType(Article::ALL)->paginate(10);
         $type = Article::$type;
         return success(compact('list','type'));
     }

@@ -146,4 +146,9 @@ EOT;
         return $this->hasMany('App\Model\ArticleTag','article_id','id');
 
     }
+    // 资讯抄送
+    public function ccCategory()
+    {
+        return $this->hasMany('App\Model\ArticleCategoryCc','article_id','id');
+    }
 }

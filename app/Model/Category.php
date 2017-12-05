@@ -19,7 +19,6 @@ class Category extends Model
 							'is_show',
 							'status',
 							'created_at',
-							'updated_at',
 							't_id',
 							'p_id'
 						];

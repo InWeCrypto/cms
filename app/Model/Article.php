@@ -21,6 +21,7 @@ class Article extends Model
         'is_top',
         'is_hot',
         'is_scroll',
+        'is_sole',
         'status',
         'enable',
         'click_rate',

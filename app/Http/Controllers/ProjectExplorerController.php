@@ -21,7 +21,7 @@ class ProjectExplorerController extends BaseController
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
         $category_id = $request->get('category_id');
-        $info        = Category::with('ProjectExplorer')->find($category_id);
+        $info        = Category::with('projectExplorer')->find($category_id);
 
         return success($info);
     }

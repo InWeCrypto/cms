@@ -21,7 +21,7 @@ class ProjectTagController extends BaseController
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
         $category_id = $request->get('category_id');
-        $info        = Category::with('ProjectTag.tagInfo')->find($category_id);
+        $info        = Category::with('projectTag.tagInfo')->find($category_id);
 
         return success($info);
     }

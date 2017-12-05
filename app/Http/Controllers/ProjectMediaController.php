@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Category;
-use App\Model\ProjectWallet;
+use App\Model\ProjectMedia;
 
-class ProjectWalletController extends BaseController
+class ProjectMediaController extends BaseController
 {
 
     public function index(Request $request)
@@ -21,14 +21,14 @@ class ProjectWalletController extends BaseController
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
         $category_id = $request->get('category_id');
-        $info        = Category::with('projectWallet')->find($category_id);
+        $info        = Category::with('projectMedia')->find($category_id);
 
         return success($info);
     }
 
     public function show(Request $request, $id)
     {
-        return success(ProjectWallet::find($id));
+        return success(ProjectMedia::find($id));
     }
 
     public function store(Request $request)
@@ -42,7 +42,7 @@ class ProjectWalletController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = new ProjectWallet();
+        $info = new ProjectMedia();
         $info->fill($request->all());
         return $info->save() ? success() : fail();
     }
@@ -58,13 +58,13 @@ class ProjectWalletController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = ProjectWallet::find($id);
+        $info = ProjectMedia::find($id);
         $info->fill($request->all());
         return $info->save() ? success() : fail();
     }
 
     public function destroy(Request $request, $id){
-        return ProjectWallet::find($id)->delete() ? success() : fail();
+        return ProjectMedia::find($id)->delete() ? success() : fail();
     }
 
 }

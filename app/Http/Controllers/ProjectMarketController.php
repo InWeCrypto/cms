@@ -21,7 +21,7 @@ class ProjectMarketController extends BaseController
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
         $category_id = $request->get('category_id');
-        $info        = Category::with('ProjectMarket')->find($category_id);
+        $info        = Category::with('projectMarket')->find($category_id);
 
         return success($info);
     }

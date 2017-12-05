@@ -19,7 +19,6 @@ Route::get('/doc', function () {
     return file_get_contents('doc.html');;
 });
 
-
 Route::group(['prefix' => 'v1'], function($router){
 // Route::group(['middleware'=>'jwt.auth'], function($router){
     $router->post('login','AdminController@login');
@@ -41,6 +40,8 @@ Route::group(['prefix' => 'v1'], function($router){
         $router->resource('explorer', 'ProjectExplorerController');
         // 项目钱包
         $router->resource('wallet', 'ProjectWalletController');
+        // 项目媒体
+        $router->resource('media', 'ProjectMediaController');
         // ICO细则 (未上线项目)
         // 项目标签
         $router->resource('tag', 'ProjectTagController');
@@ -82,5 +83,7 @@ Route::group(['prefix' => 'v1'], function($router){
     // 上传文件
     $router->group(['prefix'=>'upload'], function($router){
         $router->post('img', 'UploadController@img');
+        $router->post('video', 'UploadController@video');
+        $router->any('test', 'UploadController@test');
     });
 });

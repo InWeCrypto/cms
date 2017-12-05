@@ -139,19 +139,24 @@ class Category extends Model
 		return $this->hasMany('App\Model\Article','category_id','id');
 	}
 	// 项目行情
-	public function ProjectTimePrice()
+	public function projectTimePrice()
 	{
 		return $this->hasMany('App\Model\ProjectTimePrice','project_id','id');
 	}
 	// 项目市场
-	public function ProjectMarket()
+	public function projectMarket()
 	{
 		return $this->hasMany('App\Model\ProjectMarket','project_id','id');
 	}
 	// 项目标签
-	public function ProjectTag()
+	public function projectTag()
 	{
 		return $this->hasMany('App\Model\ProjectTag','project_id','id');
+	}
+	// 项目媒体
+	public function projectMedia()
+	{
+		return $this->hasMany('App\Model\ProjectMedia','project_id','id');
 	}
 
 }

@@ -39,7 +39,9 @@
 
 ## 2. 项目管理
 ### 2.1 项目管理
+> /project/main?get_key // 获取所有项目键值列表
 > /project/main?keyword=关键字 // 搜索项目
+> /project/main?type=5 // 项目类型分类
 
 - **请求地址:** /project/main
 - **请求参数:** [get, post, put, delete]

@@ -323,7 +323,7 @@
 </code></pre></li></ul><h3 id="1.2-验证"><a name="1.2-验证" href="#1.2-验证"></a>1.2 验证</h3><blockquote>
 <p>每次请求在HTTP Header 中带入Token<br>如:Authorization: Bearer eyJ0…gNHYEHKsm_Wcc58xvKsOfg</p>
 </blockquote><hr class="page"><h2 id="2.-项目管理"><a name="2.-项目管理" href="#2.-项目管理"></a>2. 项目管理</h2><h3 id="2.1-项目管理"><a name="2.1-项目管理" href="#2.1-项目管理"></a>2.1 项目管理</h3><blockquote>
-<p>/project/main?keyword=关键字 // 搜索项目</p>
+<p>/project/main?get_key // 获取所有项目键值列表<br>/project/main?keyword=关键字 // 搜索项目<br>/project/main?type=5 // 项目类型分类</p>
 </blockquote><ul>
 <li><strong>请求地址:</strong> /project/main</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
   &quot;type&quot;: 5, // 项目类型

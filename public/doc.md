@@ -40,8 +40,8 @@
 
 ## 2. 项目管理
 > 获取项目属性:
-- 项目类型列表[type]: /project/type<font color=red>[/5] 获取置顶类型名称</font>
-- 项目方块类型列表[grid_type]: /project/grid_type<font color=red>[/1] 获取置顶类型名称</font>
+- 项目类型列表[type]: /project/type<font color=red>[/5] 获取指定类型名称</font>
+- 项目方块类型列表[grid_type]: /project/grid_type<font color=red>[/1] 获取指定类型名称</font>
 
 
 ### 2.1 项目管理

@@ -57,9 +57,11 @@ class IcoAssessTagController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
+
         if (! $tag_ids = json_decode($request->get('tag_ids'), true)) {
             return fail('标签ID为空!', NOT_VALIDATED);
         }
+        $tag_ids = array_unique($tag_ids);
         $ico_assess_id = $request->get('ico_assess_id');
         try {
             \DB::transaction(function() use ($ico_assess_id, $tag_ids){

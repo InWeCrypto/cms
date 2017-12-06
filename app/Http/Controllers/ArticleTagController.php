@@ -62,6 +62,7 @@ class ArticleTagController extends BaseController
         if (! $tag_ids = json_decode($request->get('tag_ids'), true)) {
             return fail('标签ID为空!', NOT_VALIDATED);
         }
+        $tag_ids = array_unique($tag_ids);
         $article_id = $request->get('article_id');
         try {
             \DB::transaction(function() use ($article_id, $tag_ids){

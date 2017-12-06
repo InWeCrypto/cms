@@ -47,6 +47,7 @@ class ProjectTagController extends BaseController
         if (! $tag_ids = json_decode($request->get('tag_ids'), true)) {
             return fail('标签ID为空!', NOT_VALIDATED);
         }
+        $tag_ids = array_unique($tag_ids);
         $category_id = $request->get('category_id');
         try {
             \DB::transaction(function() use ($category_id, $tag_ids){

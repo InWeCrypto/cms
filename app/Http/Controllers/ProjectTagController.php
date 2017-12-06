@@ -34,10 +34,10 @@ class ProjectTagController extends BaseController
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                'category_id' => 'required',
+                'project_id' => 'required',
                 'tag_ids' => 'required'
             ], [
-                'category_id.required' => '请传入项目ID',
+                'project_id.required' => '请传入项目ID',
                 'tag_ids.required' => '请传入标签ID'
             ]
         );
@@ -48,14 +48,14 @@ class ProjectTagController extends BaseController
             return fail('标签ID为空!', NOT_VALIDATED);
         }
         $tag_ids = array_unique($tag_ids);
-        $category_id = $request->get('category_id');
+        $project_id = $request->get('project_id');
         try {
-            \DB::transaction(function() use ($category_id, $tag_ids){
-                ProjectTag::where('project_id', $category_id)->delete();
+            \DB::transaction(function() use ($project_id, $tag_ids){
+                ProjectTag::where('project_id', $project_id)->delete();
                 $data = [];
                 foreach($tag_ids as $tag_id){
                     $data[] = [
-                        'project_id' => $category_id,
+                        'project_id' => $project_id,
                         'tag_id' => $tag_id
                     ];
                 }

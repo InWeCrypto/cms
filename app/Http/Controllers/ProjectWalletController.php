@@ -34,9 +34,9 @@ class ProjectWalletController extends BaseController
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                'category_id' => 'required',
+                'project_id' => 'required',
             ], [
-                'category_id.required' => '请传入项目ID'
+                'project_id.required' => '请传入项目ID'
             ]
         );
         if ($validator->fails()){
@@ -50,9 +50,9 @@ class ProjectWalletController extends BaseController
     public function update(Request $request, $id)
     {
         $validator = \Validator::make($request->all(), [
-                'category_id' => 'required',
+                'project_id' => 'required',
             ], [
-                'category_id.required' => '请传入项目ID'
+                'project_id.required' => '请传入项目ID'
             ]
         );
         if ($validator->fails()){

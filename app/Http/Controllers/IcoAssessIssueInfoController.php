@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\IcoAssessArticle;
-use App\Model\icoAssessIssueInfo;
+use App\Model\IcoAssessIssueInfo;
 
 class IcoAssessIssueInfoController extends BaseController
 {
@@ -44,7 +44,7 @@ class IcoAssessIssueInfoController extends BaseController
 
     public function show(Request $request, $id)
     {
-        return success(icoAssessIssueInfo::find($id));
+        return success(IcoAssessIssueInfo::find($id));
     }
 
     public function store(Request $request)
@@ -62,7 +62,7 @@ class IcoAssessIssueInfoController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = new icoAssessIssueInfo();
+        $info = new IcoAssessIssueInfo();
         $info->fill($request->all());
         return $info->save() ? success() : fail();
     }
@@ -82,13 +82,13 @@ class IcoAssessIssueInfoController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = icoAssessIssueInfo::find($id);
+        $info = IcoAssessIssueInfo::find($id);
         $info->fill($request->all());
         return $info->save() ? success() : fail();
     }
 
     public function destroy(Request $request, $id){
-        return icoAssessIssueInfo::find($id)->delete() ? success() : fail();
+        return IcoAssessIssueInfo::find($id)->delete() ? success() : fail();
     }
 
 }

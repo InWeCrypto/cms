@@ -7,5 +7,5 @@ return [
     'AccessKeyId' => env('ALISMS_KEY'),
     'AccessKeySecret' => env('ALISMS_SECRETKEY'),
     'seePrefix' => 'http://whalewallet.oss-cn-hongkong.aliyuncs.com',
-    'bucket' => 'whalewallet'
+    'bucket' => 'whalewallet',
 ];

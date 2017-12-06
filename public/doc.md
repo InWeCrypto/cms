@@ -485,24 +485,54 @@
 
 ### 5.2 文件上传
 #### 5.2.1 图片上传
+> 上传类型限制: jpeg,bmp,png
+
 - **请求地址:** /upload/img
-- **请求参数:** [post]
+- **请求参数:** [post] img
 - **返回数据:**
 ```
 {
-	"img": "", // 图片上传访问地址
+	"info": "", // 图片上传访问地址
 }
 ```
 
+> 获取阿里云OSS Policy上传图片
+> 请求地址: [get] /upload/img?get_oss_policy
+> 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
+
 #### 5.2.2 视频上传
+
+> 上传类型限制: mp4,3gp,flv
+
 - **请求地址:** /upload/video
-- **请求参数:** [post]
+- **请求参数:** [post] video
 - **返回数据:**
 ```
 {
-	"video": "", // 视频上传访问地址
+	"info": "", // 视频上传访问地址
 }
 ```
+
+> 获取阿里云OSS Policy上传视频
+> 请求地址: [get] /upload/video?get_oss_policy
+> 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
+
+#### 5.2.3 文件上传
+
+> 上传类型限制: doc,pdf,xls,ppt,rtf
+
+- **请求地址:** /upload/file
+- **请求参数:** [post] file
+- **返回数据:**
+```
+{
+	"info": "", // 文件上传访问地址
+}
+```
+
+> 获取阿里云OSS Policy上传文件
+> 请求地址: [get] /upload/file?get_oss_policy
+> 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
 
 ### 5.3 百度编辑器 serverUrl
 > <font color=red>暂不支持单图上传, iframe跨域问题</font>

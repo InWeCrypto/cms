@@ -82,8 +82,8 @@ Route::group(['prefix' => 'v1'], function($router){
     });
     // 上传文件
     $router->group(['prefix'=>'upload'], function($router){
-        $router->post('img', 'UploadController@img');
-        $router->post('video', 'UploadController@video');
-        $router->any('test', 'UploadController@test');
+        $router->any('img', 'UploadController@img');
+        $router->any('video', 'UploadController@video');
+        $router->any('file', 'UploadController@file');
     });
 });

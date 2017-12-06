@@ -279,13 +279,20 @@
 35
 </span-->
 </li>
+<li><span class="title">
+<a href="#5.2.3-文件上传" title="5.2.3 文件上传">5.2.3 文件上传</a>
+</span>
+<!--span class="number">
+36
+</span-->
+</li>
 </ul>
 </li>
 <li><span class="title">
 <a href="#5.3-百度编辑器-serverurl" title="5.3 百度编辑器 serverUrl">5.3 百度编辑器 serverUrl</a>
 </span>
 <!--span class="number">
-36
+37
 </span-->
 </li>
 </ul>
@@ -853,21 +860,40 @@
   },
   ...
 ]
-</code></pre></li></ul><h3 id="5.2-文件上传"><a name="5.2-文件上传" href="#5.2-文件上传"></a>5.2 文件上传</h3><h4 id="5.2.1-图片上传"><a name="5.2.1-图片上传" href="#5.2.1-图片上传"></a>5.2.1 图片上传</h4><ul>
-<li><strong>请求地址:</strong> /upload/img</li><li><strong>请求参数:</strong> [post]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
-  &quot;img&quot;: &quot;&quot;, // 图片上传访问地址
+</code></pre></li></ul><h3 id="5.2-文件上传"><a name="5.2-文件上传" href="#5.2-文件上传"></a>5.2 文件上传</h3><h4 id="5.2.1-图片上传"><a name="5.2.1-图片上传" href="#5.2.1-图片上传"></a>5.2.1 图片上传</h4><blockquote>
+<p>上传类型限制: jpeg,bmp,png</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /upload/img</li><li><strong>请求参数:</strong> [post] img</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;info&quot;: &quot;&quot;, // 图片上传访问地址
 }
 </code></pre>">{
-  "img": "", // 图片上传访问地址
+  "info": "", // 图片上传访问地址
 }
-</code></pre></li></ul><h4 id="5.2.2-视频上传"><a name="5.2.2-视频上传" href="#5.2.2-视频上传"></a>5.2.2 视频上传</h4><ul>
-<li><strong>请求地址:</strong> /upload/video</li><li><strong>请求参数:</strong> [post]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
-  &quot;video&quot;: &quot;&quot;, // 视频上传访问地址
+</code></pre></li></ul><blockquote>
+<p>获取阿里云OSS Policy上传图片<br>请求地址: [get] /upload/img?get_oss_policy<br>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
+</blockquote><h4 id="5.2.2-视频上传"><a name="5.2.2-视频上传" href="#5.2.2-视频上传"></a>5.2.2 视频上传</h4><blockquote>
+<p>上传类型限制: mp4,3gp,flv</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /upload/video</li><li><strong>请求参数:</strong> [post] video</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;info&quot;: &quot;&quot;, // 视频上传访问地址
 }
 </code></pre>">{
-  "video": "", // 视频上传访问地址
+  "info": "", // 视频上传访问地址
 }
-</code></pre></li></ul><h3 id="5.3-百度编辑器-serverurl"><a name="5.3-百度编辑器-serverurl" href="#5.3-百度编辑器-serverurl"></a>5.3 百度编辑器 serverUrl</h3><blockquote>
+</code></pre></li></ul><blockquote>
+<p>获取阿里云OSS Policy上传视频<br>请求地址: [get] /upload/video?get_oss_policy<br>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
+</blockquote><h4 id="5.2.3-文件上传"><a name="5.2.3-文件上传" href="#5.2.3-文件上传"></a>5.2.3 文件上传</h4><blockquote>
+<p>上传类型限制: doc,pdf,xls,ppt,rtf</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /upload/file</li><li><strong>请求参数:</strong> [post] file</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;info&quot;: &quot;&quot;, // 文件上传访问地址
+}
+</code></pre>">{
+  "info": "", // 文件上传访问地址
+}
+</code></pre></li></ul><blockquote>
+<p>获取阿里云OSS Policy上传文件<br>请求地址: [get] /upload/file?get_oss_policy<br>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
+</blockquote><h3 id="5.3-百度编辑器-serverurl"><a name="5.3-百度编辑器-serverurl" href="#5.3-百度编辑器-serverurl"></a>5.3 百度编辑器 serverUrl</h3><blockquote>
 <font color="red">暂不支持单图上传, iframe跨域问题</font>
 
 </blockquote><ul>

@@ -32,7 +32,8 @@ class ProjectController extends BaseController
                     ->paginate(5);
         }
         $type = Category::$project_category;
-        return success(compact('list', 'type'));
+        $grid_type = Category::$grid_type;
+        return success(compact('list', 'type', 'grid_type'));
     }
 
     public function store(Request $request)
@@ -83,5 +84,29 @@ class ProjectController extends BaseController
 
     public function destroy(Request $request, $id){
         return Category::find($id)->delete() ? success() : fail();
+    }
+
+    public function getType(Request $request, $id = null)
+    {
+        $data = Category::$project_category;
+        if($id){
+            if(empty($data[$id])){
+                return fail('不存在!');
+            }
+            $data = $data[$id];
+        }
+        return success($data);
+    }
+
+    public function getGridType(Request $request, $id = null)
+    {
+        $data = Category::$grid_type;
+        if($id){
+            if(empty($data[$id])){
+                return fail('不存在!');
+            }
+            $data = $data[$id];
+        }
+        return success($data);
     }
 }

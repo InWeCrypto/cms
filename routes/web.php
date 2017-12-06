@@ -46,6 +46,11 @@ Route::group(['prefix' => 'v1'], function($router){
         // 项目标签
         $router->resource('tag', 'ProjectTagController');
         // 项目评论
+        
+        // 项目类型列表        
+        $router->get('type/{id?}', 'ProjectController@getType');
+        // 项目方块类型
+        $router->get('grid_type/{id?}', 'ProjectController@getGridType');
     });
     // 测评
     $router->group(['prefix'=>'ico_assess'], function($router){

@@ -7,6 +7,7 @@
 # 简介
 > 所有请求默认RESTful
 > Api 版本 v1
+> 所有的列表数据有可能是屏蔽了部分字段,如果需要看所有的字段请用RESTful中的[get]
 
 ## 1. 用户认证
 ### 1.1 获取用户token
@@ -38,6 +39,11 @@
 * * *
 
 ## 2. 项目管理
+> 获取项目属性:
+- 项目类型列表[type]: /project/type<font color=red>[/5] 获取置顶类型名称</font>
+- 项目方块类型列表[grid_type]: /project/grid_type<font color=red>[/1] 获取置顶类型名称</font>
+
+
 ### 2.1 项目管理
 > /project/main?get_key // 获取所有项目键值列表
 > /project/main?keyword=关键字 // 搜索项目
@@ -487,7 +493,7 @@
 
 ### 5.2 ico管理
 - **请求地址:** /ico/main[?get_key]
-- **请求参数:** [get, post, put, delete] get_key // 获取列比哦啊
+- **请求参数:** [get, post, put, delete] get_key // 获取键值列表
 - **返回数据:**
 ```
 [

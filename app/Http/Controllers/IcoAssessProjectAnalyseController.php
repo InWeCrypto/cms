@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\IcoAssessArticle;
-use App\Model\icoAssessProjectAnalyse;
+use App\Model\IcoAssessProjectAnalyse;
 
 class IcoAssessProjectAnalyseController extends BaseController
 {
@@ -44,7 +44,7 @@ class IcoAssessProjectAnalyseController extends BaseController
 
     public function show(Request $request, $id)
     {
-        return success(icoAssessProjectAnalyse::find($id));
+        return success(IcoAssessProjectAnalyse::find($id));
     }
 
     public function store(Request $request)
@@ -58,7 +58,7 @@ class IcoAssessProjectAnalyseController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = new icoAssessProjectAnalyse();
+        $info = new IcoAssessProjectAnalyse();
         $info->fill($request->all());
         return $info->save() ? success() : fail();
     }
@@ -74,13 +74,13 @@ class IcoAssessProjectAnalyseController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = icoAssessProjectAnalyse::find($id);
+        $info = IcoAssessProjectAnalyse::find($id);
         $info->fill($request->all());
         return $info->save() ? success() : fail();
     }
 
     public function destroy(Request $request, $id){
-        return icoAssessProjectAnalyse::find($id)->delete() ? success() : fail();
+        return IcoAssessProjectAnalyse::find($id)->delete() ? success() : fail();
     }
 
 }

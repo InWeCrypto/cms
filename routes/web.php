@@ -70,7 +70,10 @@ Route::group(['prefix' => 'v1'], function($router){
         $router->resource('tag', 'ArticleTagController');
         // 资讯抄送栏目
         $router->resource('cc_category', 'ArticleCcController');
-        
+    });
+    // 项目空投
+    $router->group(['prefix'=>'candy_bow'], function($router){
+        $router->resource('main', 'CandyBowController');
     });
     // tag标签集合
     $router->group(['prefix'=>'tag'], function($router){

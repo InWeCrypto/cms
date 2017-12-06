@@ -18,6 +18,7 @@ class IcoController extends BaseController
             'en_long_name',
             'unit',
             'img',
+            'desc',
             'web_site',
         ];
         $is_get_key = $request->has('get_key');

@@ -194,11 +194,126 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#4.-资讯" title="4. 资讯">4. 资讯</a>
+</span>
+<!--span class="number">
+25
+</span-->
+<ul>
+<li><span class="title">
+<a href="#4.1-资讯管理" title="4.1 资讯管理">4.1 资讯管理</a>
+</span>
+<!--span class="number">
+26
+</span-->
+</li>
+<li><span class="title">
+<a href="#4.2-资讯标签" title="4.2 资讯标签">4.2 资讯标签</a>
+</span>
+<!--span class="number">
+27
+</span-->
+<ul>
+<li><span class="title">
+<a href="#4.2.1-获取资讯标签列表" title="4.2.1 获取资讯标签列表">4.2.1 获取资讯标签列表</a>
+</span>
+<!--span class="number">
+28
+</span-->
+</li>
+<li><span class="title">
+<a href="#4.2.2-修改资讯标签列表" title="4.2.2 修改资讯标签列表">4.2.2 修改资讯标签列表</a>
+</span>
+<!--span class="number">
+29
+</span-->
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#4.3-资讯栏目关联" title="4.3 资讯栏目关联">4.3 资讯栏目关联</a>
+</span>
+<!--span class="number">
+30
+</span-->
+<ul>
+<li><span class="title">
+<a href="#4.3.1-获取资讯关联的栏目列表" title="4.3.1 获取资讯关联的栏目列表">4.3.1 获取资讯关联的栏目列表</a>
+</span>
+<!--span class="number">
+31
+</span-->
+</li>
+<li><span class="title">
+<a href="#4.3.2-修改资讯关联的栏目列表" title="4.3.2 修改资讯关联的栏目列表">4.3.2 修改资讯关联的栏目列表</a>
+</span>
+<!--span class="number">
+32
+</span-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="title">
+<a href="#5.-其他" title="5. 其他">5. 其他</a>
+</span>
+<!--span class="number">
+33
+</span-->
+<ul>
+<li><span class="title">
+<a href="#5.1-标签集合管理" title="5.1 标签集合管理">5.1 标签集合管理</a>
+</span>
+<!--span class="number">
+34
+</span-->
+</li>
+<li><span class="title">
+<a href="#5.2-ico管理" title="5.2 ico管理">5.2 ico管理</a>
+</span>
+<!--span class="number">
+35
+</span-->
+</li>
+<li><span class="title">
+<a href="#5.2-文件上传" title="5.2 文件上传">5.2 文件上传</a>
+</span>
+<!--span class="number">
+36
+</span-->
+<ul>
+<li><span class="title">
+<a href="#5.2.1-图片上传" title="5.2.1 图片上传">5.2.1 图片上传</a>
+</span>
+<!--span class="number">
+37
+</span-->
+</li>
+<li><span class="title">
+<a href="#5.2.2-视频上传" title="5.2.2 视频上传">5.2.2 视频上传</a>
+</span>
+<!--span class="number">
+38
+</span-->
+</li>
+<li><span class="title">
+<a href="#5.2.3-文件上传" title="5.2.3 文件上传">5.2.3 文件上传</a>
+</span>
+<!--span class="number">
+39
+</span-->
+</li>
+</ul>
+</li>
 <li><span class="title">
 <a href="#5.3-百度编辑器-serverurl" title="5.3 百度编辑器 serverUrl">5.3 百度编辑器 serverUrl</a>
 </span>
 <!--span class="number">
-25
+40
 </span-->
 </li>
 </ul>
@@ -208,104 +323,53 @@
 
 </ul>
 <p></p><hr class="page"><h1 id="简介"><a name="简介" href="#简介"></a>简介</h1><blockquote>
-<p>所有请求默认RESTful</p>
-<p>Api 版本 v1</p>
-<p>所有的列表数据有可能是屏蔽了部分字段,如果需要看所有的字段请用RESTful中的[get]</p>
+<p>所有请求默认RESTful<br>Api 版本 v1<br>所有的列表数据有可能是屏蔽了部分字段,如果需要看所有的字段请用RESTful中的[get]</p>
 </blockquote><h2 id="1.-用户认证"><a name="1.-用户认证" href="#1.-用户认证"></a>1. 用户认证</h2><h3 id="1.1-用户管理"><a name="1.1-用户管理" href="#1.1-用户管理"></a>1.1 用户管理</h3><ul>
-<li><p><strong>请求地址:</strong> /admin/main</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-{
-
-    &quot;name&quot;: &quot;admin&quot;, // 登录 用户名
-
-    &quot;email&quot;: &quot;what-00@qq.com&quot;, // 邮箱
-
-    &quot;img&quot;: null, // 头像
-
-    &quot;phone&quot;: null, // 联系电话
-
+<li><strong>请求地址:</strong> /admin/main</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;name&quot;: &quot;admin&quot;, // 登录 用户名
+  &quot;email&quot;: &quot;what-00@qq.com&quot;, // 邮箱
+  &quot;img&quot;: null, // 头像
+  &quot;phone&quot;: null, // 联系电话
 }
-</code></pre>">
-{
-
-    "name": "admin", // 登录 用户名
-
-    "email": "what-00@qq.com", // 邮箱
-
-    "img": null, // 头像
-
-    "phone": null, // 联系电话
-
+</code></pre>">{
+  "name": "admin", // 登录 用户名
+  "email": "what-00@qq.com", // 邮箱
+  "img": null, // 头像
+  "phone": null, // 联系电话
 }
-</code></pre><h3 id="1.2-获取用户token"><a name="1.2-获取用户token" href="#1.2-获取用户token"></a>1.2 获取用户token</h3><ul>
-<li><p><strong>请求地址:</strong> /login</p>
-</li><li><p><strong>请求参数:</strong> [post] <em>name,password</em></p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-{
-
-    &quot;msg&quot;: &quot;操作成功&quot;,
-
-    &quot;code&quot;: 4000,
-
-    &quot;url&quot;: &quot;&quot;,
-
-    &quot;data&quot;: {
-
-        &quot;id&quot;: 2,
-
-        &quot;name&quot;: &quot;admin&quot;,
-
-        &quot;email&quot;: &quot;what-00@qq.com&quot;,
-
-        &quot;img&quot;: null,
-
-        &quot;phone&quot;: null,
-
-        &quot;created_at&quot;: &quot;2017-12-01 13:11:35&quot;,
-
-        &quot;updated_at&quot;: &quot;2017-12-01 13:11:35&quot;,
-
-        &quot;Token&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9pbndlY3J5cHRvY21zLmFkbS9sb2dpbiIsImlhdCI6MTUxMjE5NzIxMCwiZXhwIjoxNTEyMjAwODEwLCJuYmYiOjE1MTIxOTcyMTAsImp0aSI6IjZQY3gwa2Z1c2p6YjBLZmsifQ.eD9kOigPP90mPKrG-fVf2gNHYEHKsm_Wcc58xvKsOfg&quot;
-
-    }
-
+</code></pre></li></ul><h3 id="1.2-获取用户token"><a name="1.2-获取用户token" href="#1.2-获取用户token"></a>1.2 获取用户token</h3><ul>
+<li><strong>请求地址:</strong> /login</li><li><strong>请求参数:</strong> [post] <em>name,password</em></li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;msg&quot;: &quot;操作成功&quot;,
+  &quot;code&quot;: 4000,
+  &quot;url&quot;: &quot;&quot;,
+  &quot;data&quot;: {
+      &quot;id&quot;: 2,
+      &quot;name&quot;: &quot;admin&quot;,
+      &quot;email&quot;: &quot;what-00@qq.com&quot;,
+      &quot;img&quot;: null,
+      &quot;phone&quot;: null,
+      &quot;created_at&quot;: &quot;2017-12-01 13:11:35&quot;,
+      &quot;updated_at&quot;: &quot;2017-12-01 13:11:35&quot;,
+      &quot;Token&quot;: &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9pbndlY3J5cHRvY21zLmFkbS9sb2dpbiIsImlhdCI6MTUxMjE5NzIxMCwiZXhwIjoxNTEyMjAwODEwLCJuYmYiOjE1MTIxOTcyMTAsImp0aSI6IjZQY3gwa2Z1c2p6YjBLZmsifQ.eD9kOigPP90mPKrG-fVf2gNHYEHKsm_Wcc58xvKsOfg&quot;
+  }
 }
-</code></pre>">
-{
-
-    "msg": "操作成功",
-
-    "code": 4000,
-
-    "url": "",
-
-    "data": {
-
-        "id": 2,
-
-        "name": "admin",
-
-        "email": "what-00@qq.com",
-
-        "img": null,
-
-        "phone": null,
-
-        "created_at": "2017-12-01 13:11:35",
-
-        "updated_at": "2017-12-01 13:11:35",
-
-        "Token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9pbndlY3J5cHRvY21zLmFkbS9sb2dpbiIsImlhdCI6MTUxMjE5NzIxMCwiZXhwIjoxNTEyMjAwODEwLCJuYmYiOjE1MTIxOTcyMTAsImp0aSI6IjZQY3gwa2Z1c2p6YjBLZmsifQ.eD9kOigPP90mPKrG-fVf2gNHYEHKsm_Wcc58xvKsOfg"
-
-    }
-
+</code></pre>">{
+  "msg": "操作成功",
+  "code": 4000,
+  "url": "",
+  "data": {
+      "id": 2,
+      "name": "admin",
+      "email": "what-00@qq.com",
+      "img": null,
+      "phone": null,
+      "created_at": "2017-12-01 13:11:35",
+      "updated_at": "2017-12-01 13:11:35",
+      "Token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9pbndlY3J5cHRvY21zLmFkbS9sb2dpbiIsImlhdCI6MTUxMjE5NzIxMCwiZXhwIjoxNTEyMjAwODEwLCJuYmYiOjE1MTIxOTcyMTAsImp0aSI6IjZQY3gwa2Z1c2p6YjBLZmsifQ.eD9kOigPP90mPKrG-fVf2gNHYEHKsm_Wcc58xvKsOfg"
+  }
 }
-</code></pre><h3 id="1.3-验证"><a name="1.3-验证" href="#1.3-验证"></a>1.3 验证</h3><blockquote>
-<p>每次请求在HTTP Header 中带入Token</p>
-<p>如:Authorization: Bearer eyJ0…gNHYEHKsm_Wcc58xvKsOfg</p>
+</code></pre></li></ul><h3 id="1.3-验证"><a name="1.3-验证" href="#1.3-验证"></a>1.3 验证</h3><blockquote>
+<p>每次请求在HTTP Header 中带入Token<br>如:Authorization: Bearer eyJ0…gNHYEHKsm_Wcc58xvKsOfg</p>
 </blockquote><h3 id="1.4-修改账户密码"><a name="1.4-修改账户密码" href="#1.4-修改账户密码"></a>1.4 修改账户密码</h3><ul>
 <li><strong>请求地址:</strong> /admin/reset_password</li><li><strong>请求参数:</strong> [post]</li><li><strong>返回数据:</strong></li></ul><pre><code data-origin="<pre><code>{
     &quot;password_old&quot;: &quot;admin&quot;, // 原始密码
@@ -319,1401 +383,600 @@
 }
 </code></pre><hr class="page"><h2 id="2.-项目管理"><a name="2.-项目管理" href="#2.-项目管理"></a>2. 项目管理</h2><blockquote>
 <p>获取项目属性:</p>
+<ul>
+<li>项目类型列表[type]: /project/type<font color="red">[/5] 获取指定类型名称</font></li><li>项目方块类型列表[grid_type]: /project/grid_type<font color="red">[/1] 获取指定类型名称</font></li></ul>
+</blockquote><h3 id="2.1-项目管理"><a name="2.1-项目管理" href="#2.1-项目管理"></a>2.1 项目管理</h3><blockquote>
+<p>/project/main?get_key // 获取所有项目键值列表<br>/project/main?keyword=关键字 // 搜索项目<br>/project/main?type=5 // 项目类型分类</p>
 </blockquote><ul>
-<li><p>项目类型列表[type]: /project/type<font color="red">[/5] 获取指定类型名称</font></p>
-</li><li><p>项目方块类型列表[grid_type]: /project/grid_type<font color="red">[/1] 获取指定类型名称</font></p>
-</li></ul><h3 id="2.1-项目管理"><a name="2.1-项目管理" href="#2.1-项目管理"></a>2.1 项目管理</h3><blockquote>
-<p>/project/main?get_key // 获取所有项目键值列表</p>
-<p>/project/main?keyword=关键字 // 搜索项目</p>
-<p>/project/main?type=5 // 项目类型分类</p>
-</blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/main</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-{
-
-    &quot;type&quot;: 5, // 项目类型
-
-    &quot;name&quot;: &quot;&quot;, // 项目名称
-
-    &quot;long_name&quot;: &quot;&quot;, // 项目全称
-
-    &quot;desc&quot;: &quot;&quot;, // 项目twitter内容
-
-    &quot;img&quot;: &quot;&quot;, // 项目图片
-
-    &quot;url&quot;: &quot;&quot;, // 项目实时价格
-
-    &quot;sort&quot;: 0, // 排序越大越靠前
-
-    &quot;is_top&quot;: 0, // 主要排序
-
-    &quot;is_hot&quot;: 0, 
-
-    &quot;is_scroll&quot;: 1, // 是否显示到首页实时价格轮播
-
-    &quot;callback_fun&quot;: &quot;\CategoryFun::getProjectDetail&quot;, // 后台项目数据处理方法
-
-    &quot;score&quot;: &quot;8.7&quot;, // 项目评分
-
-    &quot;grid_type&quot;: 3, // 项目方块类型
-
-    &quot;color&quot;: &quot;#2EC1C1&quot;, // 项目方块颜色
-
-    &quot;website&quot;: &quot;&quot;, // 项目官网
-
-    &quot;ico_id&quot;: &quot;&quot;,--暂无 // 关联ico
-
-    &quot;updated_at&quot;:&quot;&quot;, // 项目修改时间
-
+<li><strong>请求地址:</strong> /project/main</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;type&quot;: 5, // 项目类型
+  &quot;name&quot;: &quot;&quot;, // 项目名称
+  &quot;long_name&quot;: &quot;&quot;, // 项目全称
+  &quot;desc&quot;: &quot;&quot;, // 项目twitter内容
+  &quot;img&quot;: &quot;&quot;, // 项目图片
+  &quot;url&quot;: &quot;&quot;, // 项目实时价格
+  &quot;sort&quot;: 0, // 排序越大越靠前
+  &quot;is_top&quot;: 0, // 主要排序
+  &quot;is_hot&quot;: 0, 
+  &quot;is_scroll&quot;: 1, // 是否显示到首页实时价格轮播
+  &quot;callback_fun&quot;: &quot;\CategoryFun::getProjectDetail&quot;, // 后台项目数据处理方法
+  &quot;score&quot;: &quot;8.7&quot;, // 项目评分
+  &quot;grid_type&quot;: 3, // 项目方块类型
+  &quot;color&quot;: &quot;#2EC1C1&quot;, // 项目方块颜色
+  &quot;website&quot;: &quot;&quot;, // 项目官网
+  &quot;ico_id&quot;: &quot;&quot;,--暂无 // 关联ico
+  &quot;updated_at&quot;:&quot;&quot;, // 项目修改时间
 }
-</code></pre>">
-{
-
-    "type": 5, // 项目类型
-
-    "name": "", // 项目名称
-
-    "long_name": "", // 项目全称
-
-    "desc": "", // 项目twitter内容
-
-    "img": "", // 项目图片
-
-    "url": "", // 项目实时价格
-
-    "sort": 0, // 排序越大越靠前
-
-    "is_top": 0, // 主要排序
-
-    "is_hot": 0, 
-
-    "is_scroll": 1, // 是否显示到首页实时价格轮播
-
-    "callback_fun": "\CategoryFun::getProjectDetail", // 后台项目数据处理方法
-
-    "score": "8.7", // 项目评分
-
-    "grid_type": 3, // 项目方块类型
-
-    "color": "#2EC1C1", // 项目方块颜色
-
-    "website": "", // 项目官网
-
-    "ico_id": "",--暂无 // 关联ico
-
-    "updated_at":"", // 项目修改时间
-
+</code></pre>">{
+  "type": 5, // 项目类型
+  "name": "", // 项目名称
+  "long_name": "", // 项目全称
+  "desc": "", // 项目twitter内容
+  "img": "", // 项目图片
+  "url": "", // 项目实时价格
+  "sort": 0, // 排序越大越靠前
+  "is_top": 0, // 主要排序
+  "is_hot": 0, 
+  "is_scroll": 1, // 是否显示到首页实时价格轮播
+  "callback_fun": "\CategoryFun::getProjectDetail", // 后台项目数据处理方法
+  "score": "8.7", // 项目评分
+  "grid_type": 3, // 项目方块类型
+  "color": "#2EC1C1", // 项目方块颜色
+  "website": "", // 项目官网
+  "ico_id": "",--暂无 // 关联ico
+  "updated_at":"", // 项目修改时间
 }
-</code></pre><h3 id="2.2-项目介绍"><a name="2.2-项目介绍" href="#2.2-项目介绍"></a>2.2 项目介绍</h3><blockquote>
+</code></pre></li></ul><h3 id="2.2-项目介绍"><a name="2.2-项目介绍" href="#2.2-项目介绍"></a>2.2 项目介绍</h3><blockquote>
 <p>获取项目介绍列表 /project/detail?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/detail</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;category_id&quot; : 100, // 项目ID
-
-        &quot;title&quot;: &quot;&quot;, // 项目介绍标签title
-
-        &quot;desc&quot;: &quot;&quot;, // 备注
-
-        &quot;content&quot;: &quot;&quot;, // 项目介绍内容(富文本)
-
-        &quot;sort&quot;: 0, // 排序
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/detail</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;category_id&quot; : 100, // 项目ID
+      &quot;title&quot;: &quot;&quot;, // 项目介绍标签title
+      &quot;desc&quot;: &quot;&quot;, // 备注
+      &quot;content&quot;: &quot;&quot;, // 项目介绍内容(富文本)
+      &quot;sort&quot;: 0, // 排序
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "category_id" : 100, // 项目ID
-
-        "title": "", // 项目介绍标签title
-
-        "desc": "", // 备注
-
-        "content": "", // 项目介绍内容(富文本)
-
-        "sort": 0, // 排序
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "category_id" : 100, // 项目ID
+      "title": "", // 项目介绍标签title
+      "desc": "", // 备注
+      "content": "", // 项目介绍内容(富文本)
+      "sort": 0, // 排序
+  },
+  ...
 ]
-</code></pre><h3 id="2.3-项目行情"><a name="2.3-项目行情" href="#2.3-项目行情"></a>2.3 项目行情</h3><blockquote>
+</code></pre></li></ul><h3 id="2.3-项目行情"><a name="2.3-项目行情" href="#2.3-项目行情"></a>2.3 项目行情</h3><blockquote>
 <p>获取项目行情列表 /project/time_price?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/time_price</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID
-
-        &quot;name&quot;: &quot;美元&quot;, // 项目行情标签名
-
-        &quot;current_url&quot;: &quot;ico/time_price/rdn/usdt&quot;, // 行情实时数据连接
-
-        &quot;k_line_data_url&quot;: &quot;ico/currencies/rdn/usdt&quot;, // k线图数据连接
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/time_price</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID
+      &quot;name&quot;: &quot;美元&quot;, // 项目行情标签名
+      &quot;current_url&quot;: &quot;ico/time_price/rdn/usdt&quot;, // 行情实时数据连接
+      &quot;k_line_data_url&quot;: &quot;ico/currencies/rdn/usdt&quot;, // k线图数据连接
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID
-
-        "name": "美元", // 项目行情标签名
-
-        "current_url": "ico/time_price/rdn/usdt", // 行情实时数据连接
-
-        "k_line_data_url": "ico/currencies/rdn/usdt", // k线图数据连接
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID
+      "name": "美元", // 项目行情标签名
+      "current_url": "ico/time_price/rdn/usdt", // 行情实时数据连接
+      "k_line_data_url": "ico/currencies/rdn/usdt", // k线图数据连接
+  },
+  ...
 ]
-</code></pre><h3 id="2.4-市场行情"><a name="2.4-市场行情" href="#2.4-市场行情"></a>2.4 市场行情</h3><blockquote>
+</code></pre></li></ul><h3 id="2.4-市场行情"><a name="2.4-市场行情" href="#2.4-市场行情"></a>2.4 市场行情</h3><blockquote>
 <p>获取项目市场行情列表 /project/market?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/market</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID
-
-        &quot;name&quot;: &quot;美元&quot;, // 市场行情标签名
-
-        &quot;url&quot;: &quot;ico/markets/raiden/eth&quot;, // 市场行情数据来源连接
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/market</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID
+      &quot;name&quot;: &quot;美元&quot;, // 市场行情标签名
+      &quot;url&quot;: &quot;ico/markets/raiden/eth&quot;, // 市场行情数据来源连接
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID
-
-        "name": "美元", // 市场行情标签名
-
-        "url": "ico/markets/raiden/eth", // 市场行情数据来源连接
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID
+      "name": "美元", // 市场行情标签名
+      "url": "ico/markets/raiden/eth", // 市场行情数据来源连接
+  },
+  ...
 ]
-</code></pre><h3 id="2.4-项目浏览器"><a name="2.4-项目浏览器" href="#2.4-项目浏览器"></a>2.4 项目浏览器</h3><blockquote>
+</code></pre></li></ul><h3 id="2.4-项目浏览器"><a name="2.4-项目浏览器" href="#2.4-项目浏览器"></a>2.4 项目浏览器</h3><blockquote>
 <p>获取项目浏览器列表 /project/explorer?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/explorer</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID
-
-        &quot;name&quot;: &quot;&quot;, // 项目浏览器名
-
-        &quot;img&quot;: &quot;&quot;, // 项目浏览器图标
-
-        &quot;url&quot;: &quot;&quot;, // 项目浏览器跳转连接
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/explorer</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID
+      &quot;name&quot;: &quot;&quot;, // 项目浏览器名
+      &quot;img&quot;: &quot;&quot;, // 项目浏览器图标
+      &quot;url&quot;: &quot;&quot;, // 项目浏览器跳转连接
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID
-
-        "name": "", // 项目浏览器名
-
-        "img": "", // 项目浏览器图标
-
-        "url": "", // 项目浏览器跳转连接
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID
+      "name": "", // 项目浏览器名
+      "img": "", // 项目浏览器图标
+      "url": "", // 项目浏览器跳转连接
+  },
+  ...
 ]
-</code></pre><h3 id="2.5-项目钱包"><a name="2.5-项目钱包" href="#2.5-项目钱包"></a>2.5 项目钱包</h3><blockquote>
+</code></pre></li></ul><h3 id="2.5-项目钱包"><a name="2.5-项目钱包" href="#2.5-项目钱包"></a>2.5 项目钱包</h3><blockquote>
 <p>获取项目钱包列表 /project/wallet?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/wallet</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID
-
-        &quot;name&quot;: &quot;&quot;, // 项目钱包名
-
-        &quot;img&quot;: &quot;&quot;, // 项目钱包图标
-
-        &quot;url&quot;: &quot;&quot;, // 项目钱包跳转连接
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/wallet</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID
+      &quot;name&quot;: &quot;&quot;, // 项目钱包名
+      &quot;img&quot;: &quot;&quot;, // 项目钱包图标
+      &quot;url&quot;: &quot;&quot;, // 项目钱包跳转连接
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID
-
-        "name": "", // 项目钱包名
-
-        "img": "", // 项目钱包图标
-
-        "url": "", // 项目钱包跳转连接
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID
+      "name": "", // 项目钱包名
+      "img": "", // 项目钱包图标
+      "url": "", // 项目钱包跳转连接
+  },
+  ...
 ]
-</code></pre><h3 id="2.5-项目标签"><a name="2.5-项目标签" href="#2.5-项目标签"></a>2.5 项目标签</h3><blockquote>
-<p>获取项目标签列表 /project/tag?category_id=100</p>
-<p>获取可用标签列表 /tag/main?get_key</p>
-<p>如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id</p>
+</code></pre></li></ul><h3 id="2.5-项目标签"><a name="2.5-项目标签" href="#2.5-项目标签"></a>2.5 项目标签</h3><blockquote>
+<p>获取项目标签列表 /project/tag?category_id=100<br>获取可用标签列表 /tag/main?get_key<br>如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id</p>
 </blockquote><h4 id="2.5.1-获取项目标签列表"><a name="2.5.1-获取项目标签列表" href="#2.5.1-获取项目标签列表"></a>2.5.1 获取项目标签列表</h4><ul>
-<li><p><strong>请求地址:</strong> /project/tag</p>
-</li><li><p><strong>请求参数:</strong> [get]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID
-
-        &quot;tag_id&quot;: 1, // 标签ID
-
-        &quot;tag_info&quot;: {
-
-            &quot;name&quot;: &quot;业内大佬&quot; // 标签名称
-
-        }
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/tag</li><li><strong>请求参数:</strong> [get]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID
+      &quot;tag_id&quot;: 1, // 标签ID
+      &quot;tag_info&quot;: {
+          &quot;name&quot;: &quot;业内大佬&quot; // 标签名称
+      }
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID
-
-        "tag_id": 1, // 标签ID
-
-        "tag_info": {
-
-            "name": "业内大佬" // 标签名称
-
-        }
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID
+      "tag_id": 1, // 标签ID
+      "tag_info": {
+          "name": "业内大佬" // 标签名称
+      }
+  },
+  ...
 ]
-</code></pre><h4 id="2.5.2-修改项目标签列表"><a name="2.5.2-修改项目标签列表" href="#2.5.2-修改项目标签列表"></a>2.5.2 修改项目标签列表</h4><ul>
-<li><p><strong>请求地址:</strong> /project/tag</p>
-</li><li><p><strong>请求参数:</strong> [post] category_id,tag_ids</p>
-</li><li><p><strong>请求数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-{
-
-    &quot;category_id&quot;: &quot;100&quot;, // 项目ID
-
-    &quot;tag_ids&quot;: [], // 标签列表id
-
+</code></pre></li></ul><h4 id="2.5.2-修改项目标签列表"><a name="2.5.2-修改项目标签列表" href="#2.5.2-修改项目标签列表"></a>2.5.2 修改项目标签列表</h4><ul>
+<li><strong>请求地址:</strong> /project/tag</li><li><strong>请求参数:</strong> [post] category_id,tag_ids</li><li><strong>请求数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;category_id&quot;: &quot;100&quot;, // 项目ID
+  &quot;tag_ids&quot;: [], // 标签列表id
 }
-</code></pre>">
-{
-
-    "category_id": "100", // 项目ID
-
-    "tag_ids": [], // 标签列表id
-
+</code></pre>">{
+  "category_id": "100", // 项目ID
+  "tag_ids": [], // 标签列表id
 }
-</code></pre><h3 id="2.6-项目媒体"><a name="2.6-项目媒体" href="#2.6-项目媒体"></a>2.6 项目媒体</h3><blockquote>
+</code></pre></li></ul><h3 id="2.6-项目媒体"><a name="2.6-项目媒体" href="#2.6-项目媒体"></a>2.6 项目媒体</h3><blockquote>
 <p>获取项目钱包列表 /project/media?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /project/media</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID
-
-        &quot;name&quot;: &quot;&quot;, // 项目媒体名
-
-        &quot;img&quot;: &quot;&quot;, // 项目媒体图标
-
-        &quot;url&quot;: &quot;&quot;, // 项目媒体跳转连接
-
-        &quot;desc&quot;: &quot;&quot;, // 项目媒体描述
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /project/media</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID
+      &quot;name&quot;: &quot;&quot;, // 项目媒体名
+      &quot;img&quot;: &quot;&quot;, // 项目媒体图标
+      &quot;url&quot;: &quot;&quot;, // 项目媒体跳转连接
+      &quot;desc&quot;: &quot;&quot;, // 项目媒体描述
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID
-
-        "name": "", // 项目媒体名
-
-        "img": "", // 项目媒体图标
-
-        "url": "", // 项目媒体跳转连接
-
-        "desc": "", // 项目媒体描述
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID
+      "name": "", // 项目媒体名
+      "img": "", // 项目媒体图标
+      "url": "", // 项目媒体跳转连接
+      "desc": "", // 项目媒体描述
+  },
+  ...
 ]
-</code></pre><h3 id="2.7-项目空投"><a name="2.7-项目空投" href="#2.7-项目空投"></a>2.7 项目空投</h3><blockquote>
+</code></pre></li></ul><h3 id="2.7-项目空投"><a name="2.7-项目空投" href="#2.7-项目空投"></a>2.7 项目空投</h3><blockquote>
 <p>获取项目空投列表 /candy_bow/main?category_id=100</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /candy_bow/main</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 106, // 项目ID
-
-        &quot;name&quot;: &quot;BTC 空投&quot;, // 名称
-
-        &quot;img&quot;: &quot;&quot;,  // 图标
-
-        &quot;desc&quot;: &quot;&quot;, // 描述
-
-        &quot;url&quot;: &quot;&quot;, // 连接
-
-        &quot;year&quot;: 2017, // 空投时间, 年
-
-        &quot;month&quot;: 12, // 空投时间, 月
-
-        &quot;day&quot;: 6,  // 空投时间, 日
-
-        &quot;enable&quot;: 1, // 是否启用, 默认1(启用)
-
-        &quot;sort&quot;: 0 // 排序,越大越前
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /candy_bow/main</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 106, // 项目ID
+      &quot;name&quot;: &quot;BTC 空投&quot;, // 名称
+      &quot;img&quot;: &quot;&quot;,  // 图标
+      &quot;desc&quot;: &quot;&quot;, // 描述
+      &quot;url&quot;: &quot;&quot;, // 连接
+      &quot;year&quot;: 2017, // 空投时间, 年
+      &quot;month&quot;: 12, // 空投时间, 月
+      &quot;day&quot;: 6,  // 空投时间, 日
+      &quot;enable&quot;: 1, // 是否启用, 默认1(启用)
+      &quot;sort&quot;: 0 // 排序,越大越前
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 106, // 项目ID
-
-        "name": "BTC 空投", // 名称
-
-        "img": "",  // 图标
-
-        "desc": "", // 描述
-
-        "url": "", // 连接
-
-        "year": 2017, // 空投时间, 年
-
-        "month": 12, // 空投时间, 月
-
-        "day": 6,  // 空投时间, 日
-
-        "enable": 1, // 是否启用, 默认1(启用)
-
-        "sort": 0 // 排序,越大越前
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 106, // 项目ID
+      "name": "BTC 空投", // 名称
+      "img": "",  // 图标
+      "desc": "", // 描述
+      "url": "", // 连接
+      "year": 2017, // 空投时间, 年
+      "month": 12, // 空投时间, 月
+      "day": 6,  // 空投时间, 日
+      "enable": 1, // 是否启用, 默认1(启用)
+      "sort": 0 // 排序,越大越前
+  },
+  ...
 ]
-</code></pre><hr class="page"><h2 id="3.-ico测评"><a name="3.-ico测评" href="#3.-ico测评"></a>3. ICO测评</h2><h3 id="3.1-ico测评管理"><a name="3.1-ico测评管理" href="#3.1-ico测评管理"></a>3.1 ICO测评管理</h3><ul>
-<li><p><strong>请求地址:</strong> /ico_assess/main</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;project_id&quot;: 100, // 项目ID,如果没有可以则为0
-
-        &quot;ico_id&quot;: &quot;2&quot;, // ICO ID
-
-        &quot;assess_status&quot;: &quot;已上线&quot;, // 项目状态
-
-        &quot;website&quot;: &quot;https://ethereum.org/&quot;, // 项目官网
-
-        &quot;url&quot;: &quot;evaluating/#/detail?id=1&quot;, // 测评文章跳转连接
-
-        &quot;title&quot;: &quot;菩提测评&quot;, // 测评列表
-
-        &quot;img&quot;: &quot;&quot;, // 封面图片
-
-        &quot;desc&quot;: &quot;Kyber Network 是一个具备高流动性的数字资产&quot;, // 测评简介
-
-        &quot;enable&quot;: 1, // 是否启用, 默认1(是)
-
-        &quot;risk_level_name&quot;: &quot;中&quot;, // 风险等级
-
-        &quot;risk_level_color&quot;: &quot;#33FFCC&quot;, // 等级颜色
-
-        &quot;ico_score&quot;: &quot;7.9&quot;, // 项目评分
-
-        &quot;content&quot;: &quot;&quot;, // 测评内容(富文本)
-
-        &quot;sort&quot;:0, // 测评排序
-
-        &quot;is_top&quot;: 0, // 置顶排序
-
-        &quot;white_paper_url&quot;: &quot;&quot;, // 项目白皮书连接
-
-        &quot;recommend_level_name&quot;: &quot;中&quot;, // 推荐等级
-
-        &quot;recommend_level_color&quot;: &quot;#33FFCC&quot; // 推荐等级颜色
-
-    },
-
-    ...
-
+</code></pre></li></ul><hr class="page"><h2 id="3.-ico测评"><a name="3.-ico测评" href="#3.-ico测评"></a>3. ICO测评</h2><h3 id="3.1-ico测评管理"><a name="3.1-ico测评管理" href="#3.1-ico测评管理"></a>3.1 ICO测评管理</h3><ul>
+<li><strong>请求地址:</strong> /ico_assess/main</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;project_id&quot;: 100, // 项目ID,如果没有可以则为0
+      &quot;ico_id&quot;: &quot;2&quot;, // ICO ID
+      &quot;assess_status&quot;: &quot;已上线&quot;, // 项目状态
+      &quot;website&quot;: &quot;https://ethereum.org/&quot;, // 项目官网
+      &quot;url&quot;: &quot;evaluating/#/detail?id=1&quot;, // 测评文章跳转连接
+      &quot;title&quot;: &quot;菩提测评&quot;, // 测评列表
+      &quot;img&quot;: &quot;&quot;, // 封面图片
+      &quot;desc&quot;: &quot;Kyber Network 是一个具备高流动性的数字资产&quot;, // 测评简介
+      &quot;enable&quot;: 1, // 是否启用, 默认1(是)
+      &quot;risk_level_name&quot;: &quot;中&quot;, // 风险等级
+      &quot;risk_level_color&quot;: &quot;#33FFCC&quot;, // 等级颜色
+      &quot;ico_score&quot;: &quot;7.9&quot;, // 项目评分
+      &quot;content&quot;: &quot;&quot;, // 测评内容(富文本)
+      &quot;sort&quot;:0, // 测评排序
+      &quot;is_top&quot;: 0, // 置顶排序
+      &quot;white_paper_url&quot;: &quot;&quot;, // 项目白皮书连接
+      &quot;recommend_level_name&quot;: &quot;中&quot;, // 推荐等级
+      &quot;recommend_level_color&quot;: &quot;#33FFCC&quot; // 推荐等级颜色
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "project_id": 100, // 项目ID,如果没有可以则为0
-
-        "ico_id": "2", // ICO ID
-
-        "assess_status": "已上线", // 项目状态
-
-        "website": "https://ethereum.org/", // 项目官网
-
-        "url": "evaluating/#/detail?id=1", // 测评文章跳转连接
-
-        "title": "菩提测评", // 测评列表
-
-        "img": "", // 封面图片
-
-        "desc": "Kyber Network 是一个具备高流动性的数字资产", // 测评简介
-
-        "enable": 1, // 是否启用, 默认1(是)
-
-        "risk_level_name": "中", // 风险等级
-
-        "risk_level_color": "#33FFCC", // 等级颜色
-
-        "ico_score": "7.9", // 项目评分
-
-        "content": "", // 测评内容(富文本)
-
-        "sort":0, // 测评排序
-
-        "is_top": 0, // 置顶排序
-
-        "white_paper_url": "", // 项目白皮书连接
-
-        "recommend_level_name": "中", // 推荐等级
-
-        "recommend_level_color": "#33FFCC" // 推荐等级颜色
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "project_id": 100, // 项目ID,如果没有可以则为0
+      "ico_id": "2", // ICO ID
+      "assess_status": "已上线", // 项目状态
+      "website": "https://ethereum.org/", // 项目官网
+      "url": "evaluating/#/detail?id=1", // 测评文章跳转连接
+      "title": "菩提测评", // 测评列表
+      "img": "", // 封面图片
+      "desc": "Kyber Network 是一个具备高流动性的数字资产", // 测评简介
+      "enable": 1, // 是否启用, 默认1(是)
+      "risk_level_name": "中", // 风险等级
+      "risk_level_color": "#33FFCC", // 等级颜色
+      "ico_score": "7.9", // 项目评分
+      "content": "", // 测评内容(富文本)
+      "sort":0, // 测评排序
+      "is_top": 0, // 置顶排序
+      "white_paper_url": "", // 项目白皮书连接
+      "recommend_level_name": "中", // 推荐等级
+      "recommend_level_color": "#33FFCC" // 推荐等级颜色
+  },
+  ...
 ]
-</code></pre><h3 id="3.2-ico测评---项目结构"><a name="3.2-ico测评---项目结构" href="#3.2-ico测评---项目结构"></a>3.2 ICO测评 - 项目结构</h3><blockquote>
+</code></pre></li></ul><h3 id="3.2-ico测评---项目结构"><a name="3.2-ico测评---项目结构" href="#3.2-ico测评---项目结构"></a>3.2 ICO测评 - 项目结构</h3><blockquote>
 <p>获取ICO测评的项目结构列表 /ico_assess/structure?ico_assess_id=1</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /ico_assess/structure</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;ico_article_id&quot;: 1, // ico测评ID
-
-        &quot;percentage&quot;: 50, // 结构比率
-
-        &quot;color_name&quot;: &quot;粉色&quot;, // 结构比率名称
-
-        &quot;color_value&quot;: &quot;#EC87BF&quot;, // 比率颜色
-
-        &quot;desc&quot;: &quot;5亿用于公开发行&quot;, // 结构比率说明
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /ico_assess/structure</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;ico_article_id&quot;: 1, // ico测评ID
+      &quot;percentage&quot;: 50, // 结构比率
+      &quot;color_name&quot;: &quot;粉色&quot;, // 结构比率名称
+      &quot;color_value&quot;: &quot;#EC87BF&quot;, // 比率颜色
+      &quot;desc&quot;: &quot;5亿用于公开发行&quot;, // 结构比率说明
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "ico_article_id": 1, // ico测评ID
-
-        "percentage": 50, // 结构比率
-
-        "color_name": "粉色", // 结构比率名称
-
-        "color_value": "#EC87BF", // 比率颜色
-
-        "desc": "5亿用于公开发行", // 结构比率说明
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "ico_article_id": 1, // ico测评ID
+      "percentage": 50, // 结构比率
+      "color_name": "粉色", // 结构比率名称
+      "color_value": "#EC87BF", // 比率颜色
+      "desc": "5亿用于公开发行", // 结构比率说明
+  },
+  ...
 ]
-</code></pre><h3 id="3.3-ico测评---发行情况"><a name="3.3-ico测评---发行情况" href="#3.3-ico测评---发行情况"></a>3.3 ICO测评 - 发行情况</h3><blockquote>
+</code></pre></li></ul><h3 id="3.3-ico测评---发行情况"><a name="3.3-ico测评---发行情况" href="#3.3-ico测评---发行情况"></a>3.3 ICO测评 - 发行情况</h3><blockquote>
 <p>获取ICO测评的发行情况列表 /ico_assess/issue_info?ico_assess_id=1</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /ico_assess/issue_info</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;ico_article_id&quot;: 1, // ico测评ID
-
-        &quot;crowdfunding_start_at&quot;: &quot;2017-09-10 00:00:00&quot;, // 众筹开始时间
-
-        &quot;crowdfunding_end_at&quot;: &quot;2017-09-21 00:00:00&quot;, // 众筹结束时间
-
-        &quot;ico_circulation&quot;: &quot;1000000000&quot;, // ico总发行量
-
-        &quot;ico_amount&quot;: &quot;500000000&quot;, // ico量
-
-        &quot;ico_accept&quot;: &quot;BTC/ETH&quot;, // 接受币种
-
-        &quot;ico_crowfunding_amount&quot;: &quot;30000000&quot;, // 众筹金额
-
-        &quot;ico_price&quot;: &quot;0.012&quot;, // 价格
-
-        &quot;url&quot;: &quot;NULL&quot;,
-
-        &quot;ico_crowfunding_amount_unit&quot;: &quot;美元&quot; // 众筹金额单位
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /ico_assess/issue_info</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;ico_article_id&quot;: 1, // ico测评ID
+      &quot;crowdfunding_start_at&quot;: &quot;2017-09-10 00:00:00&quot;, // 众筹开始时间
+      &quot;crowdfunding_end_at&quot;: &quot;2017-09-21 00:00:00&quot;, // 众筹结束时间
+      &quot;ico_circulation&quot;: &quot;1000000000&quot;, // ico总发行量
+      &quot;ico_amount&quot;: &quot;500000000&quot;, // ico量
+      &quot;ico_accept&quot;: &quot;BTC/ETH&quot;, // 接受币种
+      &quot;ico_crowfunding_amount&quot;: &quot;30000000&quot;, // 众筹金额
+      &quot;ico_price&quot;: &quot;0.012&quot;, // 价格
+      &quot;url&quot;: &quot;NULL&quot;,
+      &quot;ico_crowfunding_amount_unit&quot;: &quot;美元&quot; // 众筹金额单位
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "ico_article_id": 1, // ico测评ID
-
-        "crowdfunding_start_at": "2017-09-10 00:00:00", // 众筹开始时间
-
-        "crowdfunding_end_at": "2017-09-21 00:00:00", // 众筹结束时间
-
-        "ico_circulation": "1000000000", // ico总发行量
-
-        "ico_amount": "500000000", // ico量
-
-        "ico_accept": "BTC/ETH", // 接受币种
-
-        "ico_crowfunding_amount": "30000000", // 众筹金额
-
-        "ico_price": "0.012", // 价格
-
-        "url": "NULL",
-
-        "ico_crowfunding_amount_unit": "美元" // 众筹金额单位
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "ico_article_id": 1, // ico测评ID
+      "crowdfunding_start_at": "2017-09-10 00:00:00", // 众筹开始时间
+      "crowdfunding_end_at": "2017-09-21 00:00:00", // 众筹结束时间
+      "ico_circulation": "1000000000", // ico总发行量
+      "ico_amount": "500000000", // ico量
+      "ico_accept": "BTC/ETH", // 接受币种
+      "ico_crowfunding_amount": "30000000", // 众筹金额
+      "ico_price": "0.012", // 价格
+      "url": "NULL",
+      "ico_crowfunding_amount_unit": "美元" // 众筹金额单位
+  },
+  ...
 ]
-</code></pre><h3 id="3.4-ico测评---项目分数分析"><a name="3.4-ico测评---项目分数分析" href="#3.4-ico测评---项目分数分析"></a>3.4 ICO测评 - 项目分数分析</h3><blockquote>
+</code></pre></li></ul><h3 id="3.4-ico测评---项目分数分析"><a name="3.4-ico测评---项目分数分析" href="#3.4-ico测评---项目分数分析"></a>3.4 ICO测评 - 项目分数分析</h3><blockquote>
 <p>获取ICO测评的项目分数分析列表 /ico_assess/project_analyse?ico_assess_id=1</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /ico_assess/project_analyse</p>
-</li><li><p><strong>请求参数:</strong> [get, post, put, delete]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;ico_article_id&quot;: 1,
-
-        &quot;name&quot;: &quot;商业模式/市场前景&quot;, // 类型
-
-        &quot;desc&quot;: &quot;描述&quot;, // 测评观点
-
-        &quot;score&quot;: &quot;7&quot;, // 评分
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /ico_assess/project_analyse</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;ico_article_id&quot;: 1,
+      &quot;name&quot;: &quot;商业模式/市场前景&quot;, // 类型
+      &quot;desc&quot;: &quot;描述&quot;, // 测评观点
+      &quot;score&quot;: &quot;7&quot;, // 评分
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "ico_article_id": 1,
-
-        "name": "商业模式/市场前景", // 类型
-
-        "desc": "描述", // 测评观点
-
-        "score": "7", // 评分
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "ico_article_id": 1,
+      "name": "商业模式/市场前景", // 类型
+      "desc": "描述", // 测评观点
+      "score": "7", // 评分
+  },
+  ...
 ]
-</code></pre><h3 id="3.5-ico测评标签"><a name="3.5-ico测评标签" href="#3.5-ico测评标签"></a>3.5 ICO测评标签</h3><h4 id="3.5.1-获取ico测评标签列表"><a name="3.5.1-获取ico测评标签列表" href="#3.5.1-获取ico测评标签列表"></a>3.5.1 获取ICO测评标签列表</h4><blockquote>
-<p>获取项目标签列表 /ico_assess/tag?ico_assess_id=1</p>
-<p>获取可用标签列表 /tag/main?get_key</p>
-<p>如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id</p>
+</code></pre></li></ul><h3 id="3.5-ico测评标签"><a name="3.5-ico测评标签" href="#3.5-ico测评标签"></a>3.5 ICO测评标签</h3><h4 id="3.5.1-获取ico测评标签列表"><a name="3.5.1-获取ico测评标签列表" href="#3.5.1-获取ico测评标签列表"></a>3.5.1 获取ICO测评标签列表</h4><blockquote>
+<p>获取项目标签列表 /ico_assess/tag?ico_assess_id=1<br>获取可用标签列表 /tag/main?get_key<br>如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id</p>
 </blockquote><ul>
-<li><p><strong>请求地址:</strong> /ico_assess/tag</p>
-</li><li><p><strong>请求参数:</strong> [get]</p>
-</li><li><p><strong>返回数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-[
-
-    {
-
-        &quot;ico_assess_id&quot;: 1, // ICO测评id
-
-        &quot;tag_id&quot;: 1, // 标签ID
-
-        &quot;tag_info&quot;: {
-
-            &quot;name&quot;: &quot;业内大佬&quot; // 标签名称
-
-        }
-
-    },
-
-    ...
-
+<li><strong>请求地址:</strong> /ico_assess/tag</li><li><strong>请求参数:</strong> [get]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;ico_assess_id&quot;: 1, // ICO测评id
+      &quot;tag_id&quot;: 1, // 标签ID
+      &quot;tag_info&quot;: {
+          &quot;name&quot;: &quot;业内大佬&quot; // 标签名称
+      }
+  },
+  ...
 ]
-</code></pre>">
-[
-
-    {
-
-        "ico_assess_id": 1, // ICO测评id
-
-        "tag_id": 1, // 标签ID
-
-        "tag_info": {
-
-            "name": "业内大佬" // 标签名称
-
-        }
-
-    },
-
-    ...
-
+</code></pre>">[
+  {
+      "ico_assess_id": 1, // ICO测评id
+      "tag_id": 1, // 标签ID
+      "tag_info": {
+          "name": "业内大佬" // 标签名称
+      }
+  },
+  ...
 ]
-</code></pre><h4 id="3.5.2-修改ico测评标签列表"><a name="3.5.2-修改ico测评标签列表" href="#3.5.2-修改ico测评标签列表"></a>3.5.2 修改ICO测评标签列表</h4><ul>
-<li><p><strong>请求地址:</strong> /ico_assess/tag</p>
-</li><li><p><strong>请求参数:</strong> [post] ico_assess_id,tag_ids</p>
-</li><li><p><strong>请求数据:</strong></p>
-</li></ul><pre><code data-origin="<pre><code>
-{
-
-    &quot;ico_assess_id&quot;: &quot;100&quot;, // ICO测评ID
-
-    &quot;tag_ids&quot;: [], // 标签列表id
-
+</code></pre></li></ul><h4 id="3.5.2-修改ico测评标签列表"><a name="3.5.2-修改ico测评标签列表" href="#3.5.2-修改ico测评标签列表"></a>3.5.2 修改ICO测评标签列表</h4><ul>
+<li><strong>请求地址:</strong> /ico_assess/tag</li><li><strong>请求参数:</strong> [post] ico_assess_id,tag_ids</li><li><strong>请求数据:</strong><br>```<br>{<br>  “ico_assess_id”: “100”, // ICO测评ID<br>  “tag_ids”: [], // 标签列表id<br>}</li></ul><hr class="page"><h2 id="4.-资讯"><a name="4.-资讯" href="#4.-资讯"></a>4. 资讯</h2><h3 id="4.1-资讯管理"><a name="4.1-资讯管理" href="#4.1-资讯管理"></a>4.1 资讯管理</h3><ul>
+<li><strong>请求地址:</strong> /article/main</li><li><strong>请求参数:</strong> [get, post, put, delete]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;title&quot;: &quot;图文内容&quot;, // 资讯标题
+      &quot;img&quot;: null, // 资讯封面
+      &quot;desc&quot;: null, // 资讯简介
+      &quot;content&quot;: &quot;&quot;, // 资讯内容(富文本)
+      &quot;category_id&quot;: 101, // 所属项目ID
+      &quot;sort&quot;: 0, // 排序
+      &quot;is_top&quot;: 0, // 置顶排序
+      &quot;is_hot&quot;: 0,
+      &quot;is_sole&quot;: 0, // 是否独家
+      &quot;is_scroll&quot;: 1, // 标记为首页滚动
+      &quot;status&quot;: 1, // 文章状态-1,审核不通过,0待审核,1审核通过;默认1
+      &quot;enable&quot;: 1, // 是否启用, 默认您启用
+      &quot;type&quot;: 2, // 资讯类型 1.快讯,2,图文,3视频,4下载
+      &quot;click_rate&quot;: 1, // 点击量
+      &quot;video&quot;: null, // 视频连接
+      &quot;url&quot;: null // 跳转连接
+  },
+  ...
+]
+</code></pre>">[
+  {
+      "title": "图文内容", // 资讯标题
+      "img": null, // 资讯封面
+      "desc": null, // 资讯简介
+      "content": "", // 资讯内容(富文本)
+      "category_id": 101, // 所属项目ID
+      "sort": 0, // 排序
+      "is_top": 0, // 置顶排序
+      "is_hot": 0,
+      "is_sole": 0, // 是否独家
+      "is_scroll": 1, // 标记为首页滚动
+      "status": 1, // 文章状态-1,审核不通过,0待审核,1审核通过;默认1
+      "enable": 1, // 是否启用, 默认您启用
+      "type": 2, // 资讯类型 1.快讯,2,图文,3视频,4下载
+      "click_rate": 1, // 点击量
+      "video": null, // 视频连接
+      "url": null // 跳转连接
+  },
+  ...
+]
+</code></pre></li></ul><h3 id="4.2-资讯标签"><a name="4.2-资讯标签" href="#4.2-资讯标签"></a>4.2 资讯标签</h3><h4 id="4.2.1-获取资讯标签列表"><a name="4.2.1-获取资讯标签列表" href="#4.2.1-获取资讯标签列表"></a>4.2.1 获取资讯标签列表</h4><blockquote>
+<p>获取项目标签列表 /article/tag?article_id=1<br>获取可用标签列表 /tag/main?get_key<br>如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /article/tag</li><li><strong>请求参数:</strong> [get]</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;article_id&quot;: 1, // 资讯id
+      &quot;tag_id&quot;: 1, // 标签ID
+      &quot;tag_info&quot;: {
+          &quot;name&quot;: &quot;业内大佬&quot; // 标签名称
+      }
+  },
+  ...
+]
+</code></pre>">[
+  {
+      "article_id": 1, // 资讯id
+      "tag_id": 1, // 标签ID
+      "tag_info": {
+          "name": "业内大佬" // 标签名称
+      }
+  },
+  ...
+]
+</code></pre></li></ul><h4 id="4.2.2-修改资讯标签列表"><a name="4.2.2-修改资讯标签列表" href="#4.2.2-修改资讯标签列表"></a>4.2.2 修改资讯标签列表</h4><ul>
+<li><strong>请求地址:</strong> /article/tag</li><li><strong>请求参数:</strong> [post] article_id,tag_ids</li><li><strong>请求数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;article_id&quot;: &quot;100&quot;, // 资讯ID
+  &quot;tag_ids&quot;: [], // 标签列表id
 }
-
-
-
-* * *
-
-
-
-## 4. 资讯
-
-### 4.1 资讯管理
-
-- **请求地址:** /article/main
-
-- **请求参数:** [get, post, put, delete]
-
-- **返回数据:**
-</code></pre>">
-{
-
-    "ico_assess_id": "100", // ICO测评ID
-
-    "tag_ids": [], // 标签列表id
-
+</code></pre>">{
+  "article_id": "100", // 资讯ID
+  "tag_ids": [], // 标签列表id
 }
-
-
-
-* * *
-
-
-
-## 4. 资讯
-
-### 4.1 资讯管理
-
-- **请求地址:** /article/main
-
-- **请求参数:** [get, post, put, delete]
-
-- **返回数据:**
-</code></pre><p>[</p><pre><code data-origin="<pre><code>{
-
-    &quot;title&quot;: &quot;图文内容&quot;, // 资讯标题
-
-    &quot;img&quot;: null, // 资讯封面
-
-    &quot;desc&quot;: null, // 资讯简介
-
-    &quot;content&quot;: &quot;&quot;, // 资讯内容(富文本)
-
-    &quot;category_id&quot;: 101, // 所属项目ID
-
-    &quot;sort&quot;: 0, // 排序
-
-    &quot;is_top&quot;: 0, // 置顶排序
-
-    &quot;is_hot&quot;: 0,
-
-    &quot;is_sole&quot;: 0, // 是否独家
-
-    &quot;is_scroll&quot;: 1, // 标记为首页滚动
-
-    &quot;status&quot;: 1, // 文章状态-1,审核不通过,0待审核,1审核通过;默认1
-
-    &quot;enable&quot;: 1, // 是否启用, 默认您启用
-
-    &quot;type&quot;: 2, // 资讯类型 1.快讯,2,图文,3视频,4下载
-
-    &quot;click_rate&quot;: 1, // 点击量
-
-    &quot;video&quot;: null, // 视频连接
-
-    &quot;url&quot;: null // 跳转连接
-
-},
-
-...
-</code></pre>">{
-
-    "title": "图文内容", // 资讯标题
-
-    "img": null, // 资讯封面
-
-    "desc": null, // 资讯简介
-
-    "content": "", // 资讯内容(富文本)
-
-    "category_id": 101, // 所属项目ID
-
-    "sort": 0, // 排序
-
-    "is_top": 0, // 置顶排序
-
-    "is_hot": 0,
-
-    "is_sole": 0, // 是否独家
-
-    "is_scroll": 1, // 标记为首页滚动
-
-    "status": 1, // 文章状态-1,审核不通过,0待审核,1审核通过;默认1
-
-    "enable": 1, // 是否启用, 默认您启用
-
-    "type": 2, // 资讯类型 1.快讯,2,图文,3视频,4下载
-
-    "click_rate": 1, // 点击量
-
-    "video": null, // 视频连接
-
-    "url": null // 跳转连接
-
-},
-
-...
-</code></pre><p>]</p><pre><code data-origin="<pre><code>
-
-
-### 4.2 资讯标签
-
-#### 4.2.1 获取资讯标签列表
-
-&amp;gt; 获取项目标签列表 /article/tag?article_id=1
-
-&amp;gt; 获取可用标签列表 /tag/main?get_key
-
-&amp;gt; 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
-
-
-
-- **请求地址:** /article/tag
-
-- **请求参数:** [get]
-
-- **返回数据:**
-</code></pre>">
-
-
-### 4.2 资讯标签
-
-#### 4.2.1 获取资讯标签列表
-
-&gt; 获取项目标签列表 /article/tag?article_id=1
-
-&gt; 获取可用标签列表 /tag/main?get_key
-
-&gt; 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
-
-
-
-- **请求地址:** /article/tag
-
-- **请求参数:** [get]
-
-- **返回数据:**
-</code></pre><p>[</p><pre><code data-origin="<pre><code>{
-
-    &quot;article_id&quot;: 1, // 资讯id
-
-    &quot;tag_id&quot;: 1, // 标签ID
-
-    &quot;tag_info&quot;: {
-
-        &quot;name&quot;: &quot;业内大佬&quot; // 标签名称
-
-    }
-
-},
-
-...
-</code></pre>">{
-
-    "article_id": 1, // 资讯id
-
-    "tag_id": 1, // 标签ID
-
-    "tag_info": {
-
-        "name": "业内大佬" // 标签名称
-
-    }
-
-},
-
-...
-</code></pre><p>]</p><pre><code data-origin="<pre><code>
-
-
-#### 4.2.2 修改资讯标签列表
-
-- **请求地址:** /article/tag
-
-- **请求参数:** [post] article_id,tag_ids
-
-- **请求数据:**
-</code></pre>">
-
-
-#### 4.2.2 修改资讯标签列表
-
-- **请求地址:** /article/tag
-
-- **请求参数:** [post] article_id,tag_ids
-
-- **请求数据:**
-</code></pre><p>{</p><pre><code data-origin="<pre><code>&quot;article_id&quot;: &quot;100&quot;, // 资讯ID
-
-&quot;tag_ids&quot;: [], // 标签列表id
-</code></pre>">"article_id": "100", // 资讯ID
-
-"tag_ids": [], // 标签列表id
-</code></pre><p>}</p><pre><code data-origin="<pre><code>
-
-
-### 4.3 资讯栏目关联
-
-&amp;gt; 将一篇资讯关联到多个栏目
-
-
-
-#### 4.3.1 获取资讯关联的栏目列表
-
-- **请求地址:** /article/cc_category?article_id=134
-
-- **请求参数:** [get] article_id
-
-- **返回数据:**
-</code></pre>">
-
-
-### 4.3 资讯栏目关联
-
-&gt; 将一篇资讯关联到多个栏目
-
-
-
-#### 4.3.1 获取资讯关联的栏目列表
-
-- **请求地址:** /article/cc_category?article_id=134
-
-- **请求参数:** [get] article_id
-
-- **返回数据:**
-</code></pre><p>[</p><pre><code data-origin="<pre><code>{
-
-&quot;id&quot;: 134,
-
-&quot;title&quot;: &quot;监管部门为比特币期货“亮绿灯”&quot;, // 资讯标题
-
-&quot;cc_category&quot;: [
-
-    {
-
-        &quot;id&quot;: 2,
-
-        &quot;article_id&quot;: 134, // 资讯id
-
-        &quot;category_id&quot;: 101, // 项目id
-
-        &quot;category&quot;: {
-
-            &quot;id&quot;: 101,
-
-            &quot;name&quot;: &quot;bodhi&quot;,  // 项目名称
-
-            &quot;long_name&quot;: &quot;bodhi&quot; // 项目长名称
-
-        }
-
-    }
-
-    ...
-
-   ]
-
+</code></pre></li></ul><h3 id="4.3-资讯栏目关联"><a name="4.3-资讯栏目关联" href="#4.3-资讯栏目关联"></a>4.3 资讯栏目关联</h3><blockquote>
+<p>将一篇资讯关联到多个栏目</p>
+</blockquote><h4 id="4.3.1-获取资讯关联的栏目列表"><a name="4.3.1-获取资讯关联的栏目列表" href="#4.3.1-获取资讯关联的栏目列表"></a>4.3.1 获取资讯关联的栏目列表</h4><ul>
+<li><strong>请求地址:</strong> /article/cc_category?article_id=134</li><li><strong>请求参数:</strong> [get] article_id</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+  &quot;id&quot;: 134,
+  &quot;title&quot;: &quot;监管部门为比特币期货“亮绿灯”&quot;, // 资讯标题
+  &quot;cc_category&quot;: [
+      {
+          &quot;id&quot;: 2,
+          &quot;article_id&quot;: 134, // 资讯id
+          &quot;category_id&quot;: 101, // 项目id
+          &quot;category&quot;: {
+              &quot;id&quot;: 101,
+              &quot;name&quot;: &quot;bodhi&quot;,  // 项目名称
+              &quot;long_name&quot;: &quot;bodhi&quot; // 项目长名称
+          }
+      }
+      ...
+     ]
+  }
+  ...
+]
+</code></pre>">[
+  {
+  "id": 134,
+  "title": "监管部门为比特币期货“亮绿灯”", // 资讯标题
+  "cc_category": [
+      {
+          "id": 2,
+          "article_id": 134, // 资讯id
+          "category_id": 101, // 项目id
+          "category": {
+              "id": 101,
+              "name": "bodhi",  // 项目名称
+              "long_name": "bodhi" // 项目长名称
+          }
+      }
+      ...
+     ]
+  }
+  ...
+]
+</code></pre></li></ul><h4 id="4.3.2-修改资讯关联的栏目列表"><a name="4.3.2-修改资讯关联的栏目列表" href="#4.3.2-修改资讯关联的栏目列表"></a>4.3.2 修改资讯关联的栏目列表</h4><blockquote>
+<p>获取可用项目列表 /project/main?get_key</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /article/cc_category</li><li><strong>请求参数:</strong> [post] article_id, category_ids</li><li><strong>请求数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;article_id&quot;: &quot;100&quot;, // ICO测评ID
+  &quot;category_ids&quot;: [], // 项目列表id
 }
-
-...
 </code></pre>">{
-
-"id": 134,
-
-"title": "监管部门为比特币期货“亮绿灯”", // 资讯标题
-
-"cc_category": [
-
-    {
-
-        "id": 2,
-
-        "article_id": 134, // 资讯id
-
-        "category_id": 101, // 项目id
-
-        "category": {
-
-            "id": 101,
-
-            "name": "bodhi",  // 项目名称
-
-            "long_name": "bodhi" // 项目长名称
-
-        }
-
-    }
-
-    ...
-
-   ]
-
+  "article_id": "100", // ICO测评ID
+  "category_ids": [], // 项目列表id
 }
-
-...
-</code></pre><p>]</p><pre><code data-origin="<pre><code>
-
-
-#### 4.3.2 修改资讯关联的栏目列表
-
-&amp;gt; 获取可用项目列表 /project/main?get_key
-
-
-
-- **请求地址:** /article/cc_category
-
-- **请求参数:** [post] article_id, category_ids
-
-- **请求数据:**
-</code></pre>">
-
-
-#### 4.3.2 修改资讯关联的栏目列表
-
-&gt; 获取可用项目列表 /project/main?get_key
-
-
-
-- **请求地址:** /article/cc_category
-
-- **请求参数:** [post] article_id, category_ids
-
-- **请求数据:**
-</code></pre><p>{</p><pre><code data-origin="<pre><code>&quot;article_id&quot;: &quot;100&quot;, // ICO测评ID
-
-&quot;category_ids&quot;: [], // 项目列表id
-</code></pre>">"article_id": "100", // ICO测评ID
-
-"category_ids": [], // 项目列表id
-</code></pre><p>}</p><pre><code data-origin="<pre><code>
-
-
-* * *
-
-
-
-## 5. 其他
-
-### 5.1 标签集合管理
-
-- **请求地址:** /tag/main[?get_key]
-
-- **请求参数:** [get, post, put, delete] get_key // 获取列比哦啊
-
-- **返回数据:**
-</code></pre>">
-
-
-* * *
-
-
-
-## 5. 其他
-
-### 5.1 标签集合管理
-
-- **请求地址:** /tag/main[?get_key]
-
-- **请求参数:** [get, post, put, delete] get_key // 获取列比哦啊
-
-- **返回数据:**
-</code></pre><p>[</p><pre><code data-origin="<pre><code>{
-
-    &quot;name&quot;: &quot;图文内容&quot;, // 标签名
-
-    &quot;desc&quot;: null, // 备注
-
-},
-
-...
+</code></pre></li></ul><hr class="page"><h2 id="5.-其他"><a name="5.-其他" href="#5.-其他"></a>5. 其他</h2><h3 id="5.1-标签集合管理"><a name="5.1-标签集合管理" href="#5.1-标签集合管理"></a>5.1 标签集合管理</h3><ul>
+<li><strong>请求地址:</strong> /tag/main[?get_key]</li><li><strong>请求参数:</strong> [get, post, put, delete] get_key // 获取列比哦啊</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;name&quot;: &quot;图文内容&quot;, // 标签名
+      &quot;desc&quot;: null, // 备注
+  },
+  ...
+]
+</code></pre>">[
+  {
+      "name": "图文内容", // 标签名
+      "desc": null, // 备注
+  },
+  ...
+]
+</code></pre></li></ul><h3 id="5.2-ico管理"><a name="5.2-ico管理" href="#5.2-ico管理"></a>5.2 ico管理</h3><ul>
+<li><strong>请求地址:</strong> /ico/main[?get_key]</li><li><strong>请求参数:</strong> [get, post, put, delete] get_key // 获取键值列表</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>[
+  {
+      &quot;name&quot;: &quot;量子链&quot;, // ico名称
+      &quot;long_name&quot;: &quot;量子链&quot;, // ico长名称
+      &quot;en_name&quot;: &quot;qtum&quot;, // ico 英文名称
+      &quot;en_long_name&quot;: &quot;qtum&quot;, // ico 英文长名称
+      &quot;unit&quot;: &quot;QTUM&quot;, // ico单位
+      &quot;img&quot;: &quot;&quot;, // ico 图片
+      &quot;web_site&quot;: &quot;https://qtum.org&quot;, // ico官网
+      &quot;desc&quot;: null, // ico描述
+      &quot;sort&quot;: 0, // 排序
+      &quot;key&quot;: &quot;qtum&quot; // ico api key
+  },
+  ...
+]
+</code></pre>">[
+  {
+      "name": "量子链", // ico名称
+      "long_name": "量子链", // ico长名称
+      "en_name": "qtum", // ico 英文名称
+      "en_long_name": "qtum", // ico 英文长名称
+      "unit": "QTUM", // ico单位
+      "img": "", // ico 图片
+      "web_site": "https://qtum.org", // ico官网
+      "desc": null, // ico描述
+      "sort": 0, // 排序
+      "key": "qtum" // ico api key
+  },
+  ...
+]
+</code></pre></li></ul><h3 id="5.2-文件上传"><a name="5.2-文件上传" href="#5.2-文件上传"></a>5.2 文件上传</h3><h4 id="5.2.1-图片上传"><a name="5.2.1-图片上传" href="#5.2.1-图片上传"></a>5.2.1 图片上传</h4><blockquote>
+<p>上传类型限制: jpeg,bmp,png</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /upload/img</li><li><strong>请求参数:</strong> [post] img</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;info&quot;: &quot;&quot;, // 图片上传访问地址
+}
 </code></pre>">{
-
-    "name": "图文内容", // 标签名
-
-    "desc": null, // 备注
-
-},
-
-...
-</code></pre><p>]</p><pre><code data-origin="<pre><code>
-
-
-### 5.2 ico管理
-
-- **请求地址:** /ico/main[?get_key]
-
-- **请求参数:** [get, post, put, delete] get_key // 获取键值列表
-
-- **返回数据:**
-</code></pre>">
-
-
-### 5.2 ico管理
-
-- **请求地址:** /ico/main[?get_key]
-
-- **请求参数:** [get, post, put, delete] get_key // 获取键值列表
-
-- **返回数据:**
-</code></pre><p>[</p><pre><code data-origin="<pre><code>{
-
-    &quot;name&quot;: &quot;量子链&quot;, // ico名称
-
-    &quot;long_name&quot;: &quot;量子链&quot;, // ico长名称
-
-    &quot;en_name&quot;: &quot;qtum&quot;, // ico 英文名称
-
-    &quot;en_long_name&quot;: &quot;qtum&quot;, // ico 英文长名称
-
-    &quot;unit&quot;: &quot;QTUM&quot;, // ico单位
-
-    &quot;img&quot;: &quot;&quot;, // ico 图片
-
-    &quot;web_site&quot;: &quot;https://qtum.org&quot;, // ico官网
-
-    &quot;desc&quot;: null, // ico描述
-
-    &quot;sort&quot;: 0, // 排序
-
-    &quot;key&quot;: &quot;qtum&quot; // ico api key
-
-},
-
-...
+  "info": "", // 图片上传访问地址
+}
+</code></pre></li></ul><blockquote>
+<p>获取阿里云OSS Policy上传图片<br>请求地址: [get] /upload/img?get_oss_policy<br>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
+</blockquote><h4 id="5.2.2-视频上传"><a name="5.2.2-视频上传" href="#5.2.2-视频上传"></a>5.2.2 视频上传</h4><blockquote>
+<p>上传类型限制: mp4,3gp,flv</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /upload/video</li><li><strong>请求参数:</strong> [post] video</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;info&quot;: &quot;&quot;, // 视频上传访问地址
+}
 </code></pre>">{
-
-    "name": "量子链", // ico名称
-
-    "long_name": "量子链", // ico长名称
-
-    "en_name": "qtum", // ico 英文名称
-
-    "en_long_name": "qtum", // ico 英文长名称
-
-    "unit": "QTUM", // ico单位
-
-    "img": "", // ico 图片
-
-    "web_site": "https://qtum.org", // ico官网
-
-    "desc": null, // ico描述
-
-    "sort": 0, // 排序
-
-    "key": "qtum" // ico api key
-
-},
-
-...
-</code></pre><p>]</p><pre><code data-origin="<pre><code>
-
-
-### 5.2 文件上传
-
-#### 5.2.1 图片上传
-
-&amp;gt; 上传类型限制: jpeg,bmp,png
-
-
-
-- **请求地址:** /upload/img
-
-- **请求参数:** [post] img
-
-- **返回数据:**
-</code></pre>">
-
-
-### 5.2 文件上传
-
-#### 5.2.1 图片上传
-
-&gt; 上传类型限制: jpeg,bmp,png
-
-
-
-- **请求地址:** /upload/img
-
-- **请求参数:** [post] img
-
-- **返回数据:**
-</code></pre><p>{</p><pre><code data-origin="<pre><code>&quot;info&quot;: &quot;&quot;, // 图片上传访问地址
-</code></pre>">"info": "", // 图片上传访问地址
-</code></pre><p>}</p><pre><code data-origin="<pre><code>
-
-
-&amp;gt; 获取阿里云OSS Policy上传图片
-
-&amp;gt; 请求地址: [get] /upload/img?get_oss_policy
-
-&amp;gt; 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
-
-
-
-#### 5.2.2 视频上传
-
-
-
-&amp;gt; 上传类型限制: mp4,3gp,flv
-
-
-
-- **请求地址:** /upload/video
-
-- **请求参数:** [post] video
-
-- **返回数据:**
-</code></pre>">
-
-
-&gt; 获取阿里云OSS Policy上传图片
-
-&gt; 请求地址: [get] /upload/img?get_oss_policy
-
-&gt; 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
-
-
-
-#### 5.2.2 视频上传
-
-
-
-&gt; 上传类型限制: mp4,3gp,flv
-
-
-
-- **请求地址:** /upload/video
-
-- **请求参数:** [post] video
-
-- **返回数据:**
-</code></pre><p>{</p><pre><code data-origin="<pre><code>&quot;info&quot;: &quot;&quot;, // 视频上传访问地址
-</code></pre>">"info": "", // 视频上传访问地址
-</code></pre><p>}</p><pre><code data-origin="<pre><code>
-
-
-&amp;gt; 获取阿里云OSS Policy上传视频
-
-&amp;gt; 请求地址: [get] /upload/video?get_oss_policy
-
-&amp;gt; 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
-
-
-
-#### 5.2.3 文件上传
-
-
-
-&amp;gt; 上传类型限制: doc,pdf,xls,ppt,rtf
-
-
-
-- **请求地址:** /upload/file
-
-- **请求参数:** [post] file
-
-- **返回数据:**
-</code></pre>">
-
-
-&gt; 获取阿里云OSS Policy上传视频
-
-&gt; 请求地址: [get] /upload/video?get_oss_policy
-
-&gt; 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
-
-
-
-#### 5.2.3 文件上传
-
-
-
-&gt; 上传类型限制: doc,pdf,xls,ppt,rtf
-
-
-
-- **请求地址:** /upload/file
-
-- **请求参数:** [post] file
-
-- **返回数据:**
-</code></pre><p>{</p><pre><code data-origin="<pre><code>&quot;info&quot;: &quot;&quot;, // 文件上传访问地址
-</code></pre>">"info": "", // 文件上传访问地址
-</code></pre><p>}</p><p>```</p><blockquote>
-<p>获取阿里云OSS Policy上传文件</p>
-<p>请求地址: [get] /upload/file?get_oss_policy</p>
-<p>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
+  "info": "", // 视频上传访问地址
+}
+</code></pre></li></ul><blockquote>
+<p>获取阿里云OSS Policy上传视频<br>请求地址: [get] /upload/video?get_oss_policy<br>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
+</blockquote><h4 id="5.2.3-文件上传"><a name="5.2.3-文件上传" href="#5.2.3-文件上传"></a>5.2.3 文件上传</h4><blockquote>
+<p>上传类型限制: doc,pdf,xls,ppt,rtf</p>
+</blockquote><ul>
+<li><strong>请求地址:</strong> /upload/file</li><li><strong>请求参数:</strong> [post] file</li><li><strong>返回数据:</strong><pre><code data-origin="<pre><code>{
+  &quot;info&quot;: &quot;&quot;, // 文件上传访问地址
+}
+</code></pre>">{
+  "info": "", // 文件上传访问地址
+}
+</code></pre></li></ul><blockquote>
+<p>获取阿里云OSS Policy上传文件<br>请求地址: [get] /upload/file?get_oss_policy<br>参考文献: <a href="http://www.cnblogs.com/xdao/p/php_ossupload.html">http://www.cnblogs.com/xdao/p/php_ossupload.html</a></p>
 </blockquote><h3 id="5.3-百度编辑器-serverurl"><a name="5.3-百度编辑器-serverurl" href="#5.3-百度编辑器-serverurl"></a>5.3 百度编辑器 serverUrl</h3><blockquote>
 <font color="red">暂不支持单图上传, iframe跨域问题</font>
-
-
 
 </blockquote><ul>
 <li><strong>请求地址:</strong> /laravel-u-editor-server/server</li></ul>

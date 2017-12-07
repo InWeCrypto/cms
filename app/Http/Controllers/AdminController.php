@@ -21,7 +21,7 @@ class AdminController extends BaseController
             $user = JWTAuth::toUser($token);
             $user->Token = 'Bearer ' . $token;
         } catch (\Exception $e) {
-            return fail('', $e->getMessage(), $e->getCode());
+            return fail($e->getMessage(), $e->getCode());
         }
         return success($user);
     }

@@ -27,6 +27,7 @@ Route::group(['prefix' => 'v1'], function($router){
         // 管理员管理
         $router->group(['prefix'=>'admin'], function($router){
             $router::resource('main', 'AdminController');
+            $router::post('reset_password', 'AdminController@resetPassword');
         });
         // 用户管理
         $router->group(['prefix'=>'user'], function($router){

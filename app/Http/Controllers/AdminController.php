@@ -62,6 +62,7 @@ class AdminController extends BaseController
                 'name' => 'required|unique:users,name,' . $id,
                 'email' => 'required|email|unique:users,email,' .$id,
                 'phone' => 'unique:users,phone,' .$id,
+                // 'password_old' => 'min:6',
                 'password' => 'confirmed|min:6',
             ]
         );
@@ -71,7 +72,7 @@ class AdminController extends BaseController
         }
         $info = Admin::find($id);
         $info->fill($request->all());
-        if(isset($info->password)){
+        if(isset($info->password) && ! empty($info->password)){
             $info->password = bcrypt($info->password);
         }
         return $info->save() ? success() : fail();
@@ -79,6 +80,25 @@ class AdminController extends BaseController
 
     public function destroy(Request $request, $id){
         return Admin::find($id)->delete() ? success() : fail();
+    }
+
+    public function resetPassword(Request $request, $user_id = null)
+    {
+        $validator = \Validator::make($request->all(), [
+                'password' => 'required|confirmed|min:6',
+                'password_old' => 'required',
+            ]
+        );
+        
+        $user_id = $user_id ?: $request->user->id;
+        $info    = Admin::find($user_id);
+
+        if(! \Hash::check($request->get('password_old'), $info->password)){
+            return fail('原始密码错误!');
+        }
+
+        $info->password = bcrypt($request->get('password'));
+        return $info->save() ? success() : fail();
     }
 
 }

@@ -55,16 +55,11 @@ $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
 
-// $response->header('Access-Control-Allow-Origin', $request->header('Origin'))
-//     ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
-//     ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, ct, Origin')
-//     ->header('Access-Control-Allow-Credentials', 'true')
-//     ->header('P3P', 'CP=CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR');
-
-$response->header('Access-Control-Allow-Origin', '*')
+$response->header('Access-Control-Allow-Origin', $request->header('Origin'))
     ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
     ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With, ct, Origin, X_Requested_With')
-    ->header('Access-Control-Allow-Credentials', 'false');
+    ->header('Access-Control-Allow-Credentials', 'true')
+    ->header('P3P', 'CP=CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR');
 
 $response->send();
 

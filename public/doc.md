@@ -10,7 +10,21 @@
 > 所有的列表数据有可能是屏蔽了部分字段,如果需要看所有的字段请用RESTful中的[get]
 
 ## 1. 用户认证
-### 1.1 获取用户token
+### 1.1 用户管理
+- **请求地址:** /admin/main
+- **请求参数:** [get, post, put, delete]
+- **返回数据:**
+```
+{
+    "name": "admin", // 登录 用户名
+    "password": "", // 密码
+    "email": "what-00@qq.com", // 邮箱
+    "img": null, // 头像
+    "phone": null, // 联系电话
+}
+```
+
+### 1.2 获取用户token
 - **请求地址:** /login
 - **请求参数:** [post] *name,password*
 - **返回数据:**
@@ -32,7 +46,7 @@
 }
 ```
 
-### 1.2 验证
+### 1.3 验证
 > 每次请求在HTTP Header 中带入Token
 > 如:Authorization: Bearer eyJ0...gNHYEHKsm_Wcc58xvKsOfg
 

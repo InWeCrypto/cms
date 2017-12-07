@@ -24,7 +24,7 @@ class authJWT
                 throw new \Exception('Token 失效请重重新登录!', INVALID_TOKEN);
             }
             
-            $request->offsetSet('user', $user);
+            $request->user = $user;
         } catch (\Exception $e) {
 
             if ($e instanceof TokenExpiredException){

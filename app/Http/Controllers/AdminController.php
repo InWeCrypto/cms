@@ -90,7 +90,7 @@ class AdminController extends BaseController
             ]
         );
         
-        $user_id = $user_id ?: $request->user->id;
+        $user_id = $user_id ?: $request->user()->id;
         $info    = Admin::find($user_id);
 
         if(! \Hash::check($request->get('password_old'), $info->password)){

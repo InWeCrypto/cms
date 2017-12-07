@@ -3,54 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Admin;
-use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+use App\Model\User;
 
-class AdminController extends BaseController
+class UserController extends BaseController
 {
-    // 登录
-    public function login(Request $request)
-    {
-        $credentials = $request->only('name', 'password');
-        try {
-            // 登录系统并获取token
-            if (! $token = JWTAuth::attempt($credentials)) {
-                throw new \Exception('登录失败!', CREATE_USER_TOKEN_FAIL);
-            }
-            $user = JWTAuth::toUser($token);
-            $user->Token = 'Bearer ' . $token;
-        } catch (\Exception $e) {
-            return fail('', $e->getMessage(), $e->getCode());
-        }
-        return success($user);
-    }
-
     public function index(Request $request)
     {
-        $info = Admin::paginate(5);
+        $info = User::paginate(5);
         return success($info);
     }
 
     public function show(Request $request, $id)
     {
-        return success(Admin::find($id));
+        return success(User::find($id));
     }
 
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                'name' => 'required|unique:admins,name',
-                'email' => 'required|unique:admins,email',
-                'phone' => 'unique:admins,phone',
+                'name' => 'required|unique:users,name',
+                'phone' => 'unique:users,phone',
+                'email' => 'required|email|unique:users,email',
                 'password' => 'required|confirmed|min:6',
             ]
         );
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
- 
-        $info = new Admin();
+        $info = new User();
         $info->fill($request->all());
         $info->password = bcrypt($info->password);
         return $info->save() ? success() : fail();
@@ -69,7 +49,8 @@ class AdminController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        $info = Admin::find($id);
+
+        $info = User::find($id);
         $info->fill($request->all());
         if(isset($info->password)){
             $info->password = bcrypt($info->password);
@@ -78,7 +59,7 @@ class AdminController extends BaseController
     }
 
     public function destroy(Request $request, $id){
-        return Admin::find($id)->delete() ? success() : fail();
+        return User::find($id)->delete() ? success() : fail();
     }
 
 }

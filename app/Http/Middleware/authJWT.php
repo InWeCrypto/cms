@@ -24,11 +24,11 @@ class authJWT
         } catch (\Exception $e) {
 
             if ($e instanceof TokenExpiredException){
-                return fail('', 'Token 过期请重新登录!', EXPIRED_TOKEN);
+                return fail('Token 过期请重新登录!', EXPIRED_TOKEN);
             } else if ($e instanceof TokenInvalidException){
-                return fail('', 'Token 无效请登录!', INVALID_TOKEN);
+                return fail('Token 无效请登录!', INVALID_TOKEN);
             } else {
-                return fail('', $e->getMessage(), $e->getCode());
+                return fail($e->getMessage(), $e->getCode());
             }
         }
         

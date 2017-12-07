@@ -20,11 +20,17 @@ Route::get('/doc', function () {
 });
 
 Route::group(['prefix' => 'v1'], function($router){
+    // 登录
     $router->post('login','AdminController@login');
+
     Route::group(['middleware'=>'jwt.auth'], function($router){
-        // 管理员
+        // 管理员管理
         $router->group(['prefix'=>'admin'], function($router){
             $router::resource('main', 'AdminController');
+        });
+        // 用户管理
+        $router->group(['prefix'=>'user'], function($router){
+            $router::resource('main', 'UserController');
         });
         // 项目
         $router->group(['prefix'=>'project'], function($router){

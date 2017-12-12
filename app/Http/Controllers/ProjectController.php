@@ -51,7 +51,7 @@ class ProjectController extends BaseController
 
         $info = new Category();
         $info->fill($request->all());
-
+        $info->p_id = CAT_HOME_PROJECT;
         return $info->save() ?  success() :  fail();
     }
 

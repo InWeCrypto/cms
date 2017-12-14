@@ -12,7 +12,7 @@ class ProjectController extends BaseController
     {
         $keyword = trim($request->get('keyword',''));
         $is_key  = $request->has('get_key');
-        
+
         $type = $request->get('type', 0);
         if($is_key){
             $list = Category::select(['id','name','type'])
@@ -51,7 +51,8 @@ class ProjectController extends BaseController
 
         $info = new Category();
         $info->fill($request->all());
-        $info->p_id = CAT_HOME_PROJECT;
+        $info->p_id = $info->p_id ?: CAT_HOME_PROJECT;
+        $info->callback_fun = $info->callback_fun ?: '\CategoryFun::getProjectDetail';
         return $info->save() ?  success() :  fail();
     }
 
@@ -75,7 +76,7 @@ class ProjectController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        
+
         $info = Category::find($id);
         $info->fill($request->all());
 

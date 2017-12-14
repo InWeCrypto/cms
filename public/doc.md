@@ -1,9 +1,5 @@
 # InWeCrypTO 后台管理API文档
 
-[TOC]
-
-* * *
-
 # 简介
 > 所有请求默认RESTful
 > Api 版本 v1
@@ -91,7 +87,7 @@
     "url": "", // 项目实时价格
     "sort": 0, // 排序越大越靠前
     "is_top": 0, // 主要排序
-    "is_hot": 0, 
+    "is_hot": 0,
     "is_scroll": 1, // 是否显示到首页实时价格轮播
     "callback_fun": "\CategoryFun::getProjectDetail", // 后台项目数据处理方法
     "score": "8.7", // 项目评分
@@ -264,6 +260,7 @@
         "day": 6,  // 空投时间, 日
         "enable": 1, // 是否启用, 默认1(启用)
         "sort": 0 // 排序,越大越前
+        "is_scroll": 0, // 是否置顶空投项目
     },
     ...
 ]
@@ -395,6 +392,7 @@
 	"ico_assess_id": "100", // ICO测评ID
     "tag_ids": [], // 标签列表id
 }
+```
 
 * * *
 

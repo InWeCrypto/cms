@@ -54,7 +54,7 @@ class ProjectController extends BaseController
         $info->p_id = $info->p_id ?: CAT_HOME_PROJECT;
         $info->callback_fun = $info->callback_fun ?: '\CategoryFun::getProjectDetail';
         $info->status = $info->status ?: 1;
-        
+        $info->grid_type = $info->grid_type ?: 1;
         return $info->save() ?  success() :  fail();
     }
 

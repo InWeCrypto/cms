@@ -16,14 +16,13 @@ class IcoAssessLevelTagController extends BaseController
             $list = IcoAssessLevelTag::select(['id','name']);
             $request->get('type') && $list->where('type', $request->get('type'));
 
-            $return = [];
-            foreach ($list->get() as $v) {
-                $return[$v->id] = $v->name;
-            }
-
-            return success($return);
+            return success($list->get());
         } else {
-            $list = IcoAssessLevelTag::paginate(5);
+            if($type = $request->get('type')){
+                $list = IcoAssessLevelTag::where('type', $type)->paginate(5);
+            }else{
+                $list = IcoAssessLevelTag::paginate(5);
+            }
             $type = IcoAssessLevelTag::$type;
             return success(compact('list', 'type'));
         }

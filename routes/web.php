@@ -53,8 +53,8 @@ Route::group(['prefix' => 'v1'], function($router){
             // 项目标签
             $router->resource('tag', 'ProjectTagController');
             // 项目评论
-            
-            // 项目类型列表        
+
+            // 项目类型列表
             $router->get('type/{id?}', 'ProjectController@getType');
             // 项目方块类型
             $router->get('grid_type/{id?}', 'ProjectController@getGridType');
@@ -73,6 +73,8 @@ Route::group(['prefix' => 'v1'], function($router){
             $router->resource('tag', 'IcoAssessTagController');
             // ICO 测评 - 评论
             $router->resource('comment', 'IcoAssessCommentController');
+            // ICO 测评 - 风险标签
+            $router->resource('level_tag', 'IcoAssessLevelTagController');
         });
         // 文章列表
         $router->group(['prefix'=>'article'], function($router){

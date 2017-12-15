@@ -286,15 +286,13 @@
         "img": "", // 封面图片
         "desc": "Kyber Network 是一个具备高流动性的数字资产", // 测评简介
         "enable": 1, // 是否启用, 默认1(是)
-        "risk_level_name": "中", // 风险等级
-        "risk_level_color": "#33FFCC", // 等级颜色
         "ico_score": "7.9", // 项目评分
         "content": "", // 测评内容(富文本)
         "sort":0, // 测评排序
         "is_top": 0, // 置顶排序
         "white_paper_url": "", // 项目白皮书连接
-        "recommend_level_name": "中", // 推荐等级
-        "recommend_level_color": "#33FFCC" // 推荐等级颜色
+        "risk_level_id": "中", // 风险等级标签id
+        "recommend_level_id": 1, // 推荐等级标签id
     },
     ...
 ]
@@ -389,8 +387,23 @@
 - **请求数据:**
 ```
 {
-	"ico_assess_id": "100", // ICO测评ID
+    "ico_assess_id": "100", // ICO测评ID
     "tag_ids": [], // 标签列表id
+}
+```
+
+#### 3.6 测评等级标签管理
+> 获取等级标签列表 /ico_assess/level_tag?get_key&type=1 // type 标签类型
+
+- **请求地址:** /ico_assess/level_tag
+- **请求参数:** [get, post, put, delete]
+- **请求数据:**
+```
+{
+    “type": 2, // 标签类型: 1推荐, 2风险
+    "name": "", // 标签名称
+    "color": "#CCC", // 标签颜色
+    "desc": "", // 描述
 }
 ```
 

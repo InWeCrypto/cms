@@ -291,9 +291,8 @@
         "sort":0, // 测评排序
         "is_top": 0, // 置顶排序
         "white_paper_url": "", // 项目白皮书连接
-        "risk_level_id": "中", // 风险等级标签id
-        "recommend_level_id": 1, // 推荐等级标签id
-    },
+        "risk_level_id": 2, // 风险等级标签id  /ico_assess/level_tag?get_key&type=2
+        "recommend_level_id": 1, // 推荐等级标签id /ico_assess/level_tag?get_key&type=1
     ...
 ]
 ```

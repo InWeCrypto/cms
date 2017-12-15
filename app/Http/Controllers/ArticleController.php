@@ -49,6 +49,11 @@ class ArticleController extends BaseController
         }
         $info = new Article();
         $info->fill($request->all());
+        $info->status = $info->status ?: 1;
+        // 如果是快讯默认放在24h news里
+        if($info->type == Article::TXT){
+            $info->is_scroll = 1;
+        }
         return $info->save() ? success() : fail();
     }
 

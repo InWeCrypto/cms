@@ -20,15 +20,13 @@ class IcoAssessController extends BaseController
             'img',
             'desc',
             'enable',
-            'risk_level_name',
-            'risk_level_color',
             'ico_score',
             'ico_id',
             'white_paper_url',
-            'recommend_level_name',
-            'recommend_level_color',
+            'risk_level_id',
+            'recommend_level_id'
         ];
-        $info = IcoAssessArticle::select($select)->paginate(5);
+        $info = IcoAssessArticle::select($select)->with('riskLevelInfo', 'recommendLevelinfo')->paginate(5);
         return success($info);
     }
 
@@ -50,6 +48,7 @@ class IcoAssessController extends BaseController
         }
         $info = new IcoAssessArticle();
         $info->fill($request->all());
+        $info->status = $info->status ?: 1;
         return $info->save() ? success() : fail();
     }
 

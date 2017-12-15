@@ -27,7 +27,7 @@ class IcoAssessArticle extends Model
             return $builder->orderBy('is_top','DESC')
                            ->orderBy('is_hot','DESC')
                            ->orderBy('sort','ASC')
-                           ->orderBy('updated_at','DESC')
+                           ->orderBy('created_at','DESC')
                            ->orderBy('id','DESC');
         });
     }
@@ -57,15 +57,27 @@ class IcoAssessArticle extends Model
         return $this->hasMany('App\Model\IcoAssessIssueInfo', 'ico_article_id', 'id');
     }
 
-    public function ico()
-    {
-        return $this->hasOne('App\Model\Ico', 'id', 'ico_id');
-    }
+    // public function ico()
+    // {
+    //     return $this->hasOne('App\Model\Ico', 'id', 'ico_id');
+    // }
 
     public function tags()
     {
         return $this->hasMany('App\Model\IcoAssessArticleTag', 'ico_assess_id', 'id');
     }
+
+    public function riskLevelInfo()
+    {
+        return $this->hasOne('App\Model\IcoAssessLevelTag', 'id', 'risk_level_id');
+    }
+
+    public function recommendLevelinfo()
+    {
+        return $this->hasOne('App\Model\IcoAssessLevelTag', 'id', 'recommend_level_id');
+    }
+
+
 
 
 }

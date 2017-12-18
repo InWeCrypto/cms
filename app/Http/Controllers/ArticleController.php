@@ -25,6 +25,7 @@ class ArticleController extends BaseController
             'video',
             'click_rate',
             'created_at',
+            'updated_at',
             'type'
             ];
         $list = Article::select($select)->ofType(Article::ALL)->paginate(10);

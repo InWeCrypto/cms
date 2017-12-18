@@ -13,6 +13,7 @@ class AdController extends BaseController
         $select = [
                 'id',
                 'name',
+                'img',
                 'desc',
                 'url',
                 'sort',

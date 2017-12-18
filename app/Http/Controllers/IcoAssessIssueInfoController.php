@@ -47,12 +47,7 @@ class IcoAssessIssueInfoController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
                 'ico_article_id' => 'required',
-                'ico_circulation' => 'required',
-                'ico_amount' => 'required',
-                'ico_accept' => 'required',
-                'ico_crowfunding_amount' => 'required',
-                'ico_price' => 'required',
-                'url' => 'required',
+                'content' => 'required'
             ]
         );
         if ($validator->fails()){
@@ -67,12 +62,7 @@ class IcoAssessIssueInfoController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
                 'ico_article_id' => 'required',
-                'ico_circulation' => 'required',
-                'ico_amount' => 'required',
-                'ico_accept' => 'required',
-                'ico_crowfunding_amount' => 'required',
-                'ico_price' => 'required',
-                'url' => 'required',
+                'content' => 'required',
             ]
         );
         if ($validator->fails()){

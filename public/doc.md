@@ -1,30 +1,34 @@
 # InWeCrypTO 后台管理API文档
 
 # 简介
-> 所有请求默认RESTful
-> Api 版本 v1
-> 所有的列表数据有可能是屏蔽了部分字段,如果需要看所有的字段请用RESTful中的[get]
 
-## 1. 用户认证
+> 所有请求默认RESTful Api 版本 v1 所有的列表数据有可能是屏蔽了部分字段,如果需要看所有的字段请用RESTful中的[get]
+
+## 1\. 用户认证
+
 ### 1.1 用户管理
+
 - **请求地址:** /admin/main
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-{
+
+  ```
+  {
     "name": "admin", // 登录 用户名
     "email": "what-00@qq.com", // 邮箱
     "img": null, // 头像
     "phone": null, // 联系电话
-}
-```
+  }
+  ```
 
 ### 1.2 获取用户token
+
 - **请求地址:** /login
-- **请求参数:** [post] *name,password*
+- **请求参数:** [post] _name,password_
 - **返回数据:**
-```
-{
+
+  ```
+  {
     "msg": "操作成功",
     "code": 4000,
     "url": "",
@@ -38,12 +42,12 @@
         "updated_at": "2017-12-01 13:11:35",
         "Token": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6Ly9pbndlY3J5cHRvY21zLmFkbS9sb2dpbiIsImlhdCI6MTUxMjE5NzIxMCwiZXhwIjoxNTEyMjAwODEwLCJuYmYiOjE1MTIxOTcyMTAsImp0aSI6IjZQY3gwa2Z1c2p6YjBLZmsifQ.eD9kOigPP90mPKrG-fVf2gNHYEHKsm_Wcc58xvKsOfg"
     }
-}
-```
+  }
+  ```
 
 ### 1.3 验证
-> 每次请求在HTTP Header 中带入Token
-> 如:Authorization: Bearer eyJ0...gNHYEHKsm_Wcc58xvKsOfg
+
+> 每次请求在HTTP Header 中带入Token 如:Authorization: Bearer eyJ0...gNHYEHKsm_Wcc58xvKsOfg
 
 ### 1.4 修改账户密码
 
@@ -57,28 +61,32 @@
     "password": "", // 新密码
     "password_confirmation" : "" // 确认密码
 }
-
 ```
 
+--------------------------------------------------------------------------------
 
-* * *
+## 2\. 项目管理
 
-## 2. 项目管理
 > 获取项目属性:
-- 项目类型列表[type]: /project/type<font color=red>[/5] 获取指定类型名称</font>
-- 项目方块类型列表[grid_type]: /project/grid_type<font color=red>[/1] 获取指定类型名称</font>
 
+> - 项目类型列表[type]: /project/type
+
+>   <font color="red">[/5] 获取指定类型名称</font>
+
+> - 项目方块类型列表[grid_type]: /project/grid_type
+
+>   <font color="red">[/1] 获取指定类型名称</font>
 
 ### 2.1 项目管理
-> /project/main?get_key // 获取所有项目键值列表
-> /project/main?keyword=关键字 // 搜索项目
-> /project/main?type=5 // 项目类型分类
+
+> /project/main?get_key // 获取所有项目键值列表 /project/main?keyword=关键字 // 搜索项目 /project/main?type=5 // 项目类型分类
 
 - **请求地址:** /project/main
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-{
+
+  ```
+  {
     "type": 5, // 项目类型
     "name": "", // 项目名称
     "long_name": "", // 项目全称
@@ -96,36 +104,40 @@
     "website": "", // 项目官网
     "ico_id": "",--暂无 // 关联ico
     "updated_at":"", // 项目修改时间
-}
-```
+  }
+  ```
 
 ### 2.2 项目介绍
+
 > 获取项目介绍列表 /project/detail?category_id=100
 
 - **请求地址:** /project/detail
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"category_id" : 100, // 项目ID
+        "category_id" : 100, // 项目ID
         "title": "", // 项目介绍标签title
         "desc": "", // 备注
         "content": "", // 项目介绍内容(富文本)
         "sort": 0, // 排序
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 2.3 项目行情
+
 > 获取项目行情列表 /project/time_price?category_id=100
 
 - **请求地址:** /project/time_price
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 100, // 项目ID
         "name": "美元", // 项目行情标签名
@@ -133,34 +145,38 @@
         "k_line_data_url": "ico/currencies/rdn/usdt", // k线图数据连接
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 2.4 市场行情
+
 > 获取项目市场行情列表 /project/market?category_id=100
 
 - **请求地址:** /project/market
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 100, // 项目ID
         "name": "美元", // 市场行情标签名
         "url": "ico/markets/raiden/eth", // 市场行情数据来源连接
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 2.4 项目浏览器
+
 > 获取项目浏览器列表 /project/explorer?category_id=100
 
 - **请求地址:** /project/explorer
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 100, // 项目ID
         "name": "", // 项目浏览器名
@@ -168,17 +184,19 @@
         "url": "", // 项目浏览器跳转连接
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 2.5 项目钱包
+
 > 获取项目钱包列表 /project/wallet?category_id=100
 
 - **请求地址:** /project/wallet
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 100, // 项目ID
         "name": "", // 项目钱包名
@@ -186,50 +204,55 @@
         "url": "", // 项目钱包跳转连接
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 2.5 项目标签
-> 获取项目标签列表 /project/tag?category_id=100
-> 获取可用标签列表 /tag/main?get_key
-> 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
+
+> 获取项目标签列表 /project/tag?category_id=100 获取可用标签列表 /tag/main?get_key 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
 
 #### 2.5.1 获取项目标签列表
+
 - **请求地址:** /project/tag
 - **请求参数:** [get]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 100, // 项目ID
         "tag_id": 1, // 标签ID
         "tag_info": {
-        	"name": "业内大佬" // 标签名称
+            "name": "业内大佬" // 标签名称
         }
     },
     ...
-]
-```
+  ]
+  ```
 
 #### 2.5.2 修改项目标签列表
+
 - **请求地址:** /project/tag
 - **请求参数:** [post] category_id,tag_ids
 - **请求数据:**
-```
-{
-	"category_id": "100", // 项目ID
+
+  ```
+  {
+    "category_id": "100", // 项目ID
     "tag_ids": [], // 标签列表id
-}
-```
+  }
+  ```
 
 ### 2.6 项目媒体
+
 > 获取项目钱包列表 /project/media?category_id=100
 
 - **请求地址:** /project/media
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 100, // 项目ID
         "name": "", // 项目媒体名
@@ -238,17 +261,19 @@
         "desc": "", // 项目媒体描述
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 2.7 项目空投
+
 > 获取项目空投列表 /candy_bow/main?category_id=100
 
 - **请求地址:** /candy_bow/main
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "project_id": 106, // 项目ID
         "name": "BTC 空投", // 名称
@@ -263,21 +288,23 @@
         "is_scroll": 0, // 是否置顶空投项目
     },
     ...
-]
-```
+  ]
+  ```
 
+--------------------------------------------------------------------------------
 
-* * *
+## 3\. ICO测评
 
-## 3. ICO测评
 ### 3.1 ICO测评管理
+
 - **请求地址:** /ico_assess/main
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"project_id": 100, // 项目ID,如果没有可以则为0
+        "project_id": 100, // 项目ID,如果没有可以则为0
         "ico_id": "2", // ICO ID
         "assess_status": "已上线", // 项目状态
         "website": "https://ethereum.org/", // 项目官网
@@ -295,129 +322,136 @@
         "recommend_level_id": 1, // 推荐等级标签id /ico_assess/level_tag?get_key&type=1
     }
     ...
-]
-```
+  ]
+  ```
 
 ### 3.2 ICO测评 - 项目结构
+
 > 获取ICO测评的项目结构列表 /ico_assess/structure?ico_assess_id=1
 
 - **请求地址:** /ico_assess/structure
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"ico_article_id": 1, // ico测评ID
+        "ico_article_id": 1, // ico测评ID
         "percentage": 50, // 结构比率
         "color_name": "粉色", // 结构比率名称
         "color_value": "#EC87BF", // 比率颜色
         "desc": "5亿用于公开发行", // 结构比率说明
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 3.3 ICO测评 - 发行情况
+
 > 获取ICO测评的发行情况列表 /ico_assess/issue_info?ico_assess_id=1
 
 - **请求地址:** /ico_assess/issue_info
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"ico_article_id": 1, // ico测评ID
-        "crowdfunding_start_at": "2017-09-10 00:00:00", // 众筹开始时间
-        "crowdfunding_end_at": "2017-09-21 00:00:00", // 众筹结束时间
-        "ico_circulation": "1000000000", // ico总发行量
-        "ico_amount": "500000000", // ico量
-        "ico_accept": "BTC/ETH", // 接受币种
-        "ico_crowfunding_amount": "30000000", // 众筹金额
-        "ico_price": "0.012", // 价格
-        "url": "NULL",
-        "ico_crowfunding_amount_unit": "美元" // 众筹金额单位
+        "ico_article_id": 1, // ico测评ID
+        "content": "", // ico发行情况内容(富文本)
+        "url": "NULL", - 暂时不用
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 3.4 ICO测评 - 项目分数分析
+
 > 获取ICO测评的项目分数分析列表 /ico_assess/project_analyse?ico_assess_id=1
 
 - **请求地址:** /ico_assess/project_analyse
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"ico_article_id": 1,
+        "ico_article_id": 1,
         "name": "商业模式/市场前景", // 类型
         "desc": "描述", // 测评观点
         "score": "7", // 评分
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 3.5 ICO测评标签
+
 #### 3.5.1 获取ICO测评标签列表
-> 获取项目标签列表 /ico_assess/tag?ico_assess_id=1
-> 获取可用标签列表 /tag/main?get_key
-> 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
+
+> 获取项目标签列表 /ico_assess/tag?ico_assess_id=1 获取可用标签列表 /tag/main?get_key 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
 
 - **请求地址:** /ico_assess/tag
 - **请求参数:** [get]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "ico_assess_id": 1, // ICO测评id
         "tag_id": 1, // 标签ID
         "tag_info": {
-        	"name": "业内大佬" // 标签名称
+            "name": "业内大佬" // 标签名称
         }
     },
     ...
-]
-```
+  ]
+  ```
 
 #### 3.5.2 修改ICO测评标签列表
+
 - **请求地址:** /ico_assess/tag
 - **请求参数:** [post] ico_assess_id,tag_ids
 - **请求数据:**
-```
-{
+
+  ```
+  {
     "ico_assess_id": "100", // ICO测评ID
     "tag_ids": [], // 标签列表id
-}
-```
+  }
+  ```
 
 #### 3.6 测评等级标签管理
+
 > 获取等级标签列表 /ico_assess/level_tag?get_key&type=1 // type 标签类型
 
 - **请求地址:** /ico_assess/level_tag
 - **请求参数:** [get, post, put, delete]
 - **请求数据:**
-```
-{
+
+  ```
+  {
     “type": 2, // 标签类型: 1推荐, 2风险
     "name": "", // 标签名称
     "color": "#CCC", // 标签颜色
     "desc": "", // 描述
-}
-```
+  }
+  ```
 
-* * *
+--------------------------------------------------------------------------------
 
 ## 4. 资讯
+
 ### 4.1 资讯管理
+
 - **请求地址:** /article/main
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"title": "图文内容", // 资讯标题
+        "title": "图文内容", // 资讯标题
         "img": null, // 资讯封面
         "desc": null, // 资讯简介
         "content": "", // 资讯内容(富文本)
@@ -435,51 +469,57 @@
         "url": null // 跳转连接
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 4.2 资讯标签
+
 #### 4.2.1 获取资讯标签列表
-> 获取项目标签列表 /article/tag?article_id=1
-> 获取可用标签列表 /tag/main?get_key
-> 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
+
+> 获取项目标签列表 /article/tag?article_id=1 获取可用标签列表 /tag/main?get_key 如果是新增可用标签列表以外的标签,则需要向/tag/main中POST一条数据,取返回结果中的id
 
 - **请求地址:** /article/tag
 - **请求参数:** [get]
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
         "article_id": 1, // 资讯id
         "tag_id": 1, // 标签ID
         "tag_info": {
-        	"name": "业内大佬" // 标签名称
+            "name": "业内大佬" // 标签名称
         }
     },
     ...
-]
-```
+  ]
+  ```
 
 #### 4.2.2 修改资讯标签列表
+
 - **请求地址:** /article/tag
 - **请求参数:** [post] article_id,tag_ids
 - **请求数据:**
-```
-{
-	"article_id": "100", // 资讯ID
+
+  ```
+  {
+    "article_id": "100", // 资讯ID
     "tag_ids": [], // 标签列表id
-}
-```
+  }
+  ```
 
 ### 4.3 资讯栏目关联
+
 > 将一篇资讯关联到多个栏目
 
 #### 4.3.1 获取资讯关联的栏目列表
+
 - **请求地址:** /article/cc_category?article_id=134
 - **请求参数:** [get] article_id
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
     "id": 134,
     "title": "监管部门为比特币期货“亮绿灯”", // 资讯标题
@@ -498,47 +538,74 @@
        ]
     }
     ...
-]
-```
+  ]
+  ```
 
 #### 4.3.2 修改资讯关联的栏目列表
+
 > 获取可用项目列表 /project/main?get_key
 
 - **请求地址:** /article/cc_category
 - **请求参数:** [post] article_id, category_ids
 - **请求数据:**
-```
-{
-	"article_id": "100", // ICO测评ID
-    "category_ids": [], // 项目列表id
-}
-```
 
-* * *
+  ```
+  {
+    "article_id": "100", // ICO测评ID
+    "category_ids": [], // 项目列表id
+  }
+  ```
+
+### 4.4 首页轮播
+
+- **请求地址:** /article/ad
+- **请求参数:** [get, post, put, delete]
+- **请求数据:**
+
+  ```
+  {
+     "id": 1,
+     "name": "",  // 名称
+     "desc": "",  // 描述
+     "url": "",   // 链接
+     "sort": 0,   // 排序
+     "start_at": "2016-11-01 00:00:00", // 轮播开始时间
+     "end_at": "2027-11-11 00:00:00",   // 轮播结束时间
+     "enable": 1  // 是否启用轮播, 1启用,0不启用
+  }
+  ```
+
+
+--------------------------------------------------------------------------------
 
 ## 5. 其他
+
 ### 5.1 标签集合管理
+
 - **请求地址:** /tag/main[?get_key]
 - **请求参数:** [get, post, put, delete] get_key // 获取列比哦啊
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"name": "图文内容", // 标签名
+        "name": "图文内容", // 标签名
         "desc": null, // 备注
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 5.2 ico管理
+
 - **请求地址:** /ico/main[?get_key]
 - **请求参数:** [get, post, put, delete] get_key // 获取键值列表
 - **返回数据:**
-```
-[
+
+  ```
+  [
     {
-    	"name": "量子链", // ico名称
+        "name": "量子链", // ico名称
         "long_name": "量子链", // ico长名称
         "en_name": "qtum", // ico 英文名称
         "en_long_name": "qtum", // ico 英文长名称
@@ -550,25 +617,26 @@
         "key": "qtum" // ico api key
     },
     ...
-]
-```
+  ]
+  ```
 
 ### 5.2 文件上传
+
 #### 5.2.1 图片上传
+
 > 上传类型限制: jpeg,bmp,png
 
 - **请求地址:** /upload/img
 - **请求参数:** [post] img
 - **返回数据:**
-```
-{
-	"info": "", // 图片上传访问地址
-}
-```
 
-> 获取阿里云OSS Policy上传图片
-> 请求地址: [get] /upload/img?get_oss_policy
-> 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
+  ```
+  {
+    "info": "", // 图片上传访问地址
+  }
+  ```
+
+> 获取阿里云OSS Policy上传图片 请求地址: [get] /upload/img?get_oss_policy 参考文献: <http://www.cnblogs.com/xdao/p/php_ossupload.html>
 
 #### 5.2.2 视频上传
 
@@ -577,15 +645,14 @@
 - **请求地址:** /upload/video
 - **请求参数:** [post] video
 - **返回数据:**
-```
-{
-	"info": "", // 视频上传访问地址
-}
-```
 
-> 获取阿里云OSS Policy上传视频
-> 请求地址: [get] /upload/video?get_oss_policy
-> 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
+  ```
+  {
+    "info": "", // 视频上传访问地址
+  }
+  ```
+
+> 获取阿里云OSS Policy上传视频 请求地址: [get] /upload/video?get_oss_policy 参考文献: <http://www.cnblogs.com/xdao/p/php_ossupload.html>
 
 #### 5.2.3 文件上传
 
@@ -594,17 +661,17 @@
 - **请求地址:** /upload/file
 - **请求参数:** [post] file
 - **返回数据:**
-```
-{
-	"info": "", // 文件上传访问地址
-}
-```
 
-> 获取阿里云OSS Policy上传文件
-> 请求地址: [get] /upload/file?get_oss_policy
-> 参考文献: http://www.cnblogs.com/xdao/p/php_ossupload.html
+  ```
+  {
+    "info": "", // 文件上传访问地址
+  }
+  ```
+
+> 获取阿里云OSS Policy上传文件 请求地址: [get] /upload/file?get_oss_policy 参考文献: <http://www.cnblogs.com/xdao/p/php_ossupload.html>
 
 ### 5.3 百度编辑器 serverUrl
-> <font color=red>暂不支持单图上传, iframe跨域问题</font>
+
+> <font color="red">暂不支持单图上传, iframe跨域问题</font>
 
 - **请求地址:** /laravel-u-editor-server/server

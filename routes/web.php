@@ -84,6 +84,8 @@ Route::group(['prefix' => 'v1'], function($router){
             $router->resource('tag', 'ArticleTagController');
             // 资讯抄送栏目
             $router->resource('cc_category', 'ArticleCcController');
+            // 首页轮播
+            $router->resource('ad', 'AdController');
         });
         // 项目空投
         $router->group(['prefix'=>'candy_bow'], function($router){

@@ -28,7 +28,7 @@ class ArticleController extends BaseController
             'updated_at',
             'type'
             ];
-        $list = Article::select($select)->ofType(Article::ALL)->paginate(10);
+        $list = Article::select($select)->ofType(Article::ALL)->paginate($request->get('per_page', 10));
         $type = Article::$type;
         return success(compact('list','type'));
     }

@@ -10,11 +10,11 @@ class TagController extends BaseController
     public function index(Request $request)
     {
         $is_key = $request->has('get_key');
-        
+
         if($is_key){
             $list = Tag::select(['id','name'])->get();
         } else {
-            $list = Tag::paginate(5);
+            $list = Tag::paginate($request->get('per_page', 10));
         }
         return success($list);
     }
@@ -49,7 +49,7 @@ class TagController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
-        
+
         $info = Tag::find($id);
         $info->fill($request->all());
 

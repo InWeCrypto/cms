@@ -9,7 +9,7 @@ class UserController extends BaseController
 {
     public function index(Request $request)
     {
-        $info = User::paginate(5);
+        $info = User::paginate($request->get('per_page', 10));
         return success($info);
     }
 

@@ -11,7 +11,7 @@ class CandyBowController extends BaseController
 
     public function index(Request $request)
     {
-        
+
         $info       = CandyBow::isEnable();
         if($project_id = $request->get('category_id')){
             $info->where('project_id', $project_id);
@@ -32,7 +32,7 @@ class CandyBowController extends BaseController
             $info->where('day', $day);
         }
 
-        return success($info->get());
+        return success($info->paginate($request->get('per_page', 10)));
     }
 
     public function show(Request $request, $id)

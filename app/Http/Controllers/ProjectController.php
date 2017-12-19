@@ -29,7 +29,7 @@ class ProjectController extends BaseController
                         $query->orWhere('name', 'like', '%'.$keyword.'%')
                               ->orWhere('long_name', 'like', '%'.$keyword.'%');
                     })
-                    ->paginate(5);
+                    ->paginate($request->get('per_page', 10));
         }
         $type = Category::$project_category;
         $grid_type = Category::$grid_type;

@@ -19,7 +19,7 @@ class IcoAssessLevelTagController extends BaseController
             return success($list->get());
         } else {
             if($type = $request->get('type')){
-                $list = IcoAssessLevelTag::where('type', $type)->paginate(5);
+                $list = IcoAssessLevelTag::where('type', $type)->paginate($request->get('per_page', 10));
             }else{
                 $list = IcoAssessLevelTag::paginate(5);
             }

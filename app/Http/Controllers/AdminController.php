@@ -28,7 +28,7 @@ class AdminController extends BaseController
 
     public function index(Request $request)
     {
-        $info = Admin::paginate(5);
+        $info = Admin::paginate($request->get('per_page', 10));
         return success($info);
     }
 
@@ -49,7 +49,7 @@ class AdminController extends BaseController
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
- 
+
         $info = new Admin();
         $info->fill($request->all());
         $info->password = bcrypt($info->password);
@@ -89,7 +89,7 @@ class AdminController extends BaseController
                 'password_old' => 'required',
             ]
         );
-        
+
         $user_id = $user_id ?: $request->user()->id;
         $info    = Admin::find($user_id);
 

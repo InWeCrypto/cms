@@ -26,7 +26,7 @@ class IcoAssessController extends BaseController
             'risk_level_id',
             'recommend_level_id'
         ];
-        $info = IcoAssessArticle::select($select)->with('riskLevelInfo', 'recommendLevelinfo')->paginate(5);
+        $info = IcoAssessArticle::select($select)->with('riskLevelInfo', 'recommendLevelinfo')->paginate($request->get('per_page', 10));
         return success($info);
     }
 

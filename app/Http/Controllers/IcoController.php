@@ -25,7 +25,7 @@ class IcoController extends BaseController
         if($is_get_key){
             $info = Ico::select($select)->get();
         }else{
-            $info = Ico::paginate(5);
+            $info = Ico::paginate($request->get('per_page', 10));
         }
         return success($info);
     }

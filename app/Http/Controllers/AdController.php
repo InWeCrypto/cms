@@ -21,7 +21,7 @@ class AdController extends BaseController
                 'end_at',
                 'enable'
             ];
-        $list = Ad::select($select)->paginate($request->get('pre_page', 10));
+        $list = Ad::select($select)->paginate($request->get('per_page', 10));
         return success($list);
     }
 

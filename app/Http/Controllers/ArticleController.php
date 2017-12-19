@@ -29,7 +29,7 @@ class ArticleController extends BaseController
             'type'
             ];
         $list = Article::select($select)
-                    ->ofType($this->get('type', Article::ALL))
+                    ->ofType($request->get('type', Article::ALL))
                     ->paginate($request->get('per_page', 10));
         $type = Article::$type;
         return success(compact('list','type'));

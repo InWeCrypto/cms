@@ -7,7 +7,6 @@ use App\Model\Ad;
 
 class AdController extends BaseController
 {
-
     public function index(Request $request)
     {
         $select = [

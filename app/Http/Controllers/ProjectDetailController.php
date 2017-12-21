@@ -38,8 +38,10 @@ class ProjectDetailController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
                 'category_id' => 'required',
+                'title' => 'required',
             ], [
-                'category_id.required' => '请传入项目ID'
+                'category_id.required' => '请传入项目ID',
+                'title.required' => '请传入标题',
             ]
         );
         if ($validator->fails()){
@@ -55,8 +57,10 @@ class ProjectDetailController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
                 'category_id' => 'required',
+                'title' => 'required',
             ], [
-                'category_id.required' => '请传入项目ID'
+                'category_id.required' => '请传入项目ID',
+                'title.required' => '请传入标题',
             ]
         );
         if ($validator->fails()){

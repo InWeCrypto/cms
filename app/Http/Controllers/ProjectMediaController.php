@@ -34,11 +34,14 @@ class ProjectMediaController extends BaseController
     public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
-                'project_id' => 'required',
-            ], [
-                'project_id.required' => '请传入项目ID'
-            ]
-        );
+            'project_id' => 'required',
+            'name' => 'required',
+            'img' => 'required'
+        ], [
+            'project_id.required' => '请传入项目ID',
+            'name.required' => '请输入名称',
+            'img.required' => '请选择图片'
+        ]);
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
@@ -50,11 +53,14 @@ class ProjectMediaController extends BaseController
     public function update(Request $request, $id)
     {
         $validator = \Validator::make($request->all(), [
-                'project_id' => 'required',
-            ], [
-                'project_id.required' => '请传入项目ID'
-            ]
-        );
+            'project_id' => 'required',
+            'name' => 'required',
+            'img' => 'required'
+        ], [
+            'project_id.required' => '请传入项目ID',
+            'name.required' => '请输入名称',
+            'img.required' => '请选择图片'
+        ]);
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }

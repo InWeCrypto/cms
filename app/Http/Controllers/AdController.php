@@ -42,6 +42,8 @@ class AdController extends BaseController
         }
         $info = new Ad();
         $info->fill($request->all());
+        $info->start_at = '2016-11-01 00:00:00';
+        $info->end_at = '2027-11-11 00:00:00';
         $info->status = $info->status ?: 1;
 
         return $info->save() ? success() : fail();

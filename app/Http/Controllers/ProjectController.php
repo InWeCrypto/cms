@@ -41,7 +41,7 @@ class ProjectController extends BaseController
         $validator = \Validator::make($request->all(), [
                 'type' => 'required',
                 'name' => 'required',
-                'grid_type' => 'required',
+                // 'grid_type' => 'required',
                 'img' => 'required',
             ]
         );

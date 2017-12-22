@@ -41,7 +41,7 @@ class ProjectExplorerController extends BaseController
             'project_id.required' => '请传入项目ID',
             'name.required' => '请输入名称',
             'img.required' => '请选择图片'
-        ]);·
+        ]);
         if ($validator->fails()){
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }

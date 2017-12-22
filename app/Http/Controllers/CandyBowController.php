@@ -44,8 +44,16 @@ class CandyBowController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
                 'project_id' => 'required',
+                'name' => 'required',
+                'year' => 'required|integer',
+                'month' => 'required|integer',
+                'day' => 'required|integer',
             ], [
-                'project_id.required' => '请传入项目ID'
+                'project_id.required' => '请传入项目ID',
+                'name.required' => '请填写名称',
+                'year.required' => '请填写 年',
+                'month.required' => '请填写 月',
+                'day.required' => '请填写 日',
             ]
         );
         if ($validator->fails()){
@@ -60,8 +68,16 @@ class CandyBowController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
                 'project_id' => 'required',
+                'name' => 'required',
+                'year' => 'required|integer',
+                'month' => 'required|integer',
+                'day' => 'required|integer',
             ], [
-                'project_id.required' => '请传入项目ID'
+                'project_id.required' => '请传入项目ID',
+                'name.required' => '请填写名称',
+                'year.required' => '请填写 年',
+                'month.required' => '请填写 月',
+                'day.required' => '请填写 日',
             ]
         );
         if ($validator->fails()){

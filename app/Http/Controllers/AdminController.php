@@ -37,7 +37,7 @@ class AdminController extends BaseController
         }
 
         try {
-            // SmsVerify::check($request->get('phone'), $request->get('code'));
+            SmsVerify::check($request->get('phone'), $request->get('code'));
             $user = Admin::where('phone', $request->get('phone'))->first();
             if(! $token = JWTAuth::fromUser($user)){
                 throw new \Exception('登陆失败!', FAIL);

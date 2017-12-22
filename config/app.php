@@ -177,7 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Stevenyangecho\UEditor\UEditorServiceProvider::class,
+        // Stevenyangecho\UEditor\UEditorServiceProvider::class,
 
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
     ],
@@ -233,6 +233,8 @@ return [
 
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+
+        'SmsVerify' => App\Facades\SmsVerify::class,
 
     ],
 

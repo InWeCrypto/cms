@@ -6,24 +6,66 @@ use Illuminate\Http\Request;
 use App\Model\Admin;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use SmsVerify;
 
 class AdminController extends BaseController
 {
     // 登录
+    // public function login(Request $request)
+    // {
+    //     $credentials = $request->only('name', 'password');
+    //     try {
+    //         // 登录系统并获取token
+    //         if (! $token = JWTAuth::attempt($credentials)) {
+    //             throw new \Exception('登录失败!', CREATE_USER_TOKEN_FAIL);
+    //         }
+    //         $user = JWTAuth::toUser($token);
+    //         $user->Token = 'Bearer ' . $token;
+    //     } catch (\Exception $e) {
+    //         return fail($e->getMessage(), $e->getCode());
+    //     }
+    //     return success($user);
+    // }
     public function login(Request $request)
     {
-        $credentials = $request->only('name', 'password');
+        $validator = \Validator::make($request->all(),[
+            'phone' => 'required|max:11|exists:admins,phone',
+            'code' => 'required|max:6|min:6'
+        ]);
+        if($validator->fails()){
+            return fail($validator->messages()->first(), NOT_VALIDATED);
+        }
+
         try {
-            // 登录系统并获取token
-            if (! $token = JWTAuth::attempt($credentials)) {
-                throw new \Exception('登录失败!', CREATE_USER_TOKEN_FAIL);
+            // SmsVerify::check($request->get('phone'), $request->get('code'));
+            $user = Admin::where('phone', $request->get('phone'))->first();
+            if(! $token = JWTAuth::fromUser($user)){
+                throw new \Exception('登陆失败!', FAIL);
             }
-            $user = JWTAuth::toUser($token);
-            $user->Token = 'Bearer ' . $token;
+            $user->token = 'Bearer ' . $token;
         } catch (\Exception $e) {
             return fail($e->getMessage(), $e->getCode());
         }
+
         return success($user);
+    }
+
+    // 获取登陆验证码
+    public function getLoginCode(Request $request)
+    {
+        $validator = \Validator::make($request->all(),[
+            'phone' => 'required|max:11|exists:admins,phone'
+        ]);
+        if($validator->fails()){
+            return fail($validator->messages()->first(), NOT_VALIDATED);
+        }
+        $phone = $request->get('phone');
+        try {
+            SmsVerify::send($phone);
+        } catch (\Exception $e) {
+            return fail($e->getMessage(), $e->getCode());
+        }
+        return success();
     }
 
     public function index(Request $request)
@@ -42,8 +84,8 @@ class AdminController extends BaseController
         $validator = \Validator::make($request->all(), [
                 'name' => 'required|unique:admins,name',
                 'email' => 'required|unique:admins,email',
-                'phone' => 'unique:admins,phone',
-                'password' => 'required|confirmed|min:6',
+                'phone' => 'required|unique:admins,phone',
+                // 'password' => 'required|confirmed|min:6',
             ]
         );
         if ($validator->fails()){
@@ -52,7 +94,8 @@ class AdminController extends BaseController
 
         $info = new Admin();
         $info->fill($request->all());
-        $info->password = bcrypt($info->password);
+
+        $info->password = bcrypt('123456');
         return $info->save() ? success() : fail();
     }
 
@@ -61,9 +104,9 @@ class AdminController extends BaseController
         $validator = \Validator::make($request->all(), [
                 'name' => 'required|unique:users,name,' . $id,
                 'email' => 'required|email|unique:users,email,' .$id,
-                'phone' => 'unique:users,phone,' .$id,
+                'phone' => 'required|unique:users,phone,' .$id,
                 // 'password_old' => 'min:6',
-                'password' => 'confirmed|min:6',
+                // 'password' => 'confirmed|min:6',
             ]
         );
 

@@ -22,6 +22,8 @@ Route::get('/doc', function () {
 Route::group(['prefix' => 'v1'], function($router){
     // 登录
     $router->post('login','AdminController@login');
+    // 获取短信验证
+    $router->post('get_code','AdminController@getLoginCode');
 
     Route::group(['middleware'=>'jwt.auth'], function($router){
         // 管理员管理

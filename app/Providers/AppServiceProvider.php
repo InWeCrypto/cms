@@ -16,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('aliyun_oss', function () {
             return new \App\Services\OssService();
         });
+
+        $this->app->singleton('sms_verify', function () {
+            return new \App\Services\SmsVerifyService();
+        });
     }
 
     /**

@@ -12,7 +12,7 @@ class CandyBowController extends BaseController
     public function index(Request $request)
     {
 
-        $info       = CandyBow::isEnable();
+        $info       = CandyBow::whereRaw('1=1');
         if($project_id = $request->get('category_id')){
             $info->where('project_id', $project_id);
         }

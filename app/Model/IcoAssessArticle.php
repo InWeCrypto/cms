@@ -15,6 +15,13 @@ class IcoAssessArticle extends Model
 	protected $table   = 'ico_assess_articles';
 	protected $guarded = [];
 
+    protected $casts = [
+        'enable' => 'boolean',
+        'is_scroll' => 'boolean',
+        'is_top' => 'boolean',
+        'is_hot' => 'boolean',
+    ];
+
     protected static function boot()
     {
         parent::boot();

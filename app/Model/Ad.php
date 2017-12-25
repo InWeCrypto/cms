@@ -24,6 +24,11 @@ class Ad extends Model
 				self::DISCARD
 				];
 
+    protected $casts = [
+        'enable' => 'boolean',
+    ];
+
+
 	protected static function boot()
     {
         parent::boot();

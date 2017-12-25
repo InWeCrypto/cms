@@ -24,6 +24,11 @@ class CandyBow extends Model
 		'project_id',
 	];
 
+    protected $casts = [
+        'enable' => 'boolean',
+        'is_scroll' => 'boolean'
+    ];
+
 	protected static function boot()
     {
         parent::boot();

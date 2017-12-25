@@ -22,6 +22,12 @@ class Category extends Model
 							't_id',
 							'p_id'
 						];
+    protected $casts = [
+        'enable' => 'boolean',
+        'is_scroll' => 'boolean',
+        'is_top' => 'boolean',
+        'is_hot' => 'boolean',
+    ];
 
 	const RELEASE      = 1;  // 发布 状态
 	const WAIT_AUDIT   = 0;  // 待审核 状态
@@ -100,12 +106,12 @@ class Category extends Model
     }
 
     public function scopeOfType($query, $type)
-    {	
+    {
     	return $type ? $query->where('type', $type) : $query;
     }
 
     public function scopeIsEnable($query, $enable = 1)
-    {	
+    {
     	return $query->where('enable', $enable);
     }
 
@@ -118,7 +124,7 @@ class Category extends Model
 	{
 		return $this->belongsTo('App\Model\Article','category_id');
 	}
-	// 
+	//
 	public function childrens()
 	{
 		return $this->hasMany('App\Model\Category','p_id','id');

@@ -30,10 +30,19 @@ class Article extends Model
         'url',
         'video',
 	];
+
+    protected $casts = [
+        'enable' => 'boolean',
+        'is_scroll' => 'boolean',
+        'is_top' => 'boolean',
+        'is_hot' => 'boolean',
+    ];
+
+
 	const RELEASE      = 1;  // 发布 状态
 	const WAIT_AUDIT   = 0;  // 待审核 状态
 	const DISCARD      = -1; // 作废 状态
-	
+
 	static $status = [
 				self::RELEASE,
 				self::WAIT_AUDIT,
@@ -110,11 +119,11 @@ class Article extends Model
 	{
 		$type = [
 			self::TXT,
-			self::IMG_TXT, 
+			self::IMG_TXT,
 			self::VIDEO
 		];
 $sql = <<<EOT
-select * 
+select *
 from "articles"
 where type in (:type)
 and to_tsvector('testzhcfg', content) @@ to_tsquery('testzhcfg', :keyword)
@@ -126,7 +135,7 @@ EOT;
 		// return $query->whereRaw("to_tsvector('testzhcfg', content) @@ to_tsquery('testzhcfg','?')", [$keyword]);
 					// ->whereIn('type', [
 					// 	self::TXT,
-					// 	self::IMG_TXT, 
+					// 	self::IMG_TXT,
 					// 	self::VIDEO
 					// ]);
 	}

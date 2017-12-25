@@ -22,6 +22,8 @@ class CandyBow extends Model
 		'month',
 		'day',
 		'project_id',
+        "enable",
+        "sort",
 	];
 
     protected $casts = [

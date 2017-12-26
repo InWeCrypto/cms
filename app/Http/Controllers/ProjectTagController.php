@@ -21,12 +21,12 @@ class ProjectTagController extends BaseController
             return fail($validator->messages()->first(), NOT_VALIDATED);
         }
         $category_id = $request->get('category_id');
-        $info        = Category::with('projectTag.tagInfo')
-                        ->find($category_id)
-                        ->projectTag
-                        ->reject(function($item){
-                            return empty($item->tagInfo);
-                        });
+        $info        = Category::with('projectTag.tagInfo')->find($category_id);
+        $info->project_tag = $info->projectTag
+                                ->reject(function($item){
+                                    return empty($item->tagInfo);
+                                });
+        unset($info->projectTag);
 
         return success($info);
     }

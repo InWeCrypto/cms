@@ -83,4 +83,10 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->post('{id}/send_sys_msg', 'UserController@sendSysMsg');
     });
     $router->resource('user', 'UserController');
+    // 上传文件
+    $router->group(['prefix'=>'upload'], function($router){
+        $router->any('img', 'UploadController@img');
+        $router->any('video', 'UploadController@video');
+        $router->any('file', 'UploadController@file');
+    });
 });

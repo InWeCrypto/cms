@@ -603,3 +603,13 @@
         }
     }
     ```
+
+## 8. 文件上传
+- **请求地址:** /update
+- **请求参数:** [get]
+    ```
+    /img?get_oss_policy
+    /video?get_oss_policy
+    /file?get_oss_policy
+    ```
+- **返回数据:**

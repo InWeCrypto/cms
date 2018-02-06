@@ -1,0 +1,27 @@
+{
+    "name": "what-00/socket_send_mail",
+    "description": "php socket send mail",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "what-00",
+            "email": "what-00@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "What00\\SocketMail\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "#"
+        }
+    ],
+}

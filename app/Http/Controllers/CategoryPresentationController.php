@@ -10,24 +10,29 @@ class CategoryPresentationController extends BaseController
 {
     public function index(Request $request, $cat_id)
     {
-        $list = Article::where('category_id', $cat_id)
-                            ->where('type', Article::DESC)
-                            ->get()
-                            ->makeHidden([
-                                'category_id',
-                                'type',
-                                'author',
-                                'img',
-                                'url',
-                                'video',
-                                'sort',
-                                'click_rate',
-                                'is_hot',
-                                'is_top',
-                                'is_scroll',
-                                'is_sole',
-                                'enable',
-                            ]);
+        $list = Article::where('category_id', $cat_id);
+
+        if($lang = $request->get('lang')){
+            $list = $list->where('lang', $lang);
+        }
+
+        $list = $list->where('type', Article::DESC)
+                    ->get()
+                    ->makeHidden([
+                        'category_id',
+                        'type',
+                        'author',
+                        'img',
+                        'url',
+                        'video',
+                        'sort',
+                        'click_rate',
+                        'is_hot',
+                        'is_top',
+                        'is_scroll',
+                        'is_sole',
+                        'enable',
+                    ]);
 
         return success($list);
     }

@@ -10,7 +10,11 @@ class CandyBowController extends BaseController
 {
     public function index(Request $request, $cat_id)
     {
-        $list = CandyBow::where('category_id', $cat_id)->paginate($this->per_page);
+        $list = CandyBow::where('category_id', $cat_id);
+        if($lang = $request->get('lang')){
+            $list = $list->where('lang', $lang);
+        }
+        $list = $list->paginate($this->per_page);
 
         return success($list);
     }

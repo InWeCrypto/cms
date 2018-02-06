@@ -211,7 +211,10 @@
 ### 2.2 项目ICO介绍
 - **请求地址:** /category/:c_id/desc
 - **请求参数:** [get, post, put, delete]
-    `c_id // 项目ID`
+    ```
+    c_id // 项目ID
+    ?lang=en // 语言
+    ```
 - **返回数据:**
     ```
     [{
@@ -270,7 +273,10 @@
 ### 2.5 项目结构
 - **请求地址:** /category/:c_id/structure
 - **请求参数:** [get, post, put, delete]
-    `c_id // 项目ID`
+    ```
+    c_id // 项目ID
+    ?lang=en // 语言
+    ```
 - **返回数据:**
     ```
     [{
@@ -308,9 +314,12 @@
     ```
 
 ### 2.7 项目标签
-- **请求地址:** /category/:c_id/wallet
+- **请求地址:** /category/:c_id/industry
 - **请求参数:** [get, post, put, delete]
-    `c_id // 项目ID`
+    ```
+    c_id // 项目ID
+    ?lang=en // 语言
+    ```
 - **返回数据:**
     ```
     [{
@@ -327,7 +336,10 @@
 ### 2.8 项目介绍
 - **请求地址:** /category/:c_id/presentation
 - **请求参数:** [get, post, put, delete]
-    `c_id // 项目ID`
+    ```
+    c_id // 项目ID
+    ?lang=en // 语言
+    ```
 - **返回数据:**
     ```
     [{
@@ -343,7 +355,10 @@
 ### 2.9 项目空投
 - **请求地址:** /category/:c_id/candy_bow
 - **请求参数:** [get, post, put, delete]
-    `c_id // 项目ID`
+    ```
+    c_id // 项目ID
+    ?lang=en // 语言
+    ```
 - **返回数据:**
     ```
     [{

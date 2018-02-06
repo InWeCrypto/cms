@@ -12,6 +12,10 @@ class CategoryStructureController extends BaseController
     {
         $list = CategoryStructure::where('category_id', $cat_id);
 
+        if($lang = $request->get('lang')){
+            $list = $list->where('lang', $lang);
+        }
+
         $list = $list->get();
 
         return success($list);

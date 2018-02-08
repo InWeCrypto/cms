@@ -15,7 +15,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email',  'img'
+        'name', 'email',  'img', 'enable'
     ];
 
     /**
@@ -25,5 +25,9 @@ class User extends Model
      */
     protected $hidden = [
         'password'
+    ];
+
+    protected $casts = [
+        'enable' => 'boolean'
     ];
 }

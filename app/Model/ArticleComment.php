@@ -14,16 +14,16 @@ class ArticleComment extends Model
 {
 	protected $table = 'article_comments';
 
+    protected $fillable = [
+        'content'
+    ];
+
     protected $casts = [
         'enable' => 'boolean'
     ];
 
     protected $hidden = [
-        'id',
-        'updated_at',
-        'enable',
-        'user_id',
-        'ip'
+        // 'updated_at',
     ];
 
     protected static function boot()
@@ -36,6 +36,11 @@ class ArticleComment extends Model
         });
 
 
+    }
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class, 'article_id', 'id')->select('id','title');
     }
 
     public function user()

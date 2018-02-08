@@ -16,6 +16,14 @@ class CategoryController extends BaseController
             $list = $list->where('type', $type);
         }
 
+        if($keyword = $request->get('keyword')){
+            $list = $list->where(function($query) use($keyword){
+                $query->orWhere('name', 'like', '%'.$keyword.'%');
+                $query->orWhere('long_name', 'like', '%'.$keyword.'%');
+                $query->orWhere('unit', 'like', '%'.strtoupper($keyword).'%');
+            });
+        }
+
         if($request->has('getKeys')){
             $list = $list->pluck('name','id');
         }else{
@@ -79,6 +87,26 @@ class CategoryController extends BaseController
     public function getTypes(Request $request)
     {
         return success(Category::$types);
+    }
+    // 初始化聊天室
+    public function initRoom()
+    {
+        $success = [];
+        $error = [];
+        Category::where('room_id','0')->get()->map(function($item) use (&$success, &$error) {
+            $room = strtoupper($item->name);
+            if (! $room_id = ERoom::create($room, $room, 'admin')) {
+                $error[] = $room;
+            } else {
+                $item->room_id = $room_id;
+                if($item->save()){
+                    $success[] = [$room => $room_id];
+                }else{
+                    $error[] = $room;
+                }
+            }
+        });
+        dd(compact('success','error'));
     }
 
 }

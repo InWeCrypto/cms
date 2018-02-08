@@ -24,6 +24,7 @@ Route::group(['prefix' => 'v2'], function($router){
     $router->post('login','AdminController@login');
     // 获取短信验证
     $router->post('get_code','AdminController@getLoginCode');
+    // $router->group([], function($router){
     $router->group(['middleware'=>'auth.jwt'], function($router){
 
         // 项目
@@ -58,6 +59,8 @@ Route::group(['prefix' => 'v2'], function($router){
             $router->resource('{art_id}/tags', 'ArticleTagsController');
             // 文章抄送
             $router->resource('{art_id}/cc', 'ArticleCcController');
+            // 文章评论
+            $router->resource('comment', 'ArticleCommentController');
         });
         $router->resource('article', 'ArticleController');
         // 广告
@@ -82,6 +85,7 @@ Route::group(['prefix' => 'v2'], function($router){
         // 用户列表
         $router->group(['prefix'=>'user'], function($router){
             $router->post('{id}/send_sys_msg', 'UserController@sendSysMsg');
+            $router->put('{id}/frozen', 'UserController@frozen');
         });
         $router->resource('user', 'UserController');
         // 上传文件
@@ -90,5 +94,10 @@ Route::group(['prefix' => 'v2'], function($router){
             $router->any('video', 'UploadController@video');
             $router->any('file', 'UploadController@file');
         });
+
+        // 代币类型
+        $router->resource('wallet_category', 'WalletCategoryController');
+        // 代币列表
+        $router->resource('gnt_category', 'GntCategoryController');
     });
 });

@@ -155,7 +155,8 @@
         "email": "530743734@qq.com",
         "created_at": "2018-01-18 02:54:42",
         "updated_at": "2018-01-18 02:54:42",
-        "lang": "zh"
+        "lang": "zh",
+        "enable": true
     }
     ```
 - **返回数据:**
@@ -167,8 +168,18 @@
         msg: "" // 消息内容
     }
     ```
+- **返回数据:**
 
-
+#### 1.2.3 冻结/解冻账户
+- **请求地址:** /user/:user_id/frozen
+- **请求参数:** [post]
+    ```
+    user_id // 用户ID
+    {
+        enable: true // true 解冻, false 冻结
+    }
+    ```
+- **返回数据:**
 
 ---
 
@@ -180,6 +191,8 @@
     ```
     [get] 搜索条件
     ?type=1 // 项目类型, 1.交易中,2.众筹中,3.即将众筹,4.众筹结束
+    ?keyword= // 项目关键字, 区分大小写
+
     ?getKeys // 获取项目列表,key=>value 类型
     ```
 - **返回数据:**
@@ -198,8 +211,8 @@
         "room_id": "39099342848001",
         "sort": 0,
         "is_hot": false,
-        "is_top": false,
-        "is_scroll": true,
+        "is_top": false, // 推荐搜索
+        "is_scroll": true, // 右上角滚动行情
         "enable": 1,
         "created_at": "2018-01-23 05:47:19",
         "updated_at": "2018-01-23 05:47:19",
@@ -388,6 +401,9 @@
     [get] // 列表筛选
     ?type= 文章类型
     ?lang= 文章语言
+    ?keyword= 文章title关键字
+    ?is_scroll=0 // 筛选轮播, 1是轮播,0不是轮播,空 所有
+    ?is_sole=0  // 筛选原创文章, 1原创,0不是原创,空 所有
     ```
 - **返回数据:**
     ```
@@ -487,6 +503,36 @@
          "lang": "en",  // 标签语言
          "sort": 10 // 标签排序
     }
+    ```
+
+### 3.6 文章评论
+- **请求地址:** /article/comment
+- **请求参数:** [get, put, delete]
+    ```
+    [put] 修改评论内容
+    {
+        "content": "hhidhfiehfhofofo"
+    }
+    ```
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 40,
+            "article_id": 295,
+            "user_id": 33,
+            "content": "hhidhfiehfhofofo",
+            "ip": "222.211.212.149",
+            "enable": true, // 是否评论是否被删除
+            "created_at": "2018-01-28 16:55:30",
+            "updated_at": "2018-01-28 16:55:30",
+            "article": {
+                "id": 295,
+                "title": "EOS Channel – 专注于EOS资讯与技术"
+            },
+            "user": null // 评论用户信息
+        }
+    ]
     ```
 
 ## 4. 广告管理
@@ -613,3 +659,43 @@
     /file?get_oss_policy
     ```
 - **返回数据:**
+
+## 9. 资产管理
+### 9.1 资产类型列表
+- **请求地址:** /wallet_category
+- **请求参数:** [get]
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 1,
+            "name": "ETH", // 资产类型名称
+            "img": null // 资产类型图片
+        }
+    ]
+    ```
+### 9.2 资产列表
+- **请求地址:** /gnt_category
+- **请求参数:** [get, post, put, delete]
+    [get] // 搜索
+    ?name= // 资产名称
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 1,
+            "category_id": 1,
+            "name": "OMG", // 资产名称
+            "icon": "", // 资产图片
+            "address": "0xd26114cd6ee289accf82350c8d8487fedb8a0c07", // 资产地址
+            "gas": "420993", // gas
+            "created_at": "2017-07-30 23:14:33",
+            "updated_at": "2017-07-30 23:14:33",
+            "wallet_category": {
+                "id": 1,
+                "name": "ETH", // 资产类型
+                "img": null
+            }
+        }
+    ]
+    ```

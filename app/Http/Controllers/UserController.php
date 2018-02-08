@@ -56,5 +56,21 @@ class UserController extends BaseController
 
         return success();
     }
+    public function frozen(Request $request, $id)
+    {
+        $info = User::find($id);
+
+        $validator = \Validator::make($request->all(),[
+            'enable' => 'required|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return fail($validator->errors()->first(), NOT_VALIDATED);
+		}
+
+        $info->enable = $request->get('enable');
+
+        return $info->save() ? success() : fail();
+    }
 
 }

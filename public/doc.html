@@ -380,7 +380,8 @@ code.language-yaml {
     &quot;email&quot;: &quot;530743734@qq.com&quot;,
     &quot;created_at&quot;: &quot;2018-01-18 02:54:42&quot;,
     &quot;updated_at&quot;: &quot;2018-01-18 02:54:42&quot;,
-    &quot;lang&quot;: &quot;zh&quot;
+    &quot;lang&quot;: &quot;zh&quot;,
+    &quot;enable&quot;: true
 }
 </pre>
 </li>
@@ -395,6 +396,19 @@ code.language-yaml {
 }
 </pre>
 </li>
+<li><strong>返回数据:</strong></li>
+</ul>
+<h4 class="mume-header" id="123-%E5%86%BB%E7%BB%93%E8%A7%A3%E5%86%BB%E8%B4%A6%E6%88%B7">1.2.3 冻结/解冻账户</h4>
+
+<ul>
+<li><strong>请求地址:</strong> /user/:user_id/frozen</li>
+<li><strong>请求参数:</strong> [post]<pre class="language-">user_id // &#x7528;&#x6237;ID
+{
+    enable: true // true &#x89E3;&#x51BB;, false &#x51BB;&#x7ED3;
+}
+</pre>
+</li>
+<li><strong>返回数据:</strong></li>
 </ul>
 <hr>
 <h2 class="mume-header" id="2-%E9%A1%B9%E7%9B%AE">2. 项目</h2>
@@ -405,6 +419,8 @@ code.language-yaml {
 <li><strong>请求地址:</strong> /category</li>
 <li><strong>请求参数:</strong> [get, post, put, delete]<pre class="language-">[get] &#x641C;&#x7D22;&#x6761;&#x4EF6;
 ?type=1 // &#x9879;&#x76EE;&#x7C7B;&#x578B;, 1.&#x4EA4;&#x6613;&#x4E2D;,2.&#x4F17;&#x7B79;&#x4E2D;,3.&#x5373;&#x5C06;&#x4F17;&#x7B79;,4.&#x4F17;&#x7B79;&#x7ED3;&#x675F;
+?keyword= // &#x9879;&#x76EE;&#x5173;&#x952E;&#x5B57;, &#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;
+
 ?getKeys // &#x83B7;&#x53D6;&#x9879;&#x76EE;&#x5217;&#x8868;,key=&gt;value &#x7C7B;&#x578B;
 </pre>
 </li>
@@ -422,8 +438,8 @@ code.language-yaml {
     &quot;room_id&quot;: &quot;39099342848001&quot;,
     &quot;sort&quot;: 0,
     &quot;is_hot&quot;: false,
-    &quot;is_top&quot;: false,
-    &quot;is_scroll&quot;: true,
+    &quot;is_top&quot;: false, // &#x63A8;&#x8350;&#x641C;&#x7D22;
+    &quot;is_scroll&quot;: true, // &#x53F3;&#x4E0A;&#x89D2;&#x6EDA;&#x52A8;&#x884C;&#x60C5;
     &quot;enable&quot;: 1,
     &quot;created_at&quot;: &quot;2018-01-23 05:47:19&quot;,
     &quot;updated_at&quot;: &quot;2018-01-23 05:47:19&quot;,
@@ -618,6 +634,9 @@ code.language-yaml {
 <li><strong>请求参数:</strong> [get, post, put, delete]<pre class="language-">[get] // &#x5217;&#x8868;&#x7B5B;&#x9009;
 ?type= &#x6587;&#x7AE0;&#x7C7B;&#x578B;
 ?lang= &#x6587;&#x7AE0;&#x8BED;&#x8A00;
+?keyword= &#x6587;&#x7AE0;title&#x5173;&#x952E;&#x5B57;
+?is_scroll=0 // &#x7B5B;&#x9009;&#x8F6E;&#x64AD;, 1&#x662F;&#x8F6E;&#x64AD;,0&#x4E0D;&#x662F;&#x8F6E;&#x64AD;,&#x7A7A; &#x6240;&#x6709;
+?is_sole=0  // &#x7B5B;&#x9009;&#x539F;&#x521B;&#x6587;&#x7AE0;, 1&#x539F;&#x521B;,0&#x4E0D;&#x662F;&#x539F;&#x521B;,&#x7A7A; &#x6240;&#x6709;
 </pre>
 </li>
 <li><strong>返回数据:</strong><pre class="language-">[{
@@ -721,6 +740,36 @@ code.language-yaml {
      &quot;lang&quot;: &quot;en&quot;,  // &#x6807;&#x7B7E;&#x8BED;&#x8A00;
      &quot;sort&quot;: 10 // &#x6807;&#x7B7E;&#x6392;&#x5E8F;
 }
+</pre>
+</li>
+</ul>
+<h3 class="mume-header" id="36-%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA">3.6 文章评论</h3>
+
+<ul>
+<li><strong>请求地址:</strong> /article/comment</li>
+<li><strong>请求参数:</strong> [get, put, delete]<pre class="language-">[put] &#x4FEE;&#x6539;&#x8BC4;&#x8BBA;&#x5185;&#x5BB9;
+{
+    &quot;content&quot;: &quot;hhidhfiehfhofofo&quot;
+}
+</pre>
+</li>
+<li><strong>返回数据:</strong><pre class="language-">[
+    {
+        &quot;id&quot;: 40,
+        &quot;article_id&quot;: 295,
+        &quot;user_id&quot;: 33,
+        &quot;content&quot;: &quot;hhidhfiehfhofofo&quot;,
+        &quot;ip&quot;: &quot;222.211.212.149&quot;,
+        &quot;enable&quot;: true, // &#x662F;&#x5426;&#x8BC4;&#x8BBA;&#x662F;&#x5426;&#x88AB;&#x5220;&#x9664;
+        &quot;created_at&quot;: &quot;2018-01-28 16:55:30&quot;,
+        &quot;updated_at&quot;: &quot;2018-01-28 16:55:30&quot;,
+        &quot;article&quot;: {
+            &quot;id&quot;: 295,
+            &quot;title&quot;: &quot;EOS Channel &#x2013; &#x4E13;&#x6CE8;&#x4E8E;EOS&#x8D44;&#x8BAF;&#x4E0E;&#x6280;&#x672F;&quot;
+        },
+        &quot;user&quot;: null // &#x8BC4;&#x8BBA;&#x7528;&#x6237;&#x4FE1;&#x606F;
+    }
+]
 </pre>
 </li>
 </ul>
@@ -862,6 +911,50 @@ code.language-yaml {
 </li>
 <li><strong>返回数据:</strong></li>
 </ul>
+<h2 class="mume-header" id="9-%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86">9. 资产管理</h2>
+
+<h3 class="mume-header" id="91-%E8%B5%84%E4%BA%A7%E7%B1%BB%E5%9E%8B%E5%88%97%E8%A1%A8">9.1 资产类型列表</h3>
+
+<ul>
+<li><strong>请求地址:</strong> /wallet_category</li>
+<li><strong>请求参数:</strong> [get]</li>
+<li><strong>返回数据:</strong><pre class="language-">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;ETH&quot;, // &#x8D44;&#x4EA7;&#x7C7B;&#x578B;&#x540D;&#x79F0;
+        &quot;img&quot;: null // &#x8D44;&#x4EA7;&#x7C7B;&#x578B;&#x56FE;&#x7247;
+    }
+]
+</pre>
+</li>
+</ul>
+<h3 class="mume-header" id="92-%E8%B5%84%E4%BA%A7%E5%88%97%E8%A1%A8">9.2 资产列表</h3>
+
+<ul>
+<li><strong>请求地址:</strong> /gnt_category</li>
+<li><strong>请求参数:</strong> [get, post, put, delete]<br>
+[get] // 搜索<br>
+?name= // 资产名称</li>
+<li><strong>返回数据:</strong><pre class="language-">[
+    {
+        &quot;id&quot;: 1,
+        &quot;category_id&quot;: 1,
+        &quot;name&quot;: &quot;OMG&quot;, // &#x8D44;&#x4EA7;&#x540D;&#x79F0;
+        &quot;icon&quot;: &quot;&quot;, // &#x8D44;&#x4EA7;&#x56FE;&#x7247;
+        &quot;address&quot;: &quot;0xd26114cd6ee289accf82350c8d8487fedb8a0c07&quot;, // &#x8D44;&#x4EA7;&#x5730;&#x5740;
+        &quot;gas&quot;: &quot;420993&quot;, // gas
+        &quot;created_at&quot;: &quot;2017-07-30 23:14:33&quot;,
+        &quot;updated_at&quot;: &quot;2017-07-30 23:14:33&quot;,
+        &quot;wallet_category&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;ETH&quot;, // &#x8D44;&#x4EA7;&#x7C7B;&#x578B;
+            &quot;img&quot;: null
+        }
+    }
+]
+</pre>
+</li>
+</ul>
 
       </div>
       <div class="md-sidebar-toc"><ul>
@@ -883,6 +976,7 @@ code.language-yaml {
 <ul>
 <li><a href="#121-%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7">1.2.1 管理用户</a></li>
 <li><a href="#122-%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF">1.2.2 发送消息</a></li>
+<li><a href="#123-%E5%86%BB%E7%BB%93%E8%A7%A3%E5%86%BB%E8%B4%A6%E6%88%B7">1.2.3 冻结/解冻账户</a></li>
 </ul>
 </li>
 </ul>
@@ -907,6 +1001,7 @@ code.language-yaml {
 <li><a href="#33-%E6%96%87%E7%AB%A0%E9%A1%B9%E7%9B%AE%E5%85%B3%E8%81%94">3.3 文章项目关联</a></li>
 <li><a href="#34-%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE%E5%85%B3%E8%81%94">3.4 文章标签关联</a></li>
 <li><a href="#35-%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86">3.5 文章标签管理</a></li>
+<li><a href="#36-%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA">3.6 文章评论</a></li>
 </ul>
 </li>
 <li><a href="#4-%E5%B9%BF%E5%91%8A%E7%AE%A1%E7%90%86">4. 广告管理</a></li>
@@ -924,6 +1019,12 @@ code.language-yaml {
 </ul>
 </li>
 <li><a href="#8-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0">8. 文件上传</a></li>
+<li><a href="#9-%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86">9. 资产管理</a>
+<ul>
+<li><a href="#91-%E8%B5%84%E4%BA%A7%E7%B1%BB%E5%9E%8B%E5%88%97%E8%A1%A8">9.1 资产类型列表</a></li>
+<li><a href="#92-%E8%B5%84%E4%BA%A7%E5%88%97%E8%A1%A8">9.2 资产列表</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

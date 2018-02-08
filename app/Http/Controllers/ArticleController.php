@@ -20,6 +20,15 @@ class ArticleController extends BaseController
         if ($lang = $request->get('lang')){
             $list = $list->where('lang', $lang);
         }
+        if ($keyword = $request->get('keyword')){
+            $list = $list->where('title', 'like', '%'.$keyword.'%');
+        }
+        if (is_numeric($request->get('is_scroll'))){
+            $list = $list->where('is_scroll', $request->get('is_scroll'));
+        }
+        if (is_numeric($request->get('is_sole'))){
+            $list = $list->where('is_sole', $request->get('is_sole'));
+        }
         $list = $list->paginate($this->per_page);
 
         return success($list);

@@ -42,7 +42,7 @@ class CandyBowController extends BaseController
 
         $msg = $info->year . '-' . $info->month . '-' . $info->day . ' 有项目进行空投';
 
-        $this->sendGroupMsg(EasemobGroup::SYS_MSG_CANDYBOW, $msg, $info->lang);
+        // $this->sendGroupMsg(EasemobGroup::SYS_MSG_CANDYBOW, $msg, $info->lang);
 
         return $info->save() ? success() : fail();
     }

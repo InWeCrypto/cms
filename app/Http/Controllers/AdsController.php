@@ -23,6 +23,7 @@ class AdsController extends BaseController
             'lang' => 'required',
             'sort' => 'numeric',
             'enable' => 'boolean',
+            'type' => 'required|integer|in:1,2'
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);

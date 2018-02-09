@@ -21,7 +21,8 @@ class Ad extends Model
         'url',
         'sort',
         'enable',
-        'lang'
+        'lang',
+        'type'
     ];
 
     protected $casts = [

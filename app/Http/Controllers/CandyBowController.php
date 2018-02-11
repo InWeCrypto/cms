@@ -20,7 +20,7 @@ class CandyBowController extends BaseController
             return fail($validator->errors()->first(), NOT_VALIDATED);
         }
 
-        $list = CandyBow::whereRaw('1=1');
+        $list = CandyBow::with('category');
 
         if($category_id = $request->get('category_id')){
             $list = $list->where('category_id', $category_id);
@@ -43,9 +43,10 @@ class CandyBowController extends BaseController
 
         return success($list);
     }
-    public function store(Request $request, $cat_id)
+    public function store(Request $request)
     {
         $validator = \Validator::make($request->all(), [
+            'category_id' => 'required',
             'name' => 'required',
             'desc' => 'required',
             'year' => 'required|numeric|min:1970',
@@ -71,23 +72,23 @@ class CandyBowController extends BaseController
 
         return $info->save() ? success() : fail();
     }
-    public function update(Request $request, $cat_id, $id)
+    public function update(Request $request, $id)
     {
-        $info = CandyBow::where('category_id', $cat_id)->find($id);
+        $info = CandyBow::find($id);
 
         $info->fill($request->all());
 
         return $info->save() ? success() : fail();
     }
-    public function destroy(Request $request, $cat_id, $id)
+    public function destroy(Request $request, $id)
     {
-        $info = CandyBow::where('category_id', $cat_id)->find($id);
+        $info = CandyBow::find($id);
 
         return $info->delete() ? success() : fail();
     }
-    public function show(Request $request, $cat_id, $id)
+    public function show(Request $request, $id)
     {
-        $info = CandyBow::where('category_id', $cat_id)->find($id);
+        $info = CandyBow::find($id);
         return success($info);
     }
 

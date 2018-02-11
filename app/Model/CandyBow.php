@@ -30,7 +30,9 @@ class CandyBow extends Model
         'sort',
         'content'
 	];
-
+    protected $hidden = [
+        'content'
+    ];
 	protected static function boot()
     {
         parent::boot();
@@ -41,5 +43,9 @@ class CandyBow extends Model
 			               ->orderBy('id','DESC');
         });
 
+    }
+
+    public function category(){
+        return $this->hasOne(Category::class, 'id', 'category_id')->select('id', 'name', 'long_name', 'unit', 'type');
     }
 }

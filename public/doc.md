@@ -457,7 +457,15 @@
             "is_scroll": 0,  // 是否固定显示
             "created_at": null,
             "updated_at": null,
-            "lang": "en"    // 空投显示语言
+            "lang": "en",    // 空投显示语言
+            "category": { // 空投项目
+                "id": 7,
+                "name": "Zilliqa",
+                "long_name": "Zilliqa",
+                "unit": "ZIL",
+                "type": 1,
+                "type_name": "Trading"
+            }
         }
     ]
     ```

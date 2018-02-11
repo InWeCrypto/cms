@@ -18,22 +18,35 @@ class CategoryWalletController extends BaseController
     }
     public function store(Request $request, $cat_id)
     {
+
         $validator = \Validator::make($request->all(), [
-            'name' => 'required',
-            'url' => 'required',
-            'sort' => 'numeric',
-            'enable' => 'boolean',
+            'params' => 'required|array',
+            'params.*.name' => 'required',
+            'params.*.url' => 'required',
+            'params.*.sort' => 'numeric',
+            'params.*.enable' => 'boolean',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);
         }
-
-        $info = new CategoryWallet();
-
-        $info->fill($request->all());
-        $info->category_id = $cat_id;
-
-        return $info->save() ? success() : fail();
+        DB::beginTransaction();
+        try{
+            if(CategoryWallet::where('category_id', $cat_id)->delete() === false){
+                throw new \Exception('创建项目钱包失败!');
+            }
+            $params = $request->get('params');
+            foreach($params as $param){
+                $param['category_id'] = $cat_id;
+                if(! CategoryWallet::create($param)){
+                    throw new \Exception('创建项目钱包失败!');
+                }
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return fail();
+        }
+        return success();
     }
     public function update(Request $request, $cat_id, $cat_wallet_id)
     {

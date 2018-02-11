@@ -20,6 +20,7 @@ class CategoryWallet extends Model
         'url',
         'sort',
         'enable',
+        'category_id'
     ];
 
     protected static function boot()

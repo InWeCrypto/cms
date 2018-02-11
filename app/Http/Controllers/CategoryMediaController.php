@@ -19,22 +19,34 @@ class CategoryMediaController extends BaseController
     public function store(Request $request, $cat_id)
     {
         $validator = \Validator::make($request->all(), [
-            'name' => 'required',
-            'url' => 'required',
-            'img' => 'required',
-            'sort' => 'numeric',
-            'enable' => 'boolean',
+            'params' => 'required|array',
+            'params.*.name' => 'required',
+            'params.*.url' => 'required',
+            'params.*.img' => 'required',
+            'params.*.sort' => 'numeric',
+            'params.*.enable' => 'boolean',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);
         }
-
-        $info = new CategoryMedia();
-
-        $info->fill($request->all());
-        $info->category_id = $cat_id;
-
-        return $info->save() ? success() : fail();
+        DB::beginTransaction();
+        try{
+            if(CategoryMedia::where('category_id', $cat_id)->delete() === false){
+                throw new \Exception('创建项目媒体失败!');
+            }
+            $params = $request->get('params');
+            foreach($params as $param){
+                $param['category_id'] = $cat_id;
+                if(! CategoryMedia::create($param)){
+                    throw new \Exception('创建项目媒体失败!');
+                }
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return fail();
+        }
+        return success();
     }
     public function update(Request $request, $cat_id, $cat_media_id)
     {

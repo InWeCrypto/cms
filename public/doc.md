@@ -260,6 +260,16 @@
 - **请求地址:** /category/:c_id/explorer
 - **请求参数:** [get, post, put, delete]
     `c_id // 项目ID`
+    ```
+    [post]
+
+    "params" : [
+        {
+            "name":"",
+            "url":""
+        }
+    ]
+    ```
 - **返回数据:**
     ```
     [{
@@ -279,6 +289,18 @@
 - **请求地址:** /category/:c_id/media
 - **请求参数:** [get, post, put, delete]
     `c_id // 项目ID`
+    ```
+    [post]
+
+    "params" : [
+        {
+            "name":"",
+            "url":"",
+            "img":"", // 媒体图标
+            "qr_img": "" // 媒体二维码图片,如微信二维码
+        }
+    ]
+    ```
 - **返回数据:**
     ```
     [{
@@ -302,6 +324,18 @@
     ```
     c_id // 项目ID
     ?lang=en // 语言
+
+    [post]
+
+    "params" : [
+        {
+            "percentage":"50", // 结构比例
+            "color_name":"",  // 结构名称
+            "color_value":"", // 结构颜色
+            "desc":"", // 结构描述
+            "lang": "" // 结构语言
+        }
+    ]
     ```
 - **返回数据:**
     ```
@@ -324,6 +358,16 @@
 - **请求地址:** /category/:c_id/wallet
 - **请求参数:** [get, post, put, delete]
     `c_id // 项目ID`
+    ```
+    [post]
+
+    "params" : [
+        {
+            "name":"",
+            "url":""
+        }
+    ]
+    ```
 - **返回数据:**
     ```
     [{
@@ -341,10 +385,16 @@
 
 ### 2.7 项目标签
 - **请求地址:** /category/:c_id/industry
-- **请求参数:** [get, post, put, delete]
+- **请求参数:** [get, post, delete]
     ```
     c_id // 项目ID
     ?lang=en // 语言
+
+    [post]
+    {
+        "name":"",
+        "lang":""
+    }
     ```
 - **返回数据:**
     ```

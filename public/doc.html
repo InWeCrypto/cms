@@ -489,7 +489,16 @@ code.language-yaml {
 <ul>
 <li><strong>请求地址:</strong> /category/:c_id/explorer</li>
 <li><strong>请求参数:</strong> [get, post, put, delete]<br>
-<code>c_id // 项目ID</code></li>
+<code>c_id // 项目ID</code><pre class="language-">[post]
+
+&quot;params&quot; : [
+    {
+        &quot;name&quot;:&quot;&quot;,
+        &quot;url&quot;:&quot;&quot;
+    }
+]
+</pre>
+</li>
 <li><strong>返回数据:</strong><pre class="language-">[{
     &quot;id&quot;: 9,
     &quot;category_id&quot;: 10,
@@ -509,7 +518,18 @@ code.language-yaml {
 <ul>
 <li><strong>请求地址:</strong> /category/:c_id/media</li>
 <li><strong>请求参数:</strong> [get, post, put, delete]<br>
-<code>c_id // 项目ID</code></li>
+<code>c_id // 项目ID</code><pre class="language-">[post]
+
+&quot;params&quot; : [
+    {
+        &quot;name&quot;:&quot;&quot;,
+        &quot;url&quot;:&quot;&quot;,
+        &quot;img&quot;:&quot;&quot;, // &#x5A92;&#x4F53;&#x56FE;&#x6807;
+        &quot;qr_img&quot;: &quot;&quot; // &#x5A92;&#x4F53;&#x4E8C;&#x7EF4;&#x7801;&#x56FE;&#x7247;,&#x5982;&#x5FAE;&#x4FE1;&#x4E8C;&#x7EF4;&#x7801;
+    }
+]
+</pre>
+</li>
 <li><strong>返回数据:</strong><pre class="language-">[{
     &quot;id&quot;: 10,
     &quot;category_id&quot;: 10,
@@ -532,6 +552,18 @@ code.language-yaml {
 <li><strong>请求地址:</strong> /category/:c_id/structure</li>
 <li><strong>请求参数:</strong> [get, post, put, delete]<pre class="language-">c_id // &#x9879;&#x76EE;ID
 ?lang=en // &#x8BED;&#x8A00;
+
+[post]
+
+&quot;params&quot; : [
+    {
+        &quot;percentage&quot;:&quot;50&quot;, // &#x7ED3;&#x6784;&#x6BD4;&#x4F8B;
+        &quot;color_name&quot;:&quot;&quot;,  // &#x7ED3;&#x6784;&#x540D;&#x79F0;
+        &quot;color_value&quot;:&quot;&quot;, // &#x7ED3;&#x6784;&#x989C;&#x8272;
+        &quot;desc&quot;:&quot;&quot;, // &#x7ED3;&#x6784;&#x63CF;&#x8FF0;
+        &quot;lang&quot;: &quot;&quot; // &#x7ED3;&#x6784;&#x8BED;&#x8A00;
+    }
+]
 </pre>
 </li>
 <li><strong>返回数据:</strong><pre class="language-">[{
@@ -555,7 +587,16 @@ code.language-yaml {
 <ul>
 <li><strong>请求地址:</strong> /category/:c_id/wallet</li>
 <li><strong>请求参数:</strong> [get, post, put, delete]<br>
-<code>c_id // 项目ID</code></li>
+<code>c_id // 项目ID</code><pre class="language-">[post]
+
+&quot;params&quot; : [
+    {
+        &quot;name&quot;:&quot;&quot;,
+        &quot;url&quot;:&quot;&quot;
+    }
+]
+</pre>
+</li>
 <li><strong>返回数据:</strong><pre class="language-">[{
     &quot;id&quot;: 3,
     &quot;category_id&quot;: 10,
@@ -574,8 +615,14 @@ code.language-yaml {
 
 <ul>
 <li><strong>请求地址:</strong> /category/:c_id/industry</li>
-<li><strong>请求参数:</strong> [get, post, put, delete]<pre class="language-">c_id // &#x9879;&#x76EE;ID
+<li><strong>请求参数:</strong> [get, post, delete]<pre class="language-">c_id // &#x9879;&#x76EE;ID
 ?lang=en // &#x8BED;&#x8A00;
+
+[post]
+{
+    &quot;name&quot;:&quot;&quot;,
+    &quot;lang&quot;:&quot;&quot;
+}
 </pre>
 </li>
 <li><strong>返回数据:</strong><pre class="language-">[{
@@ -630,6 +677,7 @@ code.language-yaml {
         &quot;name&quot;: &quot;en &#x5FC5;&#x8BFB;&quot;, // &#x7A7A;&#x6295;&#x540D;&#x79F0;
         &quot;img&quot;: null,    // &#x7A7A;&#x6295;&#x56FE;&#x7247;&#x94FE;&#x63A5;
         &quot;desc&quot;: &quot;&#x6D4B;&#x8BD5; en&quot;,    // &#x7A7A;&#x6295;&#x63CF;&#x8FF0;
+        &quot;content&quot;: &quot;&quot;, // &#x7A7A;&#x6295;&#x5185;&#x5BB9;
         &quot;url&quot;: null,
         &quot;year&quot;: 2018, // &#x7A7A;&#x6295;&#x65F6;&#x95F4;, &#x5E74;
         &quot;month&quot;: 1, // &#x7A7A;&#x6295;&#x65F6;&#x95F4;, &#x6708;

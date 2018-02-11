@@ -16,9 +16,11 @@ class CategoryMedia extends Model
 
     protected $fillable = [
         'name',
+        'qr_img',
         'url',
         'img',
         'sort',
         'enable',
+        'category_id'
     ];
 }

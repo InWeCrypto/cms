@@ -16,9 +16,11 @@ class CategoryStructure extends Model
 
     protected $fillable = [
         'percentage',
+        'color_name',
         'color_value',
         'desc',
         'lang',
+        'category_id'
     ];
 
     protected static function boot()

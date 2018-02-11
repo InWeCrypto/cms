@@ -23,21 +23,35 @@ class CategoryStructureController extends BaseController
     public function store(Request $request, $cat_id)
     {
         $validator = \Validator::make($request->all(), [
-            'percentage' => 'required|numeric',
-            'color_value' => 'required',
-            'desc' => 'required',
-            'lang' => 'required',
+            'params' => 'required|array',
+            'params.*.percentage' => 'required|numeric',
+            'params.*.color_value' => 'required',
+            'params.*.color_name' => 'required',
+            'params.*.desc' => 'required',
+            'params.*.lang' => 'required',
+            'params.*.enable' => 'boolean',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);
         }
-
-        $info = new CategoryStructure();
-
-        $info->fill($request->all());
-        $info->category_id = $cat_id;
-
-        return $info->save() ? success() : fail();
+        DB::beginTransaction();
+        try{
+            if(CategoryStructure::where('category_id', $cat_id)->delete() === false){
+                throw new \Exception('创建项目结构失败!');
+            }
+            $params = $request->get('params');
+            foreach($params as $param){
+                $param['category_id'] = $cat_id;
+                if(! CategoryStructure::create($param)){
+                    throw new \Exception('创建项目结构失败!');
+                }
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return fail();
+        }
+        return success();
     }
     public function update(Request $request, $cat_id, $cat_stru_id)
     {

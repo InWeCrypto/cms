@@ -416,7 +416,7 @@ code.language-yaml {
 
 <ul>
 <li><strong>请求地址:</strong> /user/:user_id/frozen</li>
-<li><strong>请求参数:</strong> [post]<pre class="language-">user_id // &#x7528;&#x6237;ID
+<li><strong>请求参数:</strong> [put]<pre class="language-">user_id // &#x7528;&#x6237;ID
 {
     enable: true // true &#x89E3;&#x51BB;, false &#x51BB;&#x7ED3;
 }
@@ -685,7 +685,15 @@ code.language-yaml {
         &quot;is_scroll&quot;: 0,  // &#x662F;&#x5426;&#x56FA;&#x5B9A;&#x663E;&#x793A;
         &quot;created_at&quot;: null,
         &quot;updated_at&quot;: null,
-        &quot;lang&quot;: &quot;en&quot;    // &#x7A7A;&#x6295;&#x663E;&#x793A;&#x8BED;&#x8A00;
+        &quot;lang&quot;: &quot;en&quot;,    // &#x7A7A;&#x6295;&#x663E;&#x793A;&#x8BED;&#x8A00;
+        &quot;category&quot;: { // &#x7A7A;&#x6295;&#x9879;&#x76EE;
+            &quot;id&quot;: 7,
+            &quot;name&quot;: &quot;Zilliqa&quot;,
+            &quot;long_name&quot;: &quot;Zilliqa&quot;,
+            &quot;unit&quot;: &quot;ZIL&quot;,
+            &quot;type&quot;: 1,
+            &quot;type_name&quot;: &quot;Trading&quot;
+        }
     }
 ]
 </pre>

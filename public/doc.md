@@ -90,7 +90,21 @@
         "img": null,
         "email": "what-00@qq.com",
         "created_at": "2018-02-01 08:27:23",
-        "updated_at": "2018-02-01 08:27:23"
+        "updated_at": "2018-02-01 08:27:23",
+        "menu_group": {
+            "id": 1,
+            "group_id": 1,
+            "user_id": 1,
+            "created_at": "2018-02-01 08:45:15",
+            "updated_at": "2018-02-01 08:45:15",
+            "info": {
+                "id": 1,
+                "group_name": "测试测试组", // 用户角色
+                "enable": 1,
+                "created_at": "2018-02-01 07:09:04",
+                "updated_at": "2018-02-01 07:09:04"
+            }
+        }
     }
     ```
 - **返回数据:**

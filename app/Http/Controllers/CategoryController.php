@@ -60,7 +60,7 @@ class CategoryController extends BaseController
         }
 
         $Category->room_id = $room_id;
-        return $Category->save() ? success() : fail();
+        return $Category->save() ? success($Category->toArray()) : fail();
     }
     public function update(Request $request, $cid)
     {

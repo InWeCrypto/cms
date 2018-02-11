@@ -27,7 +27,8 @@ class CandyBow extends Model
 		'category_id',
         'lang',
         'enable',
-        'sort'
+        'sort',
+        'content'
 	];
 
 	protected static function boot()

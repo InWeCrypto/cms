@@ -29,4 +29,6 @@ return [
 
     'PASSWORD_OLD_ERROR' => '旧密码错误',
 
+    'SYS_MSG_ORDER_TITLE' => '交易通知',
+
 ];

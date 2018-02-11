@@ -49,6 +49,20 @@ class EasemobMsgService extends EasemobApiService
 
         return $this;
     }
+    public function title($title)
+    {
+        $this->ext = array_merge($this->ext, compact('title'));
+
+        return $this;
+    }
+
+    // 扩展字段
+    public function exts(Array $param)
+    {
+        $this->ext = array_merge($this->ext, $param);
+
+        return $this;
+    }
 
     public function send()
     {
@@ -61,7 +75,7 @@ class EasemobMsgService extends EasemobApiService
         if ($ext = $this->ext) {
             $param = array_merge($param, compact('ext'));
         }
-
+        // dump($this);
         $res = $this->sendCurl($this->uri, $param, 'POST');
 
         if(empty($res['data'])) {

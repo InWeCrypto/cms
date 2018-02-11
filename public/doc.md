@@ -205,8 +205,8 @@
         "desc": null,
         "img": "https://trinity.tech/images/footer_logo.png",
         "url": null,
-        "website": "https://trinity.tech/",
-        "unit": "TNC",
+        "website": "https://trinity.tech/", // 项目官网
+        "unit": "TNC", // 项目符号
         "token_holder": null,
         "room_id": "39099342848001",
         "sort": 0,
@@ -216,8 +216,7 @@
         "enable": 1,
         "created_at": "2018-01-23 05:47:19",
         "updated_at": "2018-01-23 05:47:19",
-        "cover_img": null,
-        "type_name": "Trading"
+        "cover_img": null, // 手机App项目封面图片
     }
     ```
 
@@ -244,7 +243,7 @@
     ```
 
 ### 2.3 项目浏览器
-- **请求地址:** /category/:c_id/desc
+- **请求地址:** /category/:c_id/explorer
 - **请求参数:** [get, post, put, delete]
     `c_id // 项目ID`
 - **返回数据:**
@@ -404,13 +403,16 @@
     ?keyword= 文章title关键字
     ?is_scroll=0 // 筛选轮播, 1是轮播,0不是轮播,空 所有
     ?is_sole=0  // 筛选原创文章, 1原创,0不是原创,空 所有
+
+    [post,put]
+    当文章类型type=6的时候,url为文件上传后的链接,必填,content可以为空,url请用/upload/file?get_oss_policy
     ```
 - **返回数据:**
     ```
     [{
         "id": 64,
         "category_id": 4,   // 文章所属项目
-        "type": 1,  // 文章类型 1 文本,2图文,3视频,4,trading
+        "type": 1,  // 文章类型 1 文本,2图文,3视频,4,trading,6,文件
         "title": "瑞讯银行推出比特币交易所交易产品", // 文章标题
         "author": null, // 文章作者
         "img": null,    // 文章封面
@@ -467,7 +469,7 @@
     ```
 
 ### 3.4 文章标签关联
-- **请求地址:** /article/tags
+- **请求地址:** /article/:art_id/tags
 - **请求参数:** [get, post]
     ```
     art_id // 文章ID
@@ -555,7 +557,7 @@
     }
     ```
 ## 5. 交易所公告
-- **请求地址:** /ads
+- **请求地址:** /ex_notice
 - **请求参数:** [get, post, put, delete]
 - **返回数据:**
     ```
@@ -652,7 +654,7 @@
     ```
 
 ## 8. 文件上传
-- **请求地址:** /update
+- **请求地址:** /upload
 - **请求参数:** [get]
     ```
     /img?get_oss_policy

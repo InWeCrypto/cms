@@ -29,4 +29,6 @@ return [
     'RESET_PASSWORD_MAIL_CONTENT' => '您的密码重置为:<br/><h3> :password </h3> <br> InWeCrypTo】 <br>英文验证码',
 
     'PASSWORD_OLD_ERROR' => 'en 旧密码错误',
+
+    'SYS_MSG_ORDER_TITLE' => 'en 交易通知',
  ];

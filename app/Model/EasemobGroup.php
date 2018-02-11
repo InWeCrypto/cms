@@ -27,7 +27,9 @@ class EasemobGroup extends Model
     const SYS_MSG_EXCHANGENOTICE = 3;
     const SYS_MSG_CANDYBOW = 4;
     const SYS_MSG_ORDER = 5;
+    const SYS_MSG_CHANGE_PASSWORD = 6;
 
+    // 用户组名
     public static $types = [
         self::SYS_MSG => 'SYS_MSG',
         self::SYS_MSG_INWEHOT => 'SYS_MSG_INWEHOT',
@@ -40,6 +42,7 @@ class EasemobGroup extends Model
     public static $user_types = [ // 一对一消息
         self::SYS_MSG,
         self::SYS_MSG_ORDER,
+        self::SYS_MSG_CHANGE_PASSWORD,
     ];
 
     public static $group_types = [ // 组消息

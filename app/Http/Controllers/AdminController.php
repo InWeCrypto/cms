@@ -55,7 +55,7 @@ class AdminController extends BaseController
 
     public function index(Request $request)
     {
-        $list = Admin::paginate($this->per_page);
+        $list = Admin::with('menuGroup.info')->paginate($this->per_page);
 
         return success($list);
     }

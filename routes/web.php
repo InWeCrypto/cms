@@ -24,8 +24,8 @@ Route::group(['prefix' => 'v2'], function($router){
     $router->post('login','AdminController@login');
     // 获取短信验证
     $router->post('get_code','AdminController@getLoginCode');
-    // $router->group([], function($router){
-    $router->group(['middleware'=>'auth.jwt'], function($router){
+    $router->group([], function($router){
+    // $router->group(['middleware'=>'auth.jwt'], function($router){
 
         // 项目
         $router->group(['prefix'=>'category'], function($router){
@@ -99,5 +99,10 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->resource('wallet_category', 'WalletCategoryController');
         // 代币列表
         $router->resource('gnt_category', 'GntCategoryController');
+
+        $router->any('test', function(){
+            \Cache::put('test', true, 10);
+            // dd(\Cache::get('test'));
+        });
     });
 });

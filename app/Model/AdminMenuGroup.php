@@ -26,4 +26,9 @@ class AdminMenuGroup extends Model
         return $this->belongsToMany(Menu::class, 'menu_group_relations', 'group_id', 'menu_id');
     }
 
+    public function info()
+    {
+        return $this->hasOne(MenuGroup::class, 'id','group_id');
+    }
+
 }

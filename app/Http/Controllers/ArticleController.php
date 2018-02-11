@@ -40,7 +40,8 @@ class ArticleController extends BaseController
             'type' => 'required|numeric',
             'category_id' => 'required|numeric',
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'required_unless:type,6',
+            'url'=> 'required_if:type,6'
             'lang' => 'required',
             'desc' => 'required',
         ]);

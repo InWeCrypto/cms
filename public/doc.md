@@ -379,31 +379,36 @@
     }]
     ```
 ### 2.9 项目空投
-- **请求地址:** /category/:c_id/candy_bow
+- **请求地址:** /category/candy_bow
 - **请求参数:** [get, post, put, delete]
     ```
-    c_id // 项目ID
+    ?category_id // 项目ID
     ?lang=en // 语言
+    ?year= // 年
+    ?month= // 月
+    ?day= // 日
     ```
 - **返回数据:**
     ```
-    [{
-        "id": 8,
-        "category_id": 7,
-        "enable": true,
-        "sort": 0,  // 排序
-        "name": "en 必读", // 空投名称
-        "img": null,    // 空投图片链接
-        "desc": "测试 en",    // 空投描述
-        "url": null,
-        "year": 2018, // 空投时间, 年
-        "month": 1, // 空投时间, 月
-        "day": 27,  // 空头时间, 日
-        "is_scroll": 0,  // 是否固定显示
-        "created_at": null,
-        "updated_at": null,
-        "lang": "en"    // 空投显示语言
-    }]
+    [
+        {
+            "id": 8,
+            "category_id": 7,
+            "enable": true,
+            "sort": 0,  // 排序
+            "name": "en 必读", // 空投名称
+            "img": null,    // 空投图片链接
+            "desc": "测试 en",    // 空投描述
+            "url": null,
+            "year": 2018, // 空投时间, 年
+            "month": 1, // 空投时间, 月
+            "day": 27,  // 空头时间, 日
+            "is_scroll": 0,  // 是否固定显示
+            "created_at": null,
+            "updated_at": null,
+            "lang": "en"    // 空投显示语言
+        }
+    ]
     ```
 
 ## 3. 文章资讯

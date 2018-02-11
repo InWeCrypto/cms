@@ -8,12 +8,37 @@ use App\Model\CandyBow;
 
 class CandyBowController extends BaseController
 {
-    public function index(Request $request, $cat_id)
+    public function index(Request $request)
     {
-        $list = CandyBow::where('category_id', $cat_id);
+        $validator = \Validator::make($request->all(), [
+            'year' => 'numeric|required_with:month|min:1970',
+            'month' => 'numeric|required_with:day|between:1,12',
+            'day' => 'numeric|between:1,31'
+        ]);
+
+        if($validator->fails()){
+            return fail($validator->errors()->first(), NOT_VALIDATED);
+        }
+
+        $list = CandyBow::whereRaw('1=1');
+
+        if($category_id = $request->get('category_id')){
+            $list = $list->where('category_id', $category_id);
+        }
         if($lang = $request->get('lang')){
             $list = $list->where('lang', $lang);
         }
+
+        if($year = $request->get('year')){
+            $list = $list->where('year', $year);
+        }
+        if($month = $request->get('month')){
+            $list = $list->where('month', $month);
+        }
+        if($day = $request->get('day')){
+            $list = $list->where('day', $day);
+        }
+
         $list = $list->paginate($this->per_page);
 
         return success($list);

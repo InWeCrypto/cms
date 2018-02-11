@@ -44,7 +44,7 @@ Route::group(['prefix' => 'v2'], function($router){
             // 项目行业标签
             $router->resource('{cat_id}/industry', 'CategoryIndustryController');
             // 项目空投
-            $router->resource('{cat_id}/candy_bow', 'CandyBowController');
+            $router->resource('candy_bow', 'CandyBowController');
             // 项目介绍
             $router->resource('{cat_id}/presentation', 'CategoryPresentationController');
         });

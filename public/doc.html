@@ -613,28 +613,33 @@ code.language-yaml {
 <h3 class="mume-header" id="29-%E9%A1%B9%E7%9B%AE%E7%A9%BA%E6%8A%95">2.9 项目空投</h3>
 
 <ul>
-<li><strong>请求地址:</strong> /category/:c_id/candy_bow</li>
-<li><strong>请求参数:</strong> [get, post, put, delete]<pre class="language-">c_id // &#x9879;&#x76EE;ID
+<li><strong>请求地址:</strong> /category/candy_bow</li>
+<li><strong>请求参数:</strong> [get, post, put, delete]<pre class="language-">?category_id // &#x9879;&#x76EE;ID
 ?lang=en // &#x8BED;&#x8A00;
+?year= // &#x5E74;
+?month= // &#x6708;
+?day= // &#x65E5;
 </pre>
 </li>
-<li><strong>返回数据:</strong><pre class="language-">[{
-    &quot;id&quot;: 8,
-    &quot;category_id&quot;: 7,
-    &quot;enable&quot;: true,
-    &quot;sort&quot;: 0,  // &#x6392;&#x5E8F;
-    &quot;name&quot;: &quot;en &#x5FC5;&#x8BFB;&quot;, // &#x7A7A;&#x6295;&#x540D;&#x79F0;
-    &quot;img&quot;: null,    // &#x7A7A;&#x6295;&#x56FE;&#x7247;&#x94FE;&#x63A5;
-    &quot;desc&quot;: &quot;&#x6D4B;&#x8BD5; en&quot;,    // &#x7A7A;&#x6295;&#x63CF;&#x8FF0;
-    &quot;url&quot;: null,
-    &quot;year&quot;: 2018, // &#x7A7A;&#x6295;&#x65F6;&#x95F4;, &#x5E74;
-    &quot;month&quot;: 1, // &#x7A7A;&#x6295;&#x65F6;&#x95F4;, &#x6708;
-    &quot;day&quot;: 27,  // &#x7A7A;&#x5934;&#x65F6;&#x95F4;, &#x65E5;
-    &quot;is_scroll&quot;: 0,  // &#x662F;&#x5426;&#x56FA;&#x5B9A;&#x663E;&#x793A;
-    &quot;created_at&quot;: null,
-    &quot;updated_at&quot;: null,
-    &quot;lang&quot;: &quot;en&quot;    // &#x7A7A;&#x6295;&#x663E;&#x793A;&#x8BED;&#x8A00;
-}]
+<li><strong>返回数据:</strong><pre class="language-">[
+    {
+        &quot;id&quot;: 8,
+        &quot;category_id&quot;: 7,
+        &quot;enable&quot;: true,
+        &quot;sort&quot;: 0,  // &#x6392;&#x5E8F;
+        &quot;name&quot;: &quot;en &#x5FC5;&#x8BFB;&quot;, // &#x7A7A;&#x6295;&#x540D;&#x79F0;
+        &quot;img&quot;: null,    // &#x7A7A;&#x6295;&#x56FE;&#x7247;&#x94FE;&#x63A5;
+        &quot;desc&quot;: &quot;&#x6D4B;&#x8BD5; en&quot;,    // &#x7A7A;&#x6295;&#x63CF;&#x8FF0;
+        &quot;url&quot;: null,
+        &quot;year&quot;: 2018, // &#x7A7A;&#x6295;&#x65F6;&#x95F4;, &#x5E74;
+        &quot;month&quot;: 1, // &#x7A7A;&#x6295;&#x65F6;&#x95F4;, &#x6708;
+        &quot;day&quot;: 27,  // &#x7A7A;&#x5934;&#x65F6;&#x95F4;, &#x65E5;
+        &quot;is_scroll&quot;: 0,  // &#x662F;&#x5426;&#x56FA;&#x5B9A;&#x663E;&#x793A;
+        &quot;created_at&quot;: null,
+        &quot;updated_at&quot;: null,
+        &quot;lang&quot;: &quot;en&quot;    // &#x7A7A;&#x6295;&#x663E;&#x793A;&#x8BED;&#x8A00;
+    }
+]
 </pre>
 </li>
 </ul>

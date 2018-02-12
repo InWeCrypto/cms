@@ -26,7 +26,7 @@ class MenuGroupController extends BaseController
         $info = new MenuGroup();
         $info->fill($request->all());
 
-        return $info->save() ? success() : fail();
+        return $info->save() ? success($info->toArray()) : fail();
     }
     public function update(Request $request, $id)
     {

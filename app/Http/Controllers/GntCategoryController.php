@@ -29,6 +29,11 @@ class GntCategoryController extends BaseController
 		return success($list);
 	}
 
+    public function show(Request $request, $id)
+    {
+        return success(GntCategory::find($id));
+    }
+
 
 	/**
 	 * @param Request $request

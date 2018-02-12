@@ -31,7 +31,8 @@ class Category extends Model
         'is_top',
         'is_scroll',
         'enable',
-        'cover_img'
+        'cover_img',
+        'ico_price'
     ];
 
     protected $hidden = [

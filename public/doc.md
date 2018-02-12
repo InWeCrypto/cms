@@ -221,6 +221,7 @@
         "url": null,
         "website": "https://trinity.tech/", // 项目官网
         "unit": "TNC", // 项目符号
+        "ico_price": "-", // 项目ICO价格
         "token_holder": null,
         "room_id": "39099342848001",
         "sort": 0,

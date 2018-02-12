@@ -64,7 +64,7 @@ class CandyBowController extends BaseController
 
         $info->fill($request->all());
 
-        $info->category_id = $cat_id;
+        // $info->category_id = $cat_id;
 
         $msg = $info->year . '-' . $info->month . '-' . $info->day . ' 有项目进行空投';
 

@@ -61,7 +61,7 @@ class GntCategoryController extends BaseController
 	 */
 	public function update(Request $request, GntCategory $gntCategory)
 	{
-		$validator = \Validator::make($request->validator, [
+		$validator = \Validator::make($request->all(), [
 			'name' => 'required|unique:gnt_categorys,name,' . $gntCategory->id . ',id,category_id,' . $gntCategory->category_id,
 		]);
 

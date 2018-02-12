@@ -82,7 +82,7 @@ class GntCategoryController extends BaseController
 	public function destroy(GntCategory $gntCategory)
 	{
 		if ($gntCategory->userGnt()->count()) {
-			return fail('', '该代币类型已有用户创建实例,禁止删除');
+			return fail('该代币类型已有用户创建实例,禁止删除');
 		}
 		return $gntCategory->delete() ? success() : fail();
 	}

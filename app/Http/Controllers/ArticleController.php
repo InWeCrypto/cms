@@ -40,7 +40,7 @@ class ArticleController extends BaseController
             'type' => 'required|numeric',
             'category_id' => 'required|numeric',
             'title' => 'required',
-            'content' => 'required_unless:type,6',
+            'content' => 'required_unless:type,6,3',
             'url'=> 'required_if:type,6',
             'lang' => 'required',
             'desc' => 'required',
@@ -69,6 +69,7 @@ class ArticleController extends BaseController
                 $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
             }
             DB::commit();
+            return success($Article->toArray());
         } catch (\Exception $e) {
             DB::rollBack();
             return fail();

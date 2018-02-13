@@ -32,7 +32,7 @@ class CategoryPresentationController extends BaseController
                         'is_scroll',
                         'is_sole',
                         'enable',
-                    ]);
+                    ])->makeVisible('content');
 
         return success($list);
     }

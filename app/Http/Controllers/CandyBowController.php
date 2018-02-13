@@ -88,7 +88,7 @@ class CandyBowController extends BaseController
     }
     public function show(Request $request, $id)
     {
-        $info = CandyBow::find($id);
+        $info = CandyBow::find($id)->makeVisible('content');
         return success($info);
     }
 

@@ -65,21 +65,59 @@ class AdminController extends BaseController
             'name' => 'required',
             'phone' => 'required',
             'email' => 'email',
+            'group_id' => 'required'
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);
         }
-        $info = new Admin();
-        $info->fill($request->all());
 
-        return $info->save() ? success() : fail();
+        DB::beginTransaction();
+        try{
+            $info = new Admin();
+            $info->fill($request->all());
+            if(!$info->save()){
+                throw new \Exception('创建员工失败!');
+            }
+
+            if(AdminMenuGroup::where('user_id', $info->id)->delete() === false){
+                throw new \Exception('清空用户菜单组失败');
+            }
+            if(! AdminMenuGroup::create(['group_id'=>$request->get('group_id'), 'user_id'=>$info->id])){
+                throw new \Exception('关联菜单失败');
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return fail();
+        }
+        return success();
     }
     public function update(Request $request, $id)
     {
-        $info = Admin::find($id);
-        $info->fill($request->all());
 
-        return $info->save() ? success() : fail();
+        DB::beginTransaction();
+        try{
+            $info = Admin::find($id);
+            $info->fill($request->all());
+            if(!$info->save()){
+                throw new \Exception('修改员工失败!');
+            }
+            if($request->get('group_id')){
+                if(AdminMenuGroup::where('user_id', $info->id)->delete() === false){
+                    throw new \Exception('清空用户菜单组失败');
+                }
+                if(! AdminMenuGroup::create(['group_id'=>$request->get('group_id'), 'user_id'=>$info->id])){
+                    throw new \Exception('关联菜单失败');
+                }
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return fail();
+        }
+        return success();
     }
     public function destroy(Request $request, $id)
     {

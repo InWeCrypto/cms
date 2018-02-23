@@ -36,7 +36,7 @@ class CategoryStructureController extends BaseController
         }
         DB::beginTransaction();
         try{
-            if(CategoryStructure::where('category_id', $cat_id)->where('lang', $request->get('params.0.lang'))->delete() === false){
+            if(CategoryStructure::where('category_id', $cat_id)->where('lang', $request->get('params')[0]['lang'])->delete() === false){
                 throw new \Exception('创建项目结构失败!');
             }
             $params = $request->get('params');

@@ -27,6 +27,7 @@ class CategoryController extends BaseController
 
         if($request->has('getKeys')){
             $list = $list->pluck('name','id');
+            $list->put(0,'无');
         }else{
             $list = $list->paginate($this->per_page);
         }

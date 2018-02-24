@@ -24,8 +24,8 @@ class CategoryDescController extends BaseController
     public function store(Request $request, $cat_id)
     {
         $validator = \Validator::make($request->all(), [
-            'start_at' => 'required|date',
-            'end_at' => 'required|date',
+            'start_at' => 'date',
+            'end_at' => 'date',
             'content' => 'required',
             'lang' => 'required',
             'enable' => 'boolean',

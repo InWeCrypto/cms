@@ -17,15 +17,17 @@ class CategoryController extends BaseController
         }
 
         if($keyword = $request->get('keyword')){
+            $keyword = '%' . strtoupper($keyword) . '%';
             $list = $list->where(function($query) use($keyword){
-                $query->orWhere('name', 'like', '%'.$keyword.'%');
-                $query->orWhere('long_name', 'like', '%'.$keyword.'%');
-                $query->orWhere('unit', 'like', '%'.strtoupper($keyword).'%');
+                $query->orWhereRaw("UPPER(name) like '{$keyword}'");
+                $query->orWhereRaw("UPPER(long_name) like '{$keyword}'");
+                $query->orWhereRaw("UPPER(unit) like '{$keyword}'");
             });
         }
 
         if($request->has('getKeys')){
             $list = $list->pluck('name','id');
+            $list->put(0,'无');
         }else{
             $list = $list->paginate($this->per_page);
         }

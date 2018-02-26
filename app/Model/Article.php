@@ -69,10 +69,7 @@ class Article extends Model
         parent::boot();
 
         static::addGlobalScope('sort', function(Builder $builder) {
-			return $builder->orderBy('is_top','DESC')
-			               ->orderBy('is_hot','DESC')
-			               ->orderBy('sort','DESC')
-			               ->orderBy('updated_at','DESC')
+			return $builder->orderBy('created_at','DESC')
 			               ->orderBy('id','DESC');
         });
 

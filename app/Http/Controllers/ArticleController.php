@@ -16,6 +16,9 @@ class ArticleController extends BaseController
         $list = Article::whereRaw('1=1');
         if ($type = $request->get('type')){
             $list = $list->where('type', $type);
+        }else{
+            $list = $list->whereIn('type', [1,2,3,6]);
+
         }
         if ($lang = $request->get('lang')){
             $list = $list->where('lang', $lang);

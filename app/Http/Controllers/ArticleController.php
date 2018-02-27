@@ -77,7 +77,7 @@ class ArticleController extends BaseController
             return success($Article->toArray());
         } catch (\Exception $e) {
             DB::rollBack();
-            return fail();
+            return fail($e->getMessage());
         }
 
         return success();

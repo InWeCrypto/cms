@@ -63,7 +63,7 @@ class ArticleController extends BaseController
                 throw new \Exception(trans('custom.FAIL'), FAIL);
             }
 
-            if($Article->is_hot || $Article->is_scroll || $Article->category_id == 0){
+            if($Article->is_scroll || $Article->type == 1){
                 $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
             }
             if($Article->type == Article::TRADING){

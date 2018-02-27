@@ -62,6 +62,7 @@ class ArticleController extends BaseController
             $update_stat = CategoryUser::where('category_id', $Article->category_id)
                             ->where('is_favorite', 1)
                             ->update(['is_favorite_dot' => 1]);
+
             if(!$Article->save() || $update_stat === false){
                 throw new \Exception(trans('custom.FAIL'), FAIL);
             }
@@ -76,7 +77,7 @@ class ArticleController extends BaseController
             return success($Article->toArray());
         } catch (\Exception $e) {
             DB::rollBack();
-            return fail();
+            return fail($e->getMessage());
         }
 
         return success();

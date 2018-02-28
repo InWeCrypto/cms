@@ -40,6 +40,7 @@ class Article extends Model
         'is_scroll',
         'is_sole',
         'enable',
+        'source_url',
     ];
 
     protected $casts = [

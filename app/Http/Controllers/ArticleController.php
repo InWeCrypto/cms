@@ -12,7 +12,6 @@ class ArticleController extends BaseController
 {
     public function index(Request $request)
     {
-
         $list = Article::whereRaw('1=1');
         if ($type = $request->get('type')){
             $list = $list->where('type', $type);
@@ -20,12 +19,20 @@ class ArticleController extends BaseController
             $list = $list->whereIn('type', [1,2,3,6]);
 
         }
+        if ($category_id = $request->get('category_id')){
+            $list = $list->where('category_id', $category_id);
+        }
         if ($lang = $request->get('lang')){
             $list = $list->where('lang', $lang);
         }
         if ($keyword = $request->get('keyword')){
-            $keyword = '%' . strtoupper($keyword) . '%';
-            $list = $list->whereRaw("UPPER(title) like '{$keyword}'");
+            $list = $list->where(function($query) use ($keyword){
+                $k = '%' . strtoupper($keyword) . '%';
+                $query->whereRaw("UPPER(title) like '{$k}'");
+                if(is_numeric($keyword)){
+                    $query->orWhere('id', $keyword);
+                }
+            });
         }
         if (is_numeric($request->get('is_scroll'))){
             $list = $list->where('is_scroll', $request->get('is_scroll'));

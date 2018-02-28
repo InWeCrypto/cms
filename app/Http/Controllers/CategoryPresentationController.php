@@ -39,7 +39,7 @@ class CategoryPresentationController extends BaseController
     public function store(Request $request, $cat_id)
     {
         $validator = \Validator::make($request->all(), [
-            'title' => 'required',
+            // 'title' => 'required',
             'content' => 'required',
             'lang' => 'required',
         ]);
@@ -51,6 +51,9 @@ class CategoryPresentationController extends BaseController
 
         $info->fill($request->all());
         $info->category_id = $cat_id;
+        if(empty($info->title)){
+            $info->title = '项目介绍';
+        }
         $info->type = Article::DESC;
 
         return $info->save() ? success() : fail();

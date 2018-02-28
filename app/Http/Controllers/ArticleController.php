@@ -12,7 +12,6 @@ class ArticleController extends BaseController
 {
     public function index(Request $request)
     {
-
         $list = Article::whereRaw('1=1');
         if ($type = $request->get('type')){
             $list = $list->where('type', $type);

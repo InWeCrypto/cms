@@ -35,7 +35,7 @@ class EasemobApiService
         }
 
         $token  = $res['access_token'];
-        $expire = $res['expires_in'] / 2;
+        $expire = $res['expires_in'] / 1000;
 
         \Redis::set($this->token_cache_key, $token);
         \Redis::expire($this->token_cache_key, $expire);

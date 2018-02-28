@@ -24,8 +24,13 @@ class ArticleController extends BaseController
             $list = $list->where('lang', $lang);
         }
         if ($keyword = $request->get('keyword')){
-            $keyword = '%' . strtoupper($keyword) . '%';
-            $list = $list->whereRaw("UPPER(title) like '{$keyword}'");
+            $list = $list->where(function($query) use ($keyword){
+                $k = '%' . strtoupper($keyword) . '%';
+                $query->whereRaw("UPPER(title) like '{$k}'");
+                if(is_numeric($keyword)){
+                    $query->orWhere('id', $keyword);
+                }
+            });
         }
         if (is_numeric($request->get('is_scroll'))){
             $list = $list->where('is_scroll', $request->get('is_scroll'));

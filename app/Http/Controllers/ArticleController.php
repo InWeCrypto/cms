@@ -19,6 +19,9 @@ class ArticleController extends BaseController
             $list = $list->whereIn('type', [1,2,3,6]);
 
         }
+        if ($category_id = $request->get('category_id')){
+            $list = $list->where('category_id', $category_id);
+        }
         if ($lang = $request->get('lang')){
             $list = $list->where('lang', $lang);
         }

@@ -16,7 +16,7 @@ class ArticleController extends BaseController
         if ($type = $request->get('type')){
             $list = $list->where('type', $type);
         }else{
-            $list = $list->whereIn('type', [1,2,3,6]);
+            $list = $list->whereIn('type', [1,2,3,4,6]);
 
         }
         if ($category_id = $request->get('category_id')){

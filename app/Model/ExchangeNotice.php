@@ -23,6 +23,8 @@ class ExchangeNotice extends Model
         'is_top',
         'is_scroll',
         'enable',
+        'lang',
+        'desc',
     ];
 
     protected $hidden = [

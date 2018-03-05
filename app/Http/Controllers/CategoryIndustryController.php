@@ -33,7 +33,7 @@ class CategoryIndustryController extends BaseController
         DB::beginTransaction();
         try{
             if(CategoryIndustry::where('category_id', $cat_id)->where('lang', $request->get('lang'))->delete() === false){
-                throw new \Exception('创建项目媒体失败!');
+                throw new \Exception('创建项目标签失败!');
             }
 
             $info = new CategoryIndustry();
@@ -42,7 +42,7 @@ class CategoryIndustryController extends BaseController
             $info->category_id = $cat_id;
 
             if(! $info->save()){
-                throw new \Exception('创建项目媒体失败!');
+                throw new \Exception('创建项目标签失败!');
             }
             DB::commit();
         } catch (\Exception $e) {

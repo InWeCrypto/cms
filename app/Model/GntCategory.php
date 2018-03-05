@@ -17,7 +17,8 @@ class GntCategory extends Model
 		"name",
 		"gas",
 		"icon",
-		"address"
+		"address",
+        "decimals"
 	];
 
 

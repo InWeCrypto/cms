@@ -14,7 +14,8 @@ class ArticleController extends BaseController
     {
         $list = Article::whereRaw('1=1');
         if ($type = $request->get('type')){
-            if($types = json_decode($type, true)){
+            $types = json_decode($type, true);
+            if(is_array($types)){
                 $list = $list->whereIn('type', $types);
             }else{
                 $list = $list->where('type', $type);

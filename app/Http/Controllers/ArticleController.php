@@ -14,9 +14,13 @@ class ArticleController extends BaseController
     {
         $list = Article::whereRaw('1=1');
         if ($type = $request->get('type')){
-            $list = $list->where('type', $type);
+            if($types = json_decode($type, true)){
+                $list = $list->whereIn('type', $types);
+            }else{
+                $list = $list->where('type', $type);
+            }
         }else{
-            $list = $list->whereIn('type', [1,2,3,4,6]);
+            $list = $list->whereIn('type', [1,2,3,6]);
 
         }
         if ($category_id = $request->get('category_id')){

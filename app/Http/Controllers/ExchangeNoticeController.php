@@ -56,7 +56,7 @@ class ExchangeNoticeController extends BaseController
         $msg = $info->source_name . ':' . $info->content;
 
         if($info->save()){
-            $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $msg, $info->lang);
+            $this->sendGroupMsg(EasemobGroup::SYS_MSG_EXCHANGENOTICE, $msg, $info->lang);
             return success();
         }else {
             return fail();

@@ -59,7 +59,6 @@ class ArticleController extends BaseController
             'content' => 'required_unless:type,6,3',
             'url'=> 'required_if:type,6',
             'lang' => 'required',
-            'desc' => 'required_unless:type,1',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);

@@ -23,7 +23,7 @@ class ExNoticeApiService
         $url = base64_decode($url);
         $data = $Obj->lang($lang)->exNoticeName($source_name)->getData($url);
 
-        dd($data);
+        return $data;
     }
 
     private function getExNoticeName($ex, $lang)

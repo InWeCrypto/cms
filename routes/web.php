@@ -100,7 +100,8 @@ Route::group(['prefix' => 'v2'], function($router){
         // 代币列表
         $router->resource('gnt_category', 'GntCategoryController');
 
-        $router->any('test/{key}/{lang?}/{uri?}', function($key, $lang='zh', $uri = ''){
+        $router->any('test/{key}/{lang?}/{uri?}', function($key, $lang='zh'){
+            $uri = \Request::get('uri');
             dd(\ExNoticeApi::getData($key, $lang, $uri));
         });
     });

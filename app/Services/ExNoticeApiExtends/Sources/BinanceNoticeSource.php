@@ -79,7 +79,7 @@ class BinanceNoticeSource extends BaseSource
         $title = $Html->find('title', 0)->innertext ?: '';
         $content = $Html->find('div.article-body', 0)->innertext ?: '';
         $time = $Html->find('li.meta-data', 0)->children(0)->datetime;
-        $lang = $this->lang
+        $lang = $this->lang;
         $ex_notice_name = $this->ex_notice_name;
         return compact('title','content','time','uri','lang','ex_notice_name');
     }

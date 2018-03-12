@@ -16,7 +16,7 @@ class CreateExchangeNoticesTempTable extends Migration
         Schema::create('exchange_notices_temp', function (Blueprint $table) {
             $table->increments('id');
             $table->string('source')->comment('文章来源');
-            $table->string('uri')->comment('数据来源页');
+            $table->string('uri', 512)->comment('数据来源页');
             $table->string('uri_md5')->comment('数据来源页md5值');
             $table->dateTime('article_date')->comment('文章日期');
             $table->string('article_title')->nullable()->comment('文章标题');

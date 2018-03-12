@@ -34,7 +34,7 @@ class OkexCurrencySource extends BaseSource
         return $this;
     }
 
-    public function getData($uri = '')
+    public function getData($uri='')
     {
         $data = [];
         $uri = $uri ?: $this->uri;
@@ -44,9 +44,9 @@ class OkexCurrencySource extends BaseSource
             $data[] = $this->getArticleContent($li);
         }
 
-        $prev_page = $this->prev_page_uri;
-        $next_page = $this->next_page_uri;
-        return compact('data','page');
+        $prev_page = base64_encode($this->prev_page_uri);
+        $next_page = base64_encode($this->next_page_uri);
+        return compact('data','prev_page','next_page');
     }
 
     public function getArticleList($uri)
@@ -78,7 +78,7 @@ class OkexCurrencySource extends BaseSource
     {
         $uri_md5 = md5($uri);
         // 判断 数据库有没有该文章
-        if($article = $this->getArticleCache($uri_md5)){
+        if($article = $this->getArticleCache($uri_md5, $this->lang)){
             return $article;
         }
         $html_txt = $this->getHtml($uri);
@@ -92,19 +92,6 @@ class OkexCurrencySource extends BaseSource
         $lang = $this->lang;
         $source = $this->ex_notice_name;
         return $this->setArticleCache($uri, $uri_md5, $source, $lang, $article_title, $article_content, $article_date);
-    }
-
-    public function setArticleCache($uri, $uri_md5, $source, $lang, $article_title, $article_content, $article_date)
-    {
-        $data = compact('uri', 'uri_md5', 'source', 'lang', 'article_title', 'article_content', 'article_date');
-        $info = \App\Model\ExchangeNoticeTemp::create($data);
-        return $info->toArray();
-    }
-
-    public function getArticleCache($uri_md5)
-    {
-        $info = \App\Model\ExchangeNoticeTemp::where('uri_md5', $uri_md5)->first();
-        return $info ? $info->toArray() : null;
     }
 
 }

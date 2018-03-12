@@ -29,8 +29,6 @@ class HuobiSource extends BaseSource
         ];
         $this->lang = $val;
         $this->uri = $this->lang_uri[$val];
-        // 设置cookie
-        $this->cookie = 'lang='.$langs[$val];
         return $this;
     }
 
@@ -49,9 +47,9 @@ class HuobiSource extends BaseSource
             $data[] = $this->getArticleContent($li);
         }
 
-        $prev_page = $this->prev_page_uri;
-        $next_page = $this->next_page_uri;
-        return compact('data','page');
+        $prev_page = base64_encode($this->prev_page_uri);
+        $next_page = base64_encode($this->next_page_uri);
+        return compact('data','prev_page', 'next_page');
     }
 
     public function getArticleList($uri)
@@ -60,7 +58,17 @@ class HuobiSource extends BaseSource
         $html_txt = $this->getHtml($uri);
 
         $list = json_decode($html_txt, true);
-
+        $current_page = $list['data']['currentPage'];
+        if($current_page <= 1){
+            $this->prev_page_uri = '';
+        }else{
+            $this->prev_page_uri = $uri . '&page=' . ($current_page - 1);
+        }
+        if($current_page >= $list['data']['pages']){
+            $this->next_page_uri = '';
+        }else{
+            $this->next_page_uri = $uri . '&page=' . ($current_page + 1);
+        }
         $items = $list['data']['items'];
         foreach($items as $item){
             $return[] = $this->uri_prefix . $item['id'];
@@ -72,41 +80,20 @@ class HuobiSource extends BaseSource
     {
         $uri_md5 = md5($uri);
         // 判断 数据库有没有该文章
-        if($article = $this->getArticleCache($uri_md5)){
+        if($article = $this->getArticleCache($uri_md5, $this->lang)){
             return $article;
         }
-        $html_txt = $this->getHtml($uri);
-        $Html = str_get_html($html_txt);
 
-        $title = '';
-        $content = '';
-        $article_title = html_entity_decode($Html->find('div.dtl-title h2', 0)->innertext ?: '');
-        $article_content = $Html->find('div.dtl-content', 0)->innertext ?: '';
-        // 替换底部
-        $article_content = $this->getContent($article_content);
-        $article_date = $Html->find('div.new-dtl-info span', 0)->innertext ?: '';
+        $html_txt = $this->getHtml($uri);
+        $data = json_decode($html_txt, true);
+
+        $article_title = $data['data']['title'];
+        $article_content = $data['data']['content'];
+        $article_date = date('Y-m-d H:i:s',$data['data']['created']);
         $lang = $this->lang;
         $source = $this->ex_notice_name;
         return $this->setArticleCache($uri, $uri_md5, $source, $lang, $article_title, $article_content, $article_date);
     }
 
-    public function setArticleCache($uri, $uri_md5, $source, $lang, $article_title, $article_content, $article_date)
-    {
-        $data = compact('uri', 'uri_md5', 'source', 'lang', 'article_title', 'article_content', 'article_date');
-        $info = \App\Model\ExchangeNoticeTemp::create($data);
-        return $info->toArray();
-    }
-
-    public function getArticleCache($uri_md5)
-    {
-        $info = \App\Model\ExchangeNoticeTemp::where('uri_md5', $uri_md5)->first();
-        return $info ? $info->toArray() : null;
-    }
-
-    public function getContent($txt)
-    {
-        $pattern = '/<ul class\="prenext">.*<\/div>/is';
-        return preg_replace($pattern, '', $txt);
-    }
 
 }

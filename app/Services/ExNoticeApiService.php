@@ -20,6 +20,7 @@ class ExNoticeApiService
         $Obj = new $Source();
 
         // $Obj
+        $url = $url ?: base64_decode($url);
         $data = $Obj->lang($lang)->exNoticeName($source_name)->getData($url);
 
         dd($data);

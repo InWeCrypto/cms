@@ -44,8 +44,8 @@ class BinanceCurrencySource extends BaseSource
             $data[] = $this->getArticleContent($li);
         }
 
-        $prev_page = $this->prev_page_uri;
-        $next_page = $this->next_page_uri;
+        $prev_page = base64_encode($this->prev_page_uri);
+        $next_page = base64_encode($this->next_page_uri);
         return compact('data','prev_page','next_page');
     }
 

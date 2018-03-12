@@ -17,5 +17,6 @@ return array(
     '841780ea2e1d6545ea3a253239d59c05' => $vendorDir . '/qiniu/php-sdk/src/Qiniu/functions.php',
     'f0906e6318348a765ffb6eb24e0d0938' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
+    '31a7cf013d73a96bec3a5977a94ebccd' => $vendorDir . '/shark/simple_html_dom/simple_html_dom.php',
     '3cfe2d148ba93a117e03717087e12571' => $baseDir . '/app/Extends/loader.php',
 );

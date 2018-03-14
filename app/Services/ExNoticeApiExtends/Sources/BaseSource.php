@@ -46,8 +46,13 @@ class BaseSource
             curl_setopt($ch, CURLOPT_COOKIE, $this->cookie);
         }
         // if($this->proxy){
-        //     curl_setopt ($ch, CURLOPT_PROXY, '127.0.0.1');
-        //     curl_setopt ($ch, CURLOPT_PROXYPORT, '1080');
+            curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 0);
+            curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5_HOSTNAME);
+
+            curl_setopt ($ch, CURLOPT_PROXY, '47.52.154.25');
+            curl_setopt ($ch, CURLOPT_PROXYPORT, '1080');
+
+            // 36.66.213.167:1080
         //
         // }
 
@@ -64,11 +69,17 @@ class BaseSource
         return $res;
     }
 
-    private function getTestHtml()
+    public function setArticleCache($uri, $uri_md5, $source, $lang, $article_title, $article_content, $article_date)
     {
-        return <<<EOT
+        $data = compact('uri', 'uri_md5', 'source', 'lang', 'article_title', 'article_content', 'article_date');
+        $info = \App\Model\ExchangeNoticeTemp::create($data);
+        return $info->toArray();
+    }
 
-EOT;
+    public function getArticleCache($uri_md5, $lang = 'zh')
+    {
+        $info = \App\Model\ExchangeNoticeTemp::where('uri_md5', $uri_md5)->where('lang', $lang)->first();
+        return $info ? $info->toArray() : null;
     }
 
 }

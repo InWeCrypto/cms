@@ -33,4 +33,9 @@ class ExNoticeApiService
         return $return;
     }
 
+    public function getExNotices()
+    {
+        return ExNoticeApiDataSource::getSourceList();
+    }
+
 }

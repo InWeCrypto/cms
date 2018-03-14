@@ -67,6 +67,13 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->resource('ads', 'AdsController');
         // 交易所公告
         $router->resource('ex_notice', 'ExchangeNoticeController');
+        // 交易所爬虫
+        $router->group(['prefix' => 'ex_notice_spider'], function ($router){
+            $router->get('{id}', 'ExchangeNoticeSpiderController@show')->where('id','[0-9]+');
+            $router->get('keys', 'ExchangeNoticeSpiderController@keys');
+            $router->post('{id}/online', 'ExchangeNoticeSpiderController@stroe');
+            $router->post('', 'ExchangeNoticeSpiderController@index');
+        });
         // 搜索关键字
         $router->resource('serach_keyword', 'SerachKeywordController');
         // 菜单
@@ -99,10 +106,5 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->resource('wallet_category', 'WalletCategoryController');
         // 代币列表
         $router->resource('gnt_category', 'GntCategoryController');
-
-        $router->any('test/{key}/{lang?}/{uri?}', function($key, $lang='zh'){
-            $uri = \Request::get('uri');
-            dd(\ExNoticeApi::getData($key, $lang, $uri));
-        });
     });
 });

@@ -19,7 +19,6 @@ class BaseSource
     // 请求数据cookie
     protected $cookie = '';
     // 使用代理访问
-    // protected $proxy = '127.0.0.1:1080';
 
     public function getHtml($uri)
     {
@@ -45,16 +44,14 @@ class BaseSource
         if($this->cookie){
             curl_setopt($ch, CURLOPT_COOKIE, $this->cookie);
         }
-        // if($this->proxy){
+
+        if(env('CURL_PROXY_DEFAULT', false)){
             curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 0);
             curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5_HOSTNAME);
 
-            curl_setopt ($ch, CURLOPT_PROXY, '47.52.154.25');
-            curl_setopt ($ch, CURLOPT_PROXYPORT, '1080');
-
-            // 36.66.213.167:1080
-        //
-        // }
+            curl_setopt($ch, CURLOPT_PROXY, env('CURL_PROXYADDR'));
+            curl_setopt($ch, CURLOPT_PROXYPORT, env('CURL_PROXYPORT'));
+        }
 
         $res = curl_exec($ch);
 

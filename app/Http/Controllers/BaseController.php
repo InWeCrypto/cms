@@ -52,6 +52,7 @@ class BaseController extends Controller
     // 发送组消息
     public function sendGroupMsg($type, $txt, $lang = 'zh', $from = 'admin')
     {
+        $txt = strip_tags($txt);
         $groups = $this->msgGroups($type, $lang);
         return \EasemobMsg::case($type)
                         ->from('admin')
@@ -62,6 +63,7 @@ class BaseController extends Controller
     // 发送用户消息
     public function sendUserMsg($type, $txt, $users)
     {
+        $txt = strip_tags($txt);
         $from = \App\Model\EasemobGroup::$types[$type];
         return \EasemobMsg::case($type)
                         ->from($from)

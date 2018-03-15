@@ -78,11 +78,10 @@ class ArticleController extends BaseController
                 throw new \Exception(trans('custom.FAIL'), FAIL);
             }
 
-            if($Article->is_scroll || $Article->type == 1 || $Article->category_id == 0){
-                $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
-            }
             if($Article->type == Article::TRADING || $Article->type == Article::TRADING_VIDEO){
                 $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
+            }else{
+                $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
             }
             DB::commit();
             return success($Article->toArray());

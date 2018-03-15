@@ -567,7 +567,7 @@ if (!function_exists('sendCurl')) {
 	 * @return mixed
 	 * @throws Exception
 	 */
-	function sendCurl($url, $body = [], $type = "GET" , $header = [])
+	function sendCurl($url, $body = [], $type = "GET" , $header = [], $is_proxy = false)
 	{
 		//1.创建一个curl资源
 		$ch = curl_init();
@@ -621,6 +621,14 @@ if (!function_exists('sendCurl')) {
 
 		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0)'); // 模拟用户使用的浏览器
 		//5)
+
+        if($is_proxy){
+            curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 0);
+            curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5_HOSTNAME);
+
+            curl_setopt($ch, CURLOPT_PROXY, env('CURL_PROXYADDR'));
+            curl_setopt($ch, CURLOPT_PROXYPORT, env('CURL_PROXYPORT'));
+        }
 
 
 		//3.抓取URL并把它传递给浏览器

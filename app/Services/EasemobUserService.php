@@ -24,7 +24,6 @@ class EasemobUserService extends EasemobApiService
             ];
             $uri = $this->uri . '/' . $user .'/password';
             $res = $this->sendCurl($uri, $param, 'PUT');
-            dd($res);
         } catch () {
             return false;
         }

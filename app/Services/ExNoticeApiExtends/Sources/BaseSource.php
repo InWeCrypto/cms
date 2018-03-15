@@ -45,13 +45,13 @@ class BaseSource
             curl_setopt($ch, CURLOPT_COOKIE, $this->cookie);
         }
 
-        if(env('CURL_PROXY_DEFAULT', false)){
+        // if(env('CURL_PROXY_DEFAULT', false)){
             curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 0);
             curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5_HOSTNAME);
 
             curl_setopt($ch, CURLOPT_PROXY, env('CURL_PROXYADDR'));
             curl_setopt($ch, CURLOPT_PROXYPORT, env('CURL_PROXYPORT'));
-        }
+        // }
 
         $res = curl_exec($ch);
 

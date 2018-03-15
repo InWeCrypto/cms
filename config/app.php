@@ -234,6 +234,7 @@ return [
 
         'MailVerify' => App\Facades\MailVerify::class,
         'IcoDataApi' => App\Facades\IcoDataApi::class,
+        'ExNoticeApi' => App\Facades\ExNoticeApi::class,
         'SmsVerify' => App\Facades\SmsVerify::class,
 
 

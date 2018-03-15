@@ -4482,5 +4482,50 @@
             "flc",
             "阿里短信"
         ]
+    },
+    {
+        "name": "shark/simple_html_dom",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/samacs/simple_html_dom.git",
+            "reference": "830223ef1faa89bf8bbd8b231bd228993fd4bd3b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/samacs/simple_html_dom/830223ef1faa89bf8bbd8b231bd228993fd4bd3b.zip",
+            "reference": "830223ef1faa89bf8bbd8b231bd228993fd4bd3b",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.2.4"
+        },
+        "time": "2017-11-09T21:14:14+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "simple_html_dom.php"
+            ],
+            "files": [
+                "simple_html_dom.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "authors": [
+            {
+                "name": "S.C. Chen",
+                "email": "me578022@gmail.com",
+                "homepage": "http://simplehtmldom.sourceforge.net/"
+            }
+        ],
+        "description": "Simple HTML DOM package.",
+        "homepage": "http://simplehtmldom.sourceforge.net/",
+        "keywords": [
+            "dom",
+            "php dom"
+        ]
     }
 ]

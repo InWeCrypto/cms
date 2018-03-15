@@ -14,9 +14,14 @@ class ArticleController extends BaseController
     {
         $list = Article::whereRaw('1=1');
         if ($type = $request->get('type')){
-            $list = $list->where('type', $type);
+            $types = json_decode($type, true);
+            if(is_array($types)){
+                $list = $list->whereIn('type', $types);
+            }else{
+                $list = $list->where('type', $type);
+            }
         }else{
-            $list = $list->whereIn('type', [1,2,3,4,6]);
+            $list = $list->whereIn('type', [1,2,3,6]);
 
         }
         if ($category_id = $request->get('category_id')){
@@ -54,7 +59,6 @@ class ArticleController extends BaseController
             'content' => 'required_unless:type,6,3',
             'url'=> 'required_if:type,6',
             'lang' => 'required',
-            'desc' => 'required',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);
@@ -74,10 +78,10 @@ class ArticleController extends BaseController
                 throw new \Exception(trans('custom.FAIL'), FAIL);
             }
 
-            if($Article->is_scroll || $Article->type == 1){
+            if($Article->is_scroll || $Article->type == 1 || $Article->category_id == 0){
                 $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
             }
-            if($Article->type == Article::TRADING){
+            if($Article->type == Article::TRADING || $Article->type == Article::TRADING_VIDEO){
                 $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
             }
             DB::commit();

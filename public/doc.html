@@ -720,7 +720,7 @@ code.language-yaml {
 <li><strong>返回数据:</strong><pre class="language-">[{
     &quot;id&quot;: 64,
     &quot;category_id&quot;: 4,   // &#x6587;&#x7AE0;&#x6240;&#x5C5E;&#x9879;&#x76EE;
-    &quot;type&quot;: 1,  // &#x6587;&#x7AE0;&#x7C7B;&#x578B; 1 &#x6587;&#x672C;,2&#x56FE;&#x6587;,3&#x89C6;&#x9891;,4,trading,6,&#x6587;&#x4EF6;
+    &quot;type&quot;: 1,  // &#x6587;&#x7AE0;&#x7C7B;&#x578B; 1 &#x6587;&#x672C;,2&#x56FE;&#x6587;,3&#x89C6;&#x9891;,4,trading&#x56FE;&#x6587;,6,&#x6587;&#x4EF6;,7trading&#x89C6;&#x9891;
     &quot;title&quot;: &quot;&#x745E;&#x8BAF;&#x94F6;&#x884C;&#x63A8;&#x51FA;&#x6BD4;&#x7279;&#x5E01;&#x4EA4;&#x6613;&#x6240;&#x4EA4;&#x6613;&#x4EA7;&#x54C1;&quot;, // &#x6587;&#x7AE0;&#x6807;&#x9898;
     &quot;author&quot;: null, // &#x6587;&#x7AE0;&#x4F5C;&#x8005;
     &quot;img&quot;: null,    // &#x6587;&#x7AE0;&#x5C01;&#x9762;
@@ -874,6 +874,8 @@ code.language-yaml {
 </ul>
 <h2 class="mume-header" id="5-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5. 交易所公告</h2>
 
+<h3 class="mume-header" id="51-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5.1 交易所公告</h3>
+
 <ul>
 <li><strong>请求地址:</strong> /ex_notice</li>
 <li><strong>请求参数:</strong> [get, post, put, delete]</li>
@@ -894,6 +896,85 @@ code.language-yaml {
 }
 </pre>
 </li>
+</ul>
+<h3 class="mume-header" id="52-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A%E7%88%AC%E8%99%AB">5.2 交易所公告爬虫</h3>
+
+<h4 class="mume-header" id="521-%E8%8E%B7%E5%8F%96%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A%E7%88%AC%E8%99%AB%E5%88%97%E8%A1%A8">5.2.1 获取交易所公告爬虫列表</h4>
+
+<ul>
+<li><strong>请求地址:</strong> /ex_notice_spider/keys</li>
+<li><strong>请求参数:</strong> [get]</li>
+<li><strong>返回数据:</strong><pre class="language-">{
+    &quot;list&quot;: {
+        &quot;binance_115000202591&quot;: &quot;&#x5E01;&#x5B89; - &#x6700;&#x65B0;&#x516C;&#x544A;&quot;,
+        &quot;binance_115000106672&quot;: &quot;&#x5E01;&#x5B89; - &#x65B0;&#x5E01;&#x4E0A;&#x7EBF;&quot;,
+        &quot;gate_io&quot;: &quot;Gate.io&quot;,
+        &quot;kucoin&quot;: &quot;KuCoin&quot;,
+        &quot;okex_360000030652&quot;: &quot;OKEX - &#x6700;&#x65B0;&#x516C;&#x544A;&quot;,
+        &quot;okex_3115000447632&quot;: &quot;OKEX - &#x65B0;&#x5E01;&#x4E0A;&#x7EBF;&quot;,
+        &quot;huobi&quot;: &quot;&#x706B;&#x5E01;&quot;
+    }
+}
+</pre>
+</li>
+</ul>
+<h4 class="mume-header" id="522-%E7%88%AC%E5%8F%96%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5.2.2 爬取交易所公告</h4>
+
+<ul>
+<li><strong>请求地址:</strong> /ex_notice_spider</li>
+<li><strong>请求参数:</strong> [post]<pre class="language-">{
+    &quot;key&quot; : &quot;&quot;,
+    &quot;lang&quot;: &quot;zh&quot;,
+    &quot;uri&quot;: &quot;&quot; // &#x4E0B;&#x4E00;&#x9875;&#x6216;&#x4E0A;&#x4E00;&#x9875;&#x94FE;&#x63A5;
+}
+</pre>
+</li>
+<li><strong>返回数据:</strong><pre class="language-">{
+    &quot;data&quot;: {
+        &quot;data&quot;: [
+            {
+                &quot;id&quot;: 59,
+                &quot;source&quot;: &quot;&#x5E01;&#x5B89;&quot;, // &#x4EA4;&#x6613;&#x6240;&#x540D;&#x79F0;
+                &quot;uri&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x6765;&#x6E90;&#x9875;
+                &quot;article_date&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x53D1;&#x5E03;&#x65E5;&#x5668;
+                &quot;article_title&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x6807;&#x9898;
+                &quot;created_at&quot;: &quot;2018-03-08 09:14:45&quot;, // &#x722C;&#x866B;&#x65F6;&#x95F4;
+                &quot;lang&quot;: &quot;zh&quot; // &#x8BED;&#x8A00;
+            }
+        ],
+        &quot;prev_page&quot;: &quot;&quot;, // &#x4E0A;&#x4E00;&#x9875;, &#x7A7A; &#x5219;&#x6CA1;&#x6709;&#x4E0A;&#x4E00;&#x9875;
+        &quot;next_page&quot;: &quot;&quot;, // &#x4E0B;&#x4E00;&#x9875;, &#x7A7A; &#x5219;&#x6CA1;&#x6709;&#x4E0B;&#x4E00;&#x9875;
+    }
+}
+</pre>
+</li>
+</ul>
+<h4 class="mume-header" id="523-%E6%9F%A5%E7%9C%8B%E7%88%AC%E8%99%AB%E8%AF%A6%E6%83%85%E6%95%B0%E6%8D%AE">5.2.3 查看爬虫详情数据</h4>
+
+<ul>
+<li><strong>请求地址:</strong> /ex_notice_spider/{id}</li>
+<li><strong>请求参数:</strong> [get]</li>
+<li><strong>返回数据:</strong><pre class="language-">{
+    &quot;id&quot;: 59,
+    &quot;source&quot;: &quot;&#x5E01;&#x5B89;&quot;, // &#x4EA4;&#x6613;&#x6240;&#x540D;&#x79F0;
+    &quot;uri&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x6765;&#x6E90;&#x9875;
+    &quot;uri_md5&quot;: &quot;&quot;,
+    &quot;article_date&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x53D1;&#x5E03;&#x65E5;&#x5668;
+    &quot;article_title&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x6807;&#x9898;
+    &quot;article_content&quot;: &quot;&quot;, // &#x6587;&#x7AE0;&#x5185;&#x5BB9;
+    &quot;created_at&quot;: &quot;2018-03-08 09:14:45&quot;, // &#x722C;&#x866B;&#x65F6;&#x95F4;
+    &quot;updated_at&quot;: &quot;2018-03-08 09:14:45&quot;,
+    &quot;lang&quot;: &quot;zh&quot; // &#x8BED;&#x8A00;
+}
+</pre>
+</li>
+</ul>
+<h4 class="mume-header" id="524-%E5%AF%BC%E5%87%BA%E7%88%AC%E8%99%AB%E6%95%B0%E6%8D%AE%E5%88%B0%E6%AD%A3%E5%BC%8F%E6%95%B0%E6%8D%AE">5.2.4 导出爬虫数据到正式数据</h4>
+
+<ul>
+<li><strong>请求地址:</strong> /ex_notice_spider/{id}/online</li>
+<li><strong>请求参数:</strong> [post]</li>
+<li><strong>返回数据:</strong></li>
 </ul>
 <h2 class="mume-header" id="6-%E6%90%9C%E7%B4%A2%E6%8E%A8%E8%8D%90%E5%85%B3%E9%94%AE%E5%AD%97">6. 搜索推荐关键字</h2>
 
@@ -1084,7 +1165,19 @@ code.language-yaml {
 </ul>
 </li>
 <li><a href="#4-%E5%B9%BF%E5%91%8A%E7%AE%A1%E7%90%86">4. 广告管理</a></li>
-<li><a href="#5-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5. 交易所公告</a></li>
+<li><a href="#5-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5. 交易所公告</a>
+<ul>
+<li><a href="#51-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5.1 交易所公告</a></li>
+<li><a href="#52-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A%E7%88%AC%E8%99%AB">5.2 交易所公告爬虫</a>
+<ul>
+<li><a href="#521-%E8%8E%B7%E5%8F%96%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A%E7%88%AC%E8%99%AB%E5%88%97%E8%A1%A8">5.2.1 获取交易所公告爬虫列表</a></li>
+<li><a href="#522-%E7%88%AC%E5%8F%96%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5.2.2 爬取交易所公告</a></li>
+<li><a href="#523-%E6%9F%A5%E7%9C%8B%E7%88%AC%E8%99%AB%E8%AF%A6%E6%83%85%E6%95%B0%E6%8D%AE">5.2.3 查看爬虫详情数据</a></li>
+<li><a href="#524-%E5%AF%BC%E5%87%BA%E7%88%AC%E8%99%AB%E6%95%B0%E6%8D%AE%E5%88%B0%E6%AD%A3%E5%BC%8F%E6%95%B0%E6%8D%AE">5.2.4 导出爬虫数据到正式数据</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#6-%E6%90%9C%E7%B4%A2%E6%8E%A8%E8%8D%90%E5%85%B3%E9%94%AE%E5%AD%97">6. 搜索推荐关键字</a></li>
 <li><a href="#7-%E8%8F%9C%E5%8D%95%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86">7. 菜单权限管理</a>
 <ul>

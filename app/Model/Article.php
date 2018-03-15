@@ -54,14 +54,23 @@ class Article extends Model
 	const TXT     = 1; // 文本
 	const IMG     = 2; // 图文
 	const VIDEO   = 3; // 视频
-    const TRADING = 4; // 交易
-	const DESC    = 5; // 项目介绍
+    const TRADING = 4; // 交易-图文
+    const DESC    = 5; // 项目介绍
+	const FILE    = 6; // 项目介绍
+    const TRADING_VIDEO = 7; // 交易-视频
 
     public static $types = [
         self::TXT => '文本',
         self::IMG => '图文',
         self::VIDEO => '视频',
+        self::FILE => '文件',
         self::TRADING => '交易观点',
+        self::TRADING_VIDEO => '交易观点-视频',
+    ];
+
+    public static $trading = [
+        self::TRADING => '交易观点',
+        self::TRADING_VIDEO => '交易观点-视频',
     ];
 
 	protected static function boot()

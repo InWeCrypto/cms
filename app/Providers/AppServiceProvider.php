@@ -45,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
             return new \App\Services\IcoDataApiService();
         });
 
+        $this->app->singleton('ex_notice_api', function() {
+            return new \App\Services\ExNoticeApiService();
+        });
+
 
     }
 

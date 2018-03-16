@@ -106,5 +106,7 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->resource('wallet_category', 'WalletCategoryController');
         // 代币列表
         $router->resource('gnt_category', 'GntCategoryController');
+        // 意见反馈
+        $router->resource('feedbackc', 'FeedbackController');
     });
 });

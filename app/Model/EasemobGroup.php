@@ -28,6 +28,7 @@ class EasemobGroup extends Model
     const SYS_MSG_CANDYBOW = 4;
     const SYS_MSG_ORDER = 5;
     const SYS_MSG_CHANGE_PASSWORD = 6;
+    const SYS_MSG_VIEWPOINT = 7; // 观点资讯
 
     // 用户组名
     public static $types = [
@@ -37,6 +38,7 @@ class EasemobGroup extends Model
         self::SYS_MSG_EXCHANGENOTICE => 'SYS_MSG_EXCHANGENOTICE',
         self::SYS_MSG_CANDYBOW => 'SYS_MSG_CANDYBOW',
         self::SYS_MSG_ORDER => 'SYS_MSG_ORDER',
+        self::SYS_MSG_VIEWPOINT => 'SYS_MSG_VIEWPOINT',
     ];
 
     public static $user_types = [ // 一对一消息
@@ -50,6 +52,7 @@ class EasemobGroup extends Model
         self::SYS_MSG_TRADING,
         self::SYS_MSG_EXCHANGENOTICE,
         self::SYS_MSG_CANDYBOW,
+        self::SYS_MSG_VIEWPOINT,
     ];
 
 

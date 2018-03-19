@@ -57,7 +57,12 @@ class Article extends Model
     const TRADING = 4; // 交易-图文
     const DESC    = 5; // 项目介绍
 	const FILE    = 6; // 项目介绍
-    const TRADING_VIDEO = 7; // 交易-视频
+    const TRADING_VIDEO = 7; // 交易-视8
+    const HELP    = 8; // 帮助中心
+    const VIEWPOINT_TXT = 9;
+    const VIEWPOINT_IMG = 10;
+    const VIEWPOINT_VIDEO = 11;
+    const VIEWPOINT_FILE = 12;
 
     public static $types = [
         self::TXT => '文本',
@@ -66,11 +71,22 @@ class Article extends Model
         self::FILE => '文件',
         self::TRADING => '交易观点',
         self::TRADING_VIDEO => '交易观点-视频',
+        self::VIEWPOINT_TXT => '观点-文本',
+        self::VIEWPOINT_IMG => '观点-图文',
+        self::VIEWPOINT_VIDEO => '观点-视频',
+        self::VIEWPOINT_FILE => '观点-文件',
     ];
 
     public static $trading = [
         self::TRADING => '交易观点',
         self::TRADING_VIDEO => '交易观点-视频',
+    ];
+
+    public static $viewpoint = [
+        self::VIEWPOINT_TXT => '观点-文本',
+        self::VIEWPOINT_IMG => '观点-图文',
+        self::VIEWPOINT_VIDEO => '观点-视频',
+        self::VIEWPOINT_FILE => '观点-文件',
     ];
 
 	protected static function boot()

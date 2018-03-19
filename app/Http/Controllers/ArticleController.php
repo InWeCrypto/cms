@@ -56,7 +56,7 @@ class ArticleController extends BaseController
             'type' => 'required|numeric',
             'category_id' => 'required|numeric',
             'title' => 'required',
-            'content' => 'required_unless:type,6,3',
+            'content' => 'required_unless:type,6,3,12',
             'url'=> 'required_if:type,6',
             'lang' => 'required',
         ]);
@@ -77,11 +77,27 @@ class ArticleController extends BaseController
             if(!$Article->save() || $update_stat === false){
                 throw new \Exception(trans('custom.FAIL'), FAIL);
             }
-
-            if($Article->type == Article::TRADING || $Article->type == Article::TRADING_VIDEO){
-                $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
-            }else{
-                $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
+            if($request->get('send_app_message')){
+                if(in_array($Article->type ,[
+                        Article::TRADING,
+                        Article::TRADING_VIDEO
+                    ])){
+                        $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
+                }else if(in_array($Article->type, [
+                        Article::TXT,
+                        Article::IMG,
+                        Article::VIDEO,
+                        Article::FILE,
+                    ])){
+                    $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
+                }else if(in_array($Article->type, [
+                        Article::VIEWPOINT_TXT,
+                        Article::VIEWPOINT_IMG,
+                        Article::VIEWPOINT_VIDEO,
+                        Article::VIEWPOINT_FILE,
+                    ])){
+                    $this->sendGroupMsg(EasemobGroup::SYS_MSG_VIEWPOINT, $Article->title, $Article->lang);
+                }
             }
             DB::commit();
             return success($Article->toArray());

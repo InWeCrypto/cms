@@ -485,13 +485,14 @@
 
     [post,put]
     当文章类型type=6的时候,url为文件上传后的链接,必填,content可以为空,url请用/upload/file?get_oss_policy
+    send_app_message=true的时候会先APP推送消息
     ```
 - **返回数据:**
     ```
     [{
         "id": 64,
         "category_id": 4,   // 文章所属项目
-        "type": 1,  // 文章类型 1 文本,2图文,3视频,4,trading图文,6,文件,7trading视频
+        "type": 1,  // 文章类型 1 文本,2图文,3视频,4,trading图文,6,文件,7trading视频,8帮助中心,9观点资讯-文本,10观点资讯-图文,11观点资讯-视频,12观点资讯-文件
         "title": "瑞讯银行推出比特币交易所交易产品", // 文章标题
         "author": null, // 文章作者
         "img": null,    // 文章封面

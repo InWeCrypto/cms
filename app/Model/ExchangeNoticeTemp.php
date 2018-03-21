@@ -21,6 +21,7 @@ class ExchangeNoticeTemp extends Model
         'lang',
         'article_title',
         'article_content',
-        'article_date'
+        'article_date',
+        'article_id'
     ];
 }

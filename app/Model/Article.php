@@ -66,6 +66,7 @@ class Article extends Model
     const VIEWPOINT_IMG = 13;
     const VIEWPOINT_VIDEO = 14;
     const VIEWPOINT_FILE = 15;
+    const EXCHANGE_NOTICE = 16;
 
     public static $types = [
         self::TXT => '文本',
@@ -82,6 +83,7 @@ class Article extends Model
         self::HELP_IMG   => '帮助中心-图文', // 帮助中心
         self::HELP_VIDEO => '帮助中心-视频', // 帮助中心
         self::HELP_FILE  => '帮助中心-文件', // 帮助中心
+        self::EXCHANGE_NOTICE  => '交易所公告', // 帮助中心
     ];
 
     public static $trading = [

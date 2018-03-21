@@ -25,11 +25,11 @@ class CategoryStructureController extends BaseController
         $validator = \Validator::make($request->all(), [
             'params' => 'required|array',
             // 'params.*.percentage' => 'required|numeric',
-            'params.*.color_value' => 'required',
-            'params.*.color_name' => 'required',
-            'params.*.desc' => 'required',
-            'params.*.lang' => 'required',
-            'params.*.enable' => 'boolean',
+            // 'params.*.color_value' => 'required',
+            // 'params.*.color_name' => 'required',
+            // 'params.*.desc' => 'required',
+            // 'params.*.lang' => 'required',
+            // 'params.*.enable' => 'boolean',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);

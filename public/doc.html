@@ -721,7 +721,11 @@ send_app_message=true&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5148;APP&#x63A8;&#x9001;
 <li><strong>返回数据:</strong><pre class="language-">[{
     &quot;id&quot;: 64,
     &quot;category_id&quot;: 4,   // &#x6587;&#x7AE0;&#x6240;&#x5C5E;&#x9879;&#x76EE;
-    &quot;type&quot;: 1,  // &#x6587;&#x7AE0;&#x7C7B;&#x578B; 1 &#x6587;&#x672C;,2&#x56FE;&#x6587;,3&#x89C6;&#x9891;,4,trading&#x56FE;&#x6587;,6,&#x6587;&#x4EF6;,7trading&#x89C6;&#x9891;,8&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x6587;&#x672C;,9&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x56FE;&#x6587;,10&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x89C6;&#x9891;,11&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x6587;&#x4EF6;,12&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x6587;&#x672C;,13&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x56FE;&#x6587;,14&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x89C6;&#x9891;,15&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x6587;&#x4EF6;
+    &quot;type&quot;: 1,  // &#x6587;&#x7AE0;&#x7C7B;&#x578B;: 1 &#x6587;&#x672C;,2&#x56FE;&#x6587;,3&#x89C6;&#x9891;,
+                            4,trading&#x56FE;&#x6587;,6,&#x6587;&#x4EF6;,7trading&#x89C6;&#x9891;,
+                            8&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x6587;&#x672C;,9&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x56FE;&#x6587;,10&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x89C6;&#x9891;,11&#x5E2E;&#x52A9;&#x4E2D;&#x5FC3;-&#x6587;&#x4EF6;,
+                            12&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x6587;&#x672C;,13&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x56FE;&#x6587;,14&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x89C6;&#x9891;,15&#x89C2;&#x70B9;&#x8D44;&#x8BAF;-&#x6587;&#x4EF6;
+                            16&#x4EA4;&#x6613;&#x6240;&#x516C;&#x544A;
     &quot;title&quot;: &quot;&#x745E;&#x8BAF;&#x94F6;&#x884C;&#x63A8;&#x51FA;&#x6BD4;&#x7279;&#x5E01;&#x4EA4;&#x6613;&#x6240;&#x4EA4;&#x6613;&#x4EA7;&#x54C1;&quot;, // &#x6587;&#x7AE0;&#x6807;&#x9898;
     &quot;author&quot;: null, // &#x6587;&#x7AE0;&#x4F5C;&#x8005;
     &quot;img&quot;: null,    // &#x6587;&#x7AE0;&#x5C01;&#x9762;
@@ -878,25 +882,9 @@ send_app_message=true&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5148;APP&#x63A8;&#x9001;
 <h3 class="mume-header" id="51-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A">5.1 交易所公告</h3>
 
 <ul>
-<li><strong>请求地址:</strong> /ex_notice</li>
-<li><strong>请求参数:</strong> [get, post, put, delete]</li>
-<li><strong>返回数据:</strong><pre class="language-">{
-    &quot;id&quot;: 135,
-    &quot;source_name&quot;: &quot;gate.io&quot;,   // &#x516C;&#x544A;&#x6765;&#x6E90;&#x540D;&#x79F0;
-    &quot;source_url&quot;: &quot;https://gate.io/article/16352&quot;, // &#x516C;&#x544A;&#x6765;&#x6E90;&#x94FE;&#x63A5;
-    &quot;url&quot;: null,    // &#x516C;&#x544A;&#x8DF3;&#x8F6C;&#x94FE;&#x63A5;
-    &quot;lang&quot;: &quot;zh&quot;,   // &#x516C;&#x544A;&#x8BED;&#x8A00;
-    &quot;is_hot&quot;: false,
-    &quot;is_top&quot;: false,
-    &quot;is_scroll&quot;: false,
-    &quot;enable&quot;: true,
-    &quot;created_at&quot;: &quot;2018-01-16 17:47:00&quot;,
-    &quot;updated_at&quot;: &quot;2018-01-16 17:47:00&quot;,
-    &quot;desc&quot;: &quot;gate.io&#x4E0A;&#x7EBF;Zilliqa(ZIL) &#x548C; RuffChain(RUFF)&#x4EA4;&#x6613;&quot;, // &#x516C;&#x544A;&#x6807;&#x9898;
-    &quot;content&quot;: &quot;&quot; // &#x516C;&#x544A;&#x5185;&#x5BB9;
-}
-</pre>
-</li>
+<li><strong>请求地址:</strong> /article?type=16 // 调用文章接口</li>
+<li><strong>请求参数:</strong> [get]</li>
+<li><strong>返回数据:</strong></li>
 </ul>
 <h3 class="mume-header" id="52-%E4%BA%A4%E6%98%93%E6%89%80%E5%85%AC%E5%91%8A%E7%88%AC%E8%99%AB">5.2 交易所公告爬虫</h3>
 

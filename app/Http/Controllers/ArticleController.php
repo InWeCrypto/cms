@@ -88,7 +88,7 @@ class ArticleController extends BaseController
                         Article::IMG,
                         Article::VIDEO,
                         Article::FILE,
-                    ])){
+                    ]) && $Article->category_id == 0){
                     $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
                 }else if(in_array($Article->type, [
                         Article::VIEWPOINT_TXT,

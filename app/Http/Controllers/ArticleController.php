@@ -118,6 +118,10 @@ class ArticleController extends BaseController
     public function destroy(Request $request, $cid)
     {
         $Article = Article::find($cid);
+        // 如果是交易所公告类型,修改爬虫发布状态
+        if($Article->type == Article::EXCHANGE_NOTICE){
+            \App\Model\ExchangeNoticeTemp::where('article_id', $cid)->update(['article_id'=>'0']);
+        }
         return $Article->delete() ? success() : fail();
     }
     public function show(Request $request, $cid)

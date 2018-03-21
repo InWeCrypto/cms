@@ -70,6 +70,7 @@ Route::group(['prefix' => 'v2'], function($router){
         // 交易所爬虫
         $router->group(['prefix' => 'ex_notice_spider'], function ($router){
             $router->get('{id}', 'ExchangeNoticeSpiderController@show')->where('id','[0-9]+');
+            $router->delete('{id}', 'ExchangeNoticeSpiderController@destroy')->where('id','[0-9]+');
             $router->get('keys', 'ExchangeNoticeSpiderController@keys');
             $router->post('{id}/online', 'ExchangeNoticeSpiderController@stroe');
             $router->post('', 'ExchangeNoticeSpiderController@index');
@@ -108,5 +109,6 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->resource('gnt_category', 'GntCategoryController');
         // 意见反馈
         $router->resource('feedbackc', 'FeedbackController');
+
     });
 });

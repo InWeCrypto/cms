@@ -84,4 +84,26 @@ class ExchangeNoticeSpiderController extends BaseController
         }
         return success();
     }
+
+    public function destroy(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $temp = ExchangeNoticeTemp::find($id);
+            $article_id = $temp->article_id;
+            $temp->article_id = 0;
+            if(!$temp->save()){
+                throw new \Exception('更新爬虫状态失败!');
+            }
+            // 删除文章
+            if(Article::destroy($article_id) === false){
+                throw new \Exception('删除文章失败!');
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            return fail($e->getMessage());
+        }
+        return success();
+    }
 }

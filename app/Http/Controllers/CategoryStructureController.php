@@ -24,7 +24,7 @@ class CategoryStructureController extends BaseController
     {
         $validator = \Validator::make($request->all(), [
             'params' => 'required|array',
-            'params.*.percentage' => 'required|numeric',
+            // 'params.*.percentage' => 'required|numeric',
             'params.*.color_value' => 'required',
             'params.*.color_name' => 'required',
             'params.*.desc' => 'required',

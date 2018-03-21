@@ -74,10 +74,14 @@ class Article extends Model
         self::FILE => '文件',
         self::TRADING => '交易观点',
         self::TRADING_VIDEO => '交易观点-视频',
-        self::VIEWPOINT_TXT => '观点-文本',
-        self::VIEWPOINT_IMG => '观点-图文',
-        self::VIEWPOINT_VIDEO => '观点-视频',
-        self::VIEWPOINT_FILE => '观点-文件',
+        self::VIEWPOINT_TXT => '观点资讯-文本',
+        self::VIEWPOINT_IMG => '观点资讯-图文',
+        self::VIEWPOINT_VIDEO => '观点资讯-视频',
+        self::VIEWPOINT_FILE => '观点资讯-文件',
+        self::HELP_TXT   => '帮助中心-文本', // 帮助中心
+        self::HELP_IMG   => '帮助中心-图文', // 帮助中心
+        self::HELP_VIDEO => '帮助中心-视频', // 帮助中心
+        self::HELP_FILE  => '帮助中心-文件', // 帮助中心
     ];
 
     public static $trading = [
@@ -86,10 +90,10 @@ class Article extends Model
     ];
 
     public static $viewpoint = [
-        self::VIEWPOINT_TXT => '观点-文本',
-        self::VIEWPOINT_IMG => '观点-图文',
-        self::VIEWPOINT_VIDEO => '观点-视频',
-        self::VIEWPOINT_FILE => '观点-文件',
+        self::VIEWPOINT_TXT => '观点资讯-文本',
+        self::VIEWPOINT_IMG => '观点资讯-图文',
+        self::VIEWPOINT_VIDEO => '观点资讯-视频',
+        self::VIEWPOINT_FILE => '观点资讯-文件',
     ];
 
     public static $help = [

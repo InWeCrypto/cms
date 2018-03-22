@@ -108,4 +108,10 @@ class GateIoSource extends BaseSource
         return $info->toArray();
     }
 
+    public function getContent($txt)
+    {
+        $pattern = '/<ul class\="prenext">.*<\/div>/is';
+        return preg_replace($pattern, '', $txt);
+    }
+
 }

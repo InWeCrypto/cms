@@ -87,13 +87,14 @@ class ExchangeNoticeController extends BaseController
     public function getExchangeList()
     {
         $select =<<<EOT
-select source_name
-from exchange_notices
-group by source_name
+select author
+from articles
+where type=16 and author != ''
+group by author
 EOT;
         $return = [];
         foreach(DB::select($select) as $li){
-            $return[] = $li->source_name;
+            $return[] = $li->author;
         }
 
         return $return;

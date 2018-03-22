@@ -482,6 +482,7 @@
     ?keyword= 文章title关键字
     ?is_scroll=0 // 筛选轮播, 1是轮播,0不是轮播,空 所有
     ?is_sole=0  // 筛选原创文章, 1原创,0不是原创,空 所有
+    ?author= // 文章作者,或交易所名称
 
     [post,put]
     当文章类型type=6的时候,url为文件上传后的链接,必填,content可以为空,url请用/upload/file?get_oss_policy

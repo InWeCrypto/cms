@@ -22,7 +22,6 @@ class ArticleController extends BaseController
             }
         }else{
             $list = $list->whereIn('type', [1,2,3,6]);
-
         }
         if ($category_id = $request->get('category_id')){
             $list = $list->where('category_id', $category_id);
@@ -38,6 +37,9 @@ class ArticleController extends BaseController
                     $query->orWhere('id', $keyword);
                 }
             });
+        }
+        if ($author = $request->get('author')){
+            $list = $list->where('author', $author);
         }
         if (is_numeric($request->get('is_scroll'))){
             $list = $list->where('is_scroll', $request->get('is_scroll'));

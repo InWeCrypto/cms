@@ -34,6 +34,7 @@ class Article extends Model
         'content',
         'sort',
         'click_rate',
+        'click_rate_truth',
         'lang',
         'is_hot',
         'is_top',

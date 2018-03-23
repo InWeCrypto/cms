@@ -505,7 +505,8 @@
         "video": null,  // 本地视屏链接
         "desc": "瑞讯银行推出比特币交易所交易产品", // 文章描述
         "sort": 4,  // 文章排序
-        "click_rate": 199,  // 点击量
+        "click_rate": 199,  // 点击量 - 前端显示
+        "click_rate_truth": 199 // 实际点击量
         "lang": "zh",   // 文章语言
         "is_hot": true, // 是否热点
         "is_top": true, // 是否置顶

@@ -887,7 +887,7 @@ send_app_message=true&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5148;APP&#x63A8;&#x9001;
 <ul>
 <li><strong>请求地址:</strong> /article?type=16 // 调用文章接口</li>
 <li><strong>请求参数:</strong> [get]<pre class="language-">?author= // &#x4EA4;&#x6613;&#x6240;&#x540D;&#x79F0;
-?keyword= // &#x4EA4;&#x6613;&#x6240;&#x516C;&#x544A;title&#x5173;&#x952E;&#x5B57; 
+?keyword= // &#x4EA4;&#x6613;&#x6240;&#x516C;&#x544A;title&#x5173;&#x952E;&#x5B57;
 </pre>
 </li>
 <li><strong>返回数据:</strong></li>
@@ -1126,6 +1126,35 @@ send_app_message=true&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5148;APP&#x63A8;&#x9001;
 </pre>
 </li>
 </ul>
+<h2 class="mume-header" id="10-%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88">10. 意见反馈</h2>
+
+<ul>
+<li><strong>请求地址:</strong> /feedbackc</li>
+<li><strong>请求参数:</strong> [get, post]</li>
+<li><strong>返回数据:</strong><pre class="language-">[
+    {
+        &quot;id&quot;: 1,
+        &quot;type&quot;: 1,
+        &quot;status&quot;: 1, // &#x72B6;&#x6001;, 1&#x5DF2;&#x67E5;&#x770B;,0&#x672A;&#x67E5;&#x770B;
+        &quot;content&quot;: &quot;test233&quot;, // &#x53CD;&#x9988;&#x5185;&#x5BB9;
+        &quot;contact&quot;: &quot;what-00@qq.com&quot;, // &#x8054;&#x7CFB;&#x65B9;&#x5F0F;
+        &quot;user_id&quot;: 29,
+        &quot;created_at&quot;: &quot;2018-03-16 03:00:52&quot;,
+        &quot;updated_at&quot;: &quot;2018-03-16 06:37:45&quot;,
+        &quot;type_name&quot;: &quot;&#x529F;&#x80FD;&#x5EFA;&#x8BAE;&quot;, // &#x53CD;&#x9988;&#x7C7B;&#x578B;
+        &quot;user&quot;: {
+            &quot;name&quot;: &quot;what-00@qq.com&quot;,
+            &quot;img&quot;: null,
+            &quot;email&quot;: &quot;what-00@qq.com&quot;,
+            &quot;lang&quot;: &quot;zh&quot;,
+            &quot;enable&quot;: true,
+            &quot;wallet_gnt_sort&quot;: null
+        }
+    }
+]
+</pre>
+</li>
+</ul>
 
       </div>
       <div class="md-sidebar-toc"><ul>
@@ -1214,6 +1243,7 @@ send_app_message=true&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5148;APP&#x63A8;&#x9001;
 <li><a href="#92-%E8%B5%84%E4%BA%A7%E5%88%97%E8%A1%A8">9.2 资产列表</a></li>
 </ul>
 </li>
+<li><a href="#10-%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88">10. 意见反馈</a></li>
 </ul>
 </li>
 </ul>

@@ -648,7 +648,7 @@
 - **请求参数:** [get]
     ```
     ?author= // 交易所名称
-    ?keyword= // 交易所公告title关键字 
+    ?keyword= // 交易所公告title关键字
     ```
 - **返回数据:**
 #### 5.1.2 删除交易所公告
@@ -857,6 +857,33 @@
                 "id": 1,
                 "name": "ETH", // 资产类型
                 "img": null
+            }
+        }
+    ]
+    ```
+## 10. 意见反馈
+- **请求地址:** /feedbackc
+- **请求参数:** [get, post]
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 1,
+            "type": 1,
+            "status": 1, // 状态, 1已查看,0未查看
+            "content": "test233", // 反馈内容
+            "contact": "what-00@qq.com", // 联系方式
+            "user_id": 29,
+            "created_at": "2018-03-16 03:00:52",
+            "updated_at": "2018-03-16 06:37:45",
+            "type_name": "功能建议", // 反馈类型
+            "user": {
+                "name": "what-00@qq.com",
+                "img": null,
+                "email": "what-00@qq.com",
+                "lang": "zh",
+                "enable": true,
+                "wallet_gnt_sort": null
             }
         }
     ]

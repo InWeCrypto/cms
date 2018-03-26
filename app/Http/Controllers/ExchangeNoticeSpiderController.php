@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\ExchangeNoticeTemp;
 use App\Model\Article;
+use App\Model\EasemobGroup;
 
 use ExNoticeApi;
 
@@ -77,6 +78,10 @@ class ExchangeNoticeSpiderController extends BaseController
                 if(!$temp->save()){
                     throw new \Exception('回写交易所爬虫数据失败!');
                 }
+            }
+            // 发送环信推送
+            if($request->get('send_app_message', false)){
+                $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $temp->article_title, $temp->lang);
             }
             DB::commit();
         } catch (\Exception $e) {

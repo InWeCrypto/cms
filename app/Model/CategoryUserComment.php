@@ -19,6 +19,7 @@ class CategoryUserComment extends Model
         'category_user_id',
         'content',
         'user_id',
+        'enable',
     ];
 
     // protected $hidden = [

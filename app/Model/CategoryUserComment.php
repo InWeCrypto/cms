@@ -21,11 +21,11 @@ class CategoryUserComment extends Model
         'user_id',
     ];
 
-    protected $hidden = [
-        'ip',
-        'enable',
-        'updated_at'
-    ];
+    // protected $hidden = [
+    //     'ip',
+    //     'enable',
+    //     'updated_at'
+    // ];
 
     public function user()
     {

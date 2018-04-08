@@ -37,12 +37,12 @@ class CategoryUserComment extends Model
         return $this->belongsTo(Category::class, 'category_id')->select(['id','name','long_name','unit','type']);
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('sort', function(Builder $builder) {
-			return $builder->orderBy('id','DESC');
-        });
-    }
+    // protected static function boot()
+    // {
+    //     parent::boot();
+    //
+    //     static::addGlobalScope('sort', function(Builder $builder) {
+	// 		return $builder->orderBy('id','DESC');
+    //     });
+    // }
 }

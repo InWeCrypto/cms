@@ -471,6 +471,97 @@
     ]
     ```
 
+### 2.10 项目评论管理
+#### 2.10.1 项目评论列表
+- **请求地址:** /category/user
+- **请求参数:** [get]
+    ```
+    ?keyword_for_user= // 用户昵称和账户关键字
+    ?score_begin=0 // 分数范围筛选,起始分数
+    ?score_end=5 // 分数范围筛选,结束分数
+    ```
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 1,
+            "category_id": 2,
+            "user_id": 17,
+            "is_favorite": false,
+            "is_market_follow": false,
+            "is_favorite_dot": false,
+            "is_top": false,
+            "market_hige": "0",
+            "market_lost": "0",
+            "score": "5", // 评价分数
+            "is_category_comment": 1,
+            "category_comment_tag_id": 7,
+            "category_comment": "测试存储成三生三世超出搜索", // 评论内容
+            "category_comment_at": "2018-03-29 03:29:09", // 评论时间
+            "category_comment_enable": true, // 是否冻结,false冻结,true未冻结
+            "comment_count": 0, // 项目评论回复数量
+            "category_comment_tag_name": "围观",
+            "user": {
+                "name": "what-00@qq.com", // 用户昵称
+                "img": null,
+                "email": "what-00@qq.com" // 用户账户
+            },
+            "category": {
+                "id": 2,
+                "name": "Neo", // 项目名称
+                "long_name": "Neo",
+                "unit": "NEO",
+                "type": 1,
+                "type_name": "上线中"
+            }
+        }
+    ]
+    ```
+#### 2.10.2 冻结评论
+- **请求地址:** /category/user/:c_u_id
+- **请求参数:** [put]
+    ```
+    :c_u_id // 项目评价ID
+    {
+        'category_comment_enable': false, // false,冻结,true,解冻
+    }
+    ```
+- **返回数据:**
+
+#### 2.10.3 项目评论回复列表
+- **请求地址:** /category/user/:c_u_id/reply
+- **请求参数:** [put]
+    ```
+    :c_u_id // 项目评价ID
+    ```
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 5,
+            "category_id": 10,
+            "category_user_id": 5,
+            "user_id": 27,
+            "content": "在真转喔喔喔莫得得得得得得得",
+            "created_at": "2018-04-06 16:44:45",
+            "user": {
+                "name": "413646278@qq.com",
+                "img": null,
+                "email": "413646278@qq.com"
+            },
+            "category": {
+                "id": 10,
+                "name": "TNC",
+                "long_name": "Trinity",
+                "unit": "TNC",
+                "type": 1,
+                "type_name": "上线中"
+            }
+        }
+    ]
+    ```
+
+
 ## 3. 文章资讯
 ### 3.1 文章管理
 - **请求地址:** /article

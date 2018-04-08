@@ -24,8 +24,8 @@ Route::group(['prefix' => 'v2'], function($router){
     $router->post('login','AdminController@login');
     // 获取短信验证
     $router->post('get_code','AdminController@getLoginCode');
-    // $router->group([], function($router){
-    $router->group(['middleware'=>'auth.jwt'], function($router){
+    $router->group([], function($router){
+    // $router->group(['middleware'=>'auth.jwt'], function($router){
 
         // 项目
         $router->group(['prefix'=>'category'], function($router){
@@ -47,6 +47,10 @@ Route::group(['prefix' => 'v2'], function($router){
             $router->resource('candy_bow', 'CandyBowController');
             // 项目介绍
             $router->resource('{cat_id}/presentation', 'CategoryPresentationController');
+            // 项目用户评论管理
+            $router->resource('user','CategoryUserController');
+            // 用户评论回复
+            $router->resource('user/{id}/reply','CategoryUserCommentController');
         });
         $router->resource('category', 'CategoryController');
         // 文章

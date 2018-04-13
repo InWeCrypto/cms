@@ -75,15 +75,6 @@ class CategoryUser extends Model
         'category_comment_enable' => 'boolean'
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('sort', function(Builder $builder) {
-			return $builder->orderBy('id','DESC');
-        });
-    }
-
 
     public static function getCommentTags($lang = '')
     {

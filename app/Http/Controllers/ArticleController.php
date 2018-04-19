@@ -22,7 +22,6 @@ class ArticleController extends BaseController
             }
         }else{
             $list = $list->whereIn('type', [1,2,3,6]);
-
         }
         if ($category_id = $request->get('category_id')){
             $list = $list->where('category_id', $category_id);
@@ -38,6 +37,9 @@ class ArticleController extends BaseController
                     $query->orWhere('id', $keyword);
                 }
             });
+        }
+        if ($author = $request->get('author')){
+            $list = $list->where('author', $author);
         }
         if (is_numeric($request->get('is_scroll'))){
             $list = $list->where('is_scroll', $request->get('is_scroll'));
@@ -56,7 +58,7 @@ class ArticleController extends BaseController
             'type' => 'required|numeric',
             'category_id' => 'required|numeric',
             'title' => 'required',
-            'content' => 'required_unless:type,6,3',
+            'content' => 'required_unless:type,6,3,12',
             'url'=> 'required_if:type,6',
             'lang' => 'required',
         ]);
@@ -77,11 +79,27 @@ class ArticleController extends BaseController
             if(!$Article->save() || $update_stat === false){
                 throw new \Exception(trans('custom.FAIL'), FAIL);
             }
-
-            if($Article->type == Article::TRADING || $Article->type == Article::TRADING_VIDEO){
-                $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
-            }else{
-                $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
+            if($request->get('send_app_message')){
+                if(in_array($Article->type ,[
+                        Article::TRADING,
+                        Article::TRADING_VIDEO
+                    ])){
+                        $this->sendGroupMsg(EasemobGroup::SYS_MSG_TRADING, $Article->title, $Article->lang);
+                }else if(in_array($Article->type, [
+                        Article::TXT,
+                        Article::IMG,
+                        Article::VIDEO,
+                        Article::FILE,
+                    ]) && $Article->category_id == 0){
+                    $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $Article->title, $Article->lang);
+                }else if(in_array($Article->type, [
+                        Article::VIEWPOINT_TXT,
+                        Article::VIEWPOINT_IMG,
+                        Article::VIEWPOINT_VIDEO,
+                        Article::VIEWPOINT_FILE,
+                    ])){
+                    $this->sendGroupMsg(EasemobGroup::SYS_MSG_VIEWPOINT, $Article->title, $Article->lang);
+                }
             }
             DB::commit();
             return success($Article->toArray());
@@ -102,6 +120,10 @@ class ArticleController extends BaseController
     public function destroy(Request $request, $cid)
     {
         $Article = Article::find($cid);
+        // 如果是交易所公告类型,修改爬虫发布状态
+        if($Article->type == Article::EXCHANGE_NOTICE){
+            \App\Model\ExchangeNoticeTemp::where('article_id', $cid)->update(['article_id'=>'0']);
+        }
         return $Article->delete() ? success() : fail();
     }
     public function show(Request $request, $cid)

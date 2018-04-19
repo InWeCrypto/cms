@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\ExchangeNoticeTemp;
-use App\Model\ExchangeNotice;
+use App\Model\Article;
+use App\Model\EasemobGroup;
 
 use ExNoticeApi;
 
@@ -38,7 +39,8 @@ class ExchangeNoticeSpiderController extends BaseController
                 'article_date' => $li['article_date'],
                 'article_title' => $li['article_title'],
                 'created_at' => $li['created_at'],
-                'lang' => $li['lang']
+                'lang' => $li['lang'],
+                'article_id' => $li['article_id'],
             ];
         }
         return success($return);
@@ -57,12 +59,56 @@ class ExchangeNoticeSpiderController extends BaseController
     public function stroe(Request $request, $id)
     {
         $temp = ExchangeNoticeTemp::find($id);
-        $data = [];
-        $data['source_name'] = $temp->source;
-        $data['lang'] = $temp->lang;
-        $data['desc'] = $temp->article_title;
-        $data['content'] = $temp->article_content;
-        $data['source_url'] = $temp->uri;
-        return ExchangeNotice::create($data) ? success() : fail();
+        $data = [
+            'type' => Article::EXCHANGE_NOTICE,
+            'category_id' => 0
+        ];
+        $data['title'] = $temp->article_title; // 标题
+        $data['lang'] = $temp->lang;  // 语言
+        $data['author'] = $temp->source; // 备注
+        $data['desc'] = $temp->source; // 备注
+        $data['content'] = $temp->article_content; // 内容
+        $data['source_url'] = $temp->uri; // 链接
+
+        DB::beginTransaction();
+        try {
+            $article = Article::create($data);
+            if($article){
+                $temp->article_id = $article->id;
+                if(!$temp->save()){
+                    throw new \Exception('回写交易所爬虫数据失败!');
+                }
+            }
+            // 发送环信推送
+            if($request->get('send_app_message', false)){
+                $this->sendGroupMsg(EasemobGroup::SYS_MSG_INWEHOT, $temp->article_title, $temp->lang);
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            return fail($e->getMessage());
+        }
+        return success();
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $temp = ExchangeNoticeTemp::find($id);
+            $article_id = $temp->article_id;
+            $temp->article_id = 0;
+            if(!$temp->save()){
+                throw new \Exception('更新爬虫状态失败!');
+            }
+            // 删除文章
+            if(Article::destroy($article_id) === false){
+                throw new \Exception('删除文章失败!');
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            return fail($e->getMessage());
+        }
+        return success();
     }
 }

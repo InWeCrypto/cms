@@ -21,6 +21,7 @@ class CreateExchangeNoticesTempTable extends Migration
             $table->dateTime('article_date')->comment('文章日期');
             $table->string('article_title')->nullable()->comment('文章标题');
             $table->text('article_content')->nullable()->comment('文章内容');
+            $table->integer('article_id')->default(0)->comment('发布文章ID');
             $table->string('lang')->default('zh')->comment('文章语言');
             $table->timestamps();
         });

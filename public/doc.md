@@ -471,6 +471,97 @@
     ]
     ```
 
+### 2.10 项目评论管理
+#### 2.10.1 项目评论列表
+- **请求地址:** /category/user
+- **请求参数:** [get]
+    ```
+    ?keyword_for_user= // 用户昵称和账户关键字
+    ?score_begin=0 // 分数范围筛选,起始分数
+    ?score_end=5 // 分数范围筛选,结束分数
+    ```
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 1,
+            "category_id": 2,
+            "user_id": 17,
+            "is_favorite": false,
+            "is_market_follow": false,
+            "is_favorite_dot": false,
+            "is_top": false,
+            "market_hige": "0",
+            "market_lost": "0",
+            "score": "5", // 评价分数
+            "is_category_comment": 1,
+            "category_comment_tag_id": 7,
+            "category_comment": "测试存储成三生三世超出搜索", // 评论内容
+            "category_comment_at": "2018-03-29 03:29:09", // 评论时间
+            "category_comment_enable": true, // 是否冻结,false冻结,true未冻结
+            "comment_count": 0, // 项目评论回复数量
+            "category_comment_tag_name": "围观",
+            "user": {
+                "name": "what-00@qq.com", // 用户昵称
+                "img": null,
+                "email": "what-00@qq.com" // 用户账户
+            },
+            "category": {
+                "id": 2,
+                "name": "Neo", // 项目名称
+                "long_name": "Neo",
+                "unit": "NEO",
+                "type": 1,
+                "type_name": "上线中"
+            }
+        }
+    ]
+    ```
+#### 2.10.2 冻结评论
+- **请求地址:** /category/user/:c_u_id
+- **请求参数:** [put]
+    ```
+    :c_u_id // 项目评价ID
+    {
+        'category_comment_enable': false, // false,冻结,true,解冻
+    }
+    ```
+- **返回数据:**
+
+#### 2.10.3 项目评论回复列表
+- **请求地址:** /category/user/:c_u_id/reply
+- **请求参数:** [get]
+    ```
+    :c_u_id // 项目评价ID
+    ```
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 5,
+            "category_id": 10,
+            "category_user_id": 5,
+            "user_id": 27,
+            "content": "在真转喔喔喔莫得得得得得得得",
+            "created_at": "2018-04-06 16:44:45",
+            "user": {
+                "name": "413646278@qq.com",
+                "img": null,
+                "email": "413646278@qq.com"
+            },
+            "category": {
+                "id": 10,
+                "name": "TNC",
+                "long_name": "Trinity",
+                "unit": "TNC",
+                "type": 1,
+                "type_name": "上线中"
+            }
+        }
+    ]
+    ```
+
+
 ## 3. 文章资讯
 ### 3.1 文章管理
 - **请求地址:** /article
@@ -482,16 +573,22 @@
     ?keyword= 文章title关键字
     ?is_scroll=0 // 筛选轮播, 1是轮播,0不是轮播,空 所有
     ?is_sole=0  // 筛选原创文章, 1原创,0不是原创,空 所有
+    ?author= // 文章作者,或交易所名称
 
     [post,put]
     当文章类型type=6的时候,url为文件上传后的链接,必填,content可以为空,url请用/upload/file?get_oss_policy
+    send_app_message=true的时候会先APP推送消息
     ```
 - **返回数据:**
     ```
     [{
         "id": 64,
         "category_id": 4,   // 文章所属项目
-        "type": 1,  // 文章类型 1 文本,2图文,3视频,4,trading图文,6,文件,7trading视频
+        "type": 1,  // 文章类型: 1 文本,2图文,3视频,
+                                4,trading图文,6,文件,7trading视频,
+                                8帮助中心-文本,9帮助中心-图文,10帮助中心-视频,11帮助中心-文件,
+                                12观点资讯-文本,13观点资讯-图文,14观点资讯-视频,15观点资讯-文件
+                                16交易所公告
         "title": "瑞讯银行推出比特币交易所交易产品", // 文章标题
         "author": null, // 文章作者
         "img": null,    // 文章封面
@@ -499,7 +596,8 @@
         "video": null,  // 本地视屏链接
         "desc": "瑞讯银行推出比特币交易所交易产品", // 文章描述
         "sort": 4,  // 文章排序
-        "click_rate": 199,  // 点击量
+        "click_rate": 199,  // 点击量 - 前端显示
+        "click_rate_truth": 199 // 实际点击量
         "lang": "zh",   // 文章语言
         "is_hot": true, // 是否热点
         "is_top": true, // 是否置顶
@@ -637,26 +735,19 @@
     ```
 ## 5. 交易所公告
 ### 5.1 交易所公告
-- **请求地址:** /ex_notice
-- **请求参数:** [get, post, put, delete]
+#### 5.1.1 交易所公告列表
+- **请求地址:** /article?type=16 // 调用文章接口
+- **请求参数:** [get]
+    ```
+    ?author= // 交易所名称
+    ?keyword= // 交易所公告title关键字
+    ```
 - **返回数据:**
-    ```
-    {
-        "id": 135,
-        "source_name": "gate.io",   // 公告来源名称
-        "source_url": "https://gate.io/article/16352", // 公告来源链接
-        "url": null,    // 公告跳转链接
-        "lang": "zh",   // 公告语言
-        "is_hot": false,
-        "is_top": false,
-        "is_scroll": false,
-        "enable": true,
-        "created_at": "2018-01-16 17:47:00",
-        "updated_at": "2018-01-16 17:47:00",
-        "desc": "gate.io上线Zilliqa(ZIL) 和 RuffChain(RUFF)交易", // 公告标题
-        "content": "" // 公告内容
-    }
-    ```
+#### 5.1.2 删除交易所公告
+- **请求地址:** /article/:id
+- **请求参数:** [delete]
+- **返回数据:**
+
 ### 5.2 交易所公告爬虫
 #### 5.2.1 获取交易所公告爬虫列表
 - **请求地址:** /ex_notice_spider/keys
@@ -682,7 +773,7 @@
     {
         "key" : "",
         "lang": "zh",
-        "uri": "" // 下一页或上一页链接
+        "page": "" // 下一页或上一页链接
     }
     ```
 - **返回数据:**
@@ -697,7 +788,8 @@
                     "article_date": "", // 文章发布日器
                     "article_title": "", // 文章标题
                     "created_at": "2018-03-08 09:14:45", // 爬虫时间
-                    "lang": "zh" // 语言
+                    "lang": "zh", // 语言
+                    "article_id": "888", // 0表示未发布,非0表示已发布
                 }
             ],
             "prev_page": "", // 上一页, 空 则没有上一页
@@ -720,12 +812,18 @@
         "article_content": "", // 文章内容
         "created_at": "2018-03-08 09:14:45", // 爬虫时间
         "updated_at": "2018-03-08 09:14:45",
-        "lang": "zh" // 语言
+        "lang": "zh", // 语言
+        "article_id": "888", // 0表示未发布,非0表示已发布
     }
     ```
 #### 5.2.4 导出爬虫数据到正式数据
 - **请求地址:** /ex_notice_spider/{id}/online
 - **请求参数:** [post]
+- **返回数据:**
+
+#### 5.2.4 变更爬虫数据到未发布状态
+- **请求地址:** /ex_notice_spider/{id}
+- **请求参数:** [delete]
 - **返回数据:**
 
 
@@ -851,6 +949,33 @@
                 "id": 1,
                 "name": "ETH", // 资产类型
                 "img": null
+            }
+        }
+    ]
+    ```
+## 10. 意见反馈
+- **请求地址:** /feedbackc
+- **请求参数:** [get, post]
+- **返回数据:**
+    ```
+    [
+        {
+            "id": 1,
+            "type": 1,
+            "status": 1, // 状态, 1已查看,0未查看
+            "content": "test233", // 反馈内容
+            "contact": "what-00@qq.com", // 联系方式
+            "user_id": 29,
+            "created_at": "2018-03-16 03:00:52",
+            "updated_at": "2018-03-16 06:37:45",
+            "type_name": "功能建议", // 反馈类型
+            "user": {
+                "name": "what-00@qq.com",
+                "img": null,
+                "email": "what-00@qq.com",
+                "lang": "zh",
+                "enable": true,
+                "wallet_gnt_sort": null
             }
         }
     ]

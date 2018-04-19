@@ -56,7 +56,9 @@ class ExchangeNoticeController extends BaseController
         $msg = $info->source_name . ':' . $info->content;
 
         if($info->save()){
-            $this->sendGroupMsg(EasemobGroup::SYS_MSG_EXCHANGENOTICE, $msg, $info->lang);
+            if($request->get('send_app_message')){
+                $this->sendGroupMsg(EasemobGroup::SYS_MSG_EXCHANGENOTICE, $msg, $info->lang);
+            }
             return success();
         }else {
             return fail();
@@ -85,13 +87,14 @@ class ExchangeNoticeController extends BaseController
     public function getExchangeList()
     {
         $select =<<<EOT
-select source_name
-from exchange_notices
-group by source_name
+select author
+from articles
+where type=16 and author != ''
+group by author
 EOT;
         $return = [];
         foreach(DB::select($select) as $li){
-            $return[] = $li->source_name;
+            $return[] = $li->author;
         }
 
         return $return;

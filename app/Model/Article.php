@@ -34,6 +34,7 @@ class Article extends Model
         'content',
         'sort',
         'click_rate',
+        'click_rate_truth',
         'lang',
         'is_hot',
         'is_top',
@@ -57,7 +58,16 @@ class Article extends Model
     const TRADING = 4; // 交易-图文
     const DESC    = 5; // 项目介绍
 	const FILE    = 6; // 项目介绍
-    const TRADING_VIDEO = 7; // 交易-视频
+    const TRADING_VIDEO = 7; // 交易-视8
+    const HELP_TXT   = 8; // 帮助中心
+    const HELP_IMG   = 9; // 帮助中心
+    const HELP_VIDEO = 10; // 帮助中心
+    const HELP_FILE  = 11; // 帮助中心
+    const VIEWPOINT_TXT = 12;
+    const VIEWPOINT_IMG = 13;
+    const VIEWPOINT_VIDEO = 14;
+    const VIEWPOINT_FILE = 15;
+    const EXCHANGE_NOTICE = 16;
 
     public static $types = [
         self::TXT => '文本',
@@ -66,11 +76,34 @@ class Article extends Model
         self::FILE => '文件',
         self::TRADING => '交易观点',
         self::TRADING_VIDEO => '交易观点-视频',
+        self::VIEWPOINT_TXT => '观点资讯-文本',
+        self::VIEWPOINT_IMG => '观点资讯-图文',
+        self::VIEWPOINT_VIDEO => '观点资讯-视频',
+        self::VIEWPOINT_FILE => '观点资讯-文件',
+        self::HELP_TXT   => '帮助中心-文本', // 帮助中心
+        self::HELP_IMG   => '帮助中心-图文', // 帮助中心
+        self::HELP_VIDEO => '帮助中心-视频', // 帮助中心
+        self::HELP_FILE  => '帮助中心-文件', // 帮助中心
+        self::EXCHANGE_NOTICE  => '交易所公告', // 帮助中心
     ];
 
     public static $trading = [
         self::TRADING => '交易观点',
         self::TRADING_VIDEO => '交易观点-视频',
+    ];
+
+    public static $viewpoint = [
+        self::VIEWPOINT_TXT => '观点资讯-文本',
+        self::VIEWPOINT_IMG => '观点资讯-图文',
+        self::VIEWPOINT_VIDEO => '观点资讯-视频',
+        self::VIEWPOINT_FILE => '观点资讯-文件',
+    ];
+
+    public static $help = [
+        self::HELP_TXT   => '帮助中心-文本', // 帮助中心
+        self::HELP_IMG   => '帮助中心-图文', // 帮助中心
+        self::HELP_VIDEO => '帮助中心-视频', // 帮助中心
+        self::HELP_FILE  => '帮助中心-文件', // 帮助中心
     ];
 
 	protected static function boot()

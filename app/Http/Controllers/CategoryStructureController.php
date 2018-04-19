@@ -23,23 +23,41 @@ class CategoryStructureController extends BaseController
     public function store(Request $request, $cat_id)
     {
         $validator = \Validator::make($request->all(), [
-            'params' => 'required|array',
-            'params.*.percentage' => 'required|numeric',
-            'params.*.color_value' => 'required',
-            'params.*.color_name' => 'required',
-            'params.*.desc' => 'required',
-            'params.*.lang' => 'required',
-            'params.*.enable' => 'boolean',
+            'params' => 'array',
+            // 'params.*.percentage' => 'required|numeric',
+            // 'params.*.color_value' => 'required',
+            // 'params.*.color_name' => 'required',
+            // 'params.*.desc' => 'required',
+            // 'params.*.lang' => 'required',
+            // 'params.*.enable' => 'boolean',
         ]);
         if($validator->fails()){
             return fail($validator->errors()->first(), NOT_VALIDATED);
+        }
+        $params = $request->get('params');
+        foreach($params as $key=>$val){
+            if(
+                empty($val['percentage']) &&
+                empty($val['color_value']) &&
+                empty($val['color_name']) &&
+                empty($val['desc'])
+            ){
+                unset($params[$key]);
+            }else if(
+                empty($val['percentage']) ||
+                empty($val['color_value']) ||
+                empty($val['color_name']) ||
+                empty($val['desc'])
+            ){
+                return fail('请填写完整的信息!', NOT_VALIDATED);
+            }
         }
         DB::beginTransaction();
         try{
             if(CategoryStructure::where('category_id', $cat_id)->where('lang', $request->get('params')[0]['lang'])->delete() === false){
                 throw new \Exception('创建项目结构失败!');
             }
-            $params = $request->get('params');
+
             foreach($params as $param){
                 $param['category_id'] = $cat_id;
                 if(! CategoryStructure::create($param)){

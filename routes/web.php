@@ -47,6 +47,10 @@ Route::group(['prefix' => 'v2'], function($router){
             $router->resource('candy_bow', 'CandyBowController');
             // 项目介绍
             $router->resource('{cat_id}/presentation', 'CategoryPresentationController');
+            // 项目用户评论管理
+            $router->resource('user','CategoryUserController');
+            // 用户评论回复
+            $router->resource('user/{id}/reply','CategoryUserCommentController');
         });
         $router->resource('category', 'CategoryController');
         // 文章
@@ -70,6 +74,7 @@ Route::group(['prefix' => 'v2'], function($router){
         // 交易所爬虫
         $router->group(['prefix' => 'ex_notice_spider'], function ($router){
             $router->get('{id}', 'ExchangeNoticeSpiderController@show')->where('id','[0-9]+');
+            $router->delete('{id}', 'ExchangeNoticeSpiderController@destroy')->where('id','[0-9]+');
             $router->get('keys', 'ExchangeNoticeSpiderController@keys');
             $router->post('{id}/online', 'ExchangeNoticeSpiderController@stroe');
             $router->post('', 'ExchangeNoticeSpiderController@index');
@@ -106,5 +111,8 @@ Route::group(['prefix' => 'v2'], function($router){
         $router->resource('wallet_category', 'WalletCategoryController');
         // 代币列表
         $router->resource('gnt_category', 'GntCategoryController');
+        // 意见反馈
+        $router->resource('feedbackc', 'FeedbackController');
+
     });
 });

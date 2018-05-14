@@ -25,6 +25,12 @@ class ArticleController extends BaseController
         }
         if ($category_id = $request->get('category_id')){
             $list = $list->where('category_id', $category_id);
+        }else{
+            if($request->has('is_category')){
+                $list = $list->where('category_id', '=', '0');
+            }else{
+                $list = $list->where('category_id', '!=', '0');
+            }
         }
         if ($lang = $request->get('lang')){
             $list = $list->where('lang', $lang);
